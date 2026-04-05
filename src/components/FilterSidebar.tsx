@@ -25,7 +25,7 @@ const FilterSection = ({
     <div className="border-b border-border pb-3 mb-3 last:border-0 last:mb-0 last:pb-0">
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between py-1 text-sm font-medium text-foreground hover:text-primary transition-colors"
+        className="flex w-full items-center justify-between py-1 text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
       >
         {title}
         {open ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
@@ -47,7 +47,7 @@ const FilterSidebar = ({
 
       <FilterSection title="Category">
         {categories.map((cat) => (
-          <label key={cat} className="flex cursor-pointer items-center gap-2 py-1 text-sm text-foreground hover:text-primary transition-colors">
+          <label key={cat} className="flex cursor-pointer items-center gap-2 py-1 text-sm text-foreground hover:text-foreground/70 transition-colors">
             <input
               type="checkbox"
               checked={selectedCategories.includes(cat)}
@@ -61,7 +61,7 @@ const FilterSidebar = ({
 
       <FilterSection title="Tags" defaultOpen={false}>
         {allTags.map((tag) => (
-          <label key={tag} className="flex cursor-pointer items-center gap-2 py-1 text-sm text-foreground hover:text-primary transition-colors">
+          <label key={tag} className="flex cursor-pointer items-center gap-2 py-1 text-sm text-foreground hover:text-foreground/70 transition-colors">
             <input
               type="checkbox"
               checked={selectedTags.includes(tag)}

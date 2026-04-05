@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import { LinkItem, tagColorMap } from "@/data/links";
+import { LinkItem } from "@/data/links";
 
 interface LinkCardProps {
   link: LinkItem;
@@ -19,7 +19,7 @@ const LinkCard = ({ link }: LinkCardProps) => {
         </span>
       </div>
 
-      <h3 className="mb-1.5 text-lg font-semibold text-foreground group-hover:text-primary transition-colors font-sans">
+      <h3 className="mb-1.5 text-lg font-semibold text-foreground group-hover:text-foreground/70 transition-colors font-sans">
         {link.title}
       </h3>
 
@@ -38,7 +38,7 @@ const LinkCard = ({ link }: LinkCardProps) => {
         ))}
       </div>
 
-      <div className="flex items-center gap-1.5 text-sm font-medium text-primary">
+      <div className="flex items-center gap-1.5 text-sm font-medium text-foreground/60">
         Visit link
         <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
       </div>
