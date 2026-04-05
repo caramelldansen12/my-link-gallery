@@ -394,7 +394,37 @@ const toolsAndEquipmentCards: GroupCard[] = [
   { title: "Introductory", items: toolsAndEquipment.introductory },
 ];
 
-const GroupedCardsCarousel = ({ cards }: { cards: GroupCard[] }) => {
+const GroupedCardsCarousel = ({
+  cards,
+  lockHorizontalOnPortrait = false,
+}: {
+  cards: GroupCard[];
+  lockHorizontalOnPortrait?: boolean;
+}) => {
+  const [isScrollGuidanceVisible, setIsScrollGuidanceVisible] = useState(false);
+  const scrollFadeTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (scrollFadeTimerRef.current) {
+        window.clearTimeout(scrollFadeTimerRef.current);
+      }
+    };
+  }, []);
+
+  const handleHorizontalScroll = () => {
+    setIsScrollGuidanceVisible(true);
+
+    if (scrollFadeTimerRef.current) {
+      window.clearTimeout(scrollFadeTimerRef.current);
+    }
+
+    scrollFadeTimerRef.current = window.setTimeout(() => {
+      setIsScrollGuidanceVisible(false);
+      scrollFadeTimerRef.current = null;
+    }, 380);
+  };
+
   const borderGradients = [
     "from-cyan-400/80 via-sky-400/70 to-blue-500/80",
     "from-emerald-400/80 via-lime-400/70 to-yellow-400/80",
@@ -405,21 +435,26 @@ const GroupedCardsCarousel = ({ cards }: { cards: GroupCard[] }) => {
   ];
 
   return (
-    <div className="w-full">
-      <div className="-mx-1 overflow-x-auto pb-2">
-        <div className="flex min-w-full snap-x snap-mandatory gap-4 px-1">
+    <div className="relative w-full">
+      <div
+        className={`-mx-1 overflow-x-auto pb-2 ${
+          lockHorizontalOnPortrait ? "portrait-cards-scroll-track" : ""
+        }`}
+        onScroll={handleHorizontalScroll}
+      >
+        <div className="grouped-cards-track flex min-w-full snap-x snap-mandatory gap-4 px-1">
           {cards.map((card, cardIndex) => (
             <article
               key={card.title}
-              className={`min-w-[260px] flex-1 basis-0 snap-start rounded-2xl bg-gradient-to-br ${borderGradients[cardIndex % borderGradients.length]} p-[1px] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]`}
+              className={`grouped-card min-w-[200px] sm:min-w-[230px] lg:min-w-[260px] flex-1 basis-0 snap-start rounded-2xl bg-gradient-to-br ${borderGradients[cardIndex % borderGradients.length]} p-[1px] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]`}
             >
-              <div className="h-full rounded-2xl border border-border/70 bg-card p-4">
-                <h3 className="text-base font-semibold text-foreground">{card.title}</h3>
+              <div className="h-full rounded-2xl border border-border/70 bg-card p-3 sm:p-4">
+                <h3 className="portrait-card-content-text text-sm font-semibold text-foreground sm:text-base">{card.title}</h3>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {card.items.map((item) => (
                     <span
                       key={item}
-                      className="hover-chroma-pill rounded-full border border-border bg-background/70 px-3 py-1 text-sm leading-relaxed text-foreground/90"
+                      className="portrait-card-content-text hover-chroma-pill rounded-full border border-border bg-background/70 px-2.5 py-1 text-xs leading-relaxed text-foreground/90 sm:px-3 sm:text-sm"
                     >
                       {item}
                     </span>
@@ -429,6 +464,23 @@ const GroupedCardsCarousel = ({ cards }: { cards: GroupCard[] }) => {
             </article>
           ))}
         </div>
+      </div>
+
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-1 transition-opacity duration-150 ${
+          isScrollGuidanceVisible ? "opacity-20" : "opacity-0"
+        }`}
+      >
+        <ChevronLeft className="h-5 w-5 text-foreground" />
+      </div>
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-y-0 right-0 z-10 flex items-center pr-1 transition-opacity duration-150 ${
+          isScrollGuidanceVisible ? "opacity-20" : "opacity-0"
+        }`}
+      >
+        <ChevronRight className="h-5 w-5 text-foreground" />
       </div>
     </div>
   );
@@ -461,25 +513,25 @@ const DeckEntryCard = ({
         isVisible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
       }`}
     >
-      <div className="flex h-full min-h-[180px] flex-col rounded-2xl border border-border/70 bg-card p-4">
+      <div className="flex h-full min-h-[148px] sm:min-h-[180px] flex-col rounded-2xl border border-border/70 bg-card p-3 sm:p-4">
         <div className="mb-4 flex items-start gap-3">
           {showLogo && (
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-border bg-background text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-border bg-background text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:h-12 sm:w-12 sm:text-[10px] sm:tracking-[0.25em]">
               Logo
             </div>
           )}
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-[11px] sm:tracking-[0.24em]">
               {label}
             </p>
-            <h3 className="mt-1 text-sm font-semibold leading-snug text-foreground">
+            <h3 className="portrait-card-content-text mt-1 text-xs font-semibold leading-snug text-foreground sm:text-sm">
               {item}
             </h3>
           </div>
         </div>
 
         {footerText && (
-          <div className="mt-auto flex items-center gap-2 text-xs text-muted-foreground">
+          <div className="portrait-card-content-text mt-auto flex items-center gap-2 text-xs text-muted-foreground">
             <span className="h-2 w-2 rounded-full bg-foreground/60" />
             {footerText}
           </div>
@@ -770,18 +822,17 @@ const Resume = () => {
       <div className="page-base-glass" aria-hidden="true" />
 
       <div className="relative z-10 flex min-h-0 flex-1 flex-col">
-      <BackgroundColorToggle />
-
       <header className="sticky top-0 z-30 border-b border-border bg-card/90 backdrop-blur-sm">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <span className="text-sm font-medium text-foreground">Resume</span>
           <div className="flex items-center gap-3">
+            <BackgroundColorToggle />
             <ThemeToggle />
           </div>
         </div>
       </header>
 
-      <main className="min-h-0 flex-1 overflow-y-auto snap-y snap-mandatory scroll-smooth">
+      <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth">
         {resumePages.map((page, index) => {
           const showSidePanel = !page.noCard && page.id !== "projects" && index !== 0 && index !== resumePages.length - 1;
 
@@ -794,28 +845,32 @@ const Resume = () => {
                 sectionRefs.current[index] = section;
               }
             }}
-            className="snap-start min-h-full border-b border-border"
+            className={`snap-start min-h-full border-b border-border ${
+              page.id === "tools-equipment" ? "portrait-hide-section" : ""
+            }`}
           >
             <div className="container mx-auto flex min-h-full items-center px-4 py-12">
               <div className="grid w-full gap-8 lg:grid-cols-[1.15fr_1.15fr_0.7fr] lg:grid-rows-[auto_1fr]">
                 <div
-                  className="lg:col-span-3"
+                  className="min-w-0 lg:col-span-3"
                   ref={(node) => {
                     if (page.id === "overview") {
                       overviewHeroRef.current = node;
                     }
                   }}
                 >
-                  <h1 className="max-w-4xl pb-1 text-4xl font-bold leading-[1.05] md:text-6xl">
+                  <h1 className="max-w-4xl pb-1 text-3xl font-bold leading-[1.05] sm:text-4xl md:text-6xl">
                     {page.title}
                   </h1>
-                  <p className="mt-4 max-w-3xl text-base text-muted-foreground md:text-lg">{page.subtitle}</p>
+                  <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base md:text-lg">{page.subtitle}</p>
                 </div>
 
-                <div className={`min-h-[330px] ${showSidePanel ? "lg:col-span-2" : "lg:col-span-3"}`}>
+                <div
+                    className={`min-w-0 min-h-[330px] ${showSidePanel ? "lg:col-span-2" : "lg:col-span-3"}`}
+                >
                   {page.id === "overview" ? (
-                    <div className="grid gap-14 lg:grid-cols-[minmax(0,0.98fr)_minmax(0,1.02fr)]">
-                      <div ref={overviewCardsRef} className="space-y-4 text-lg leading-relaxed text-foreground/90">
+                    <div className="resume-overview-columns">
+                      <div ref={overviewCardsRef} className="space-y-4 text-base leading-relaxed text-foreground/90 sm:text-lg">
                         {overviewDetails.map((item) => {
                           const Icon = item.icon;
 
@@ -895,9 +950,23 @@ const Resume = () => {
                       </div>
                     </div>
                   ) : page.id === "key-skills" ? (
-                    <GroupedCardsCarousel cards={keySkillsCards} />
+                    <div className="space-y-6">
+                      <GroupedCardsCarousel cards={keySkillsCards} lockHorizontalOnPortrait />
+
+                      <div className="portrait-only-block space-y-3">
+                        <div className="pb-1">
+                          <h2 className="max-w-4xl pb-1 text-3xl font-bold leading-[1.05] sm:text-4xl md:text-6xl">
+                            Tools and Equipment
+                          </h2>
+                          <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base md:text-lg">
+                            Core platforms and tools grouped by proficiency level.
+                          </p>
+                        </div>
+                        <GroupedCardsCarousel cards={toolsAndEquipmentCards} lockHorizontalOnPortrait />
+                      </div>
+                    </div>
                   ) : page.id === "tools-equipment" ? (
-                    <GroupedCardsCarousel cards={toolsAndEquipmentCards} />
+                    <GroupedCardsCarousel cards={toolsAndEquipmentCards} lockHorizontalOnPortrait />
                   ) : page.id === "contact" ? (
                     <div className="grid gap-8 md:grid-cols-2">
                       <div className="space-y-3">

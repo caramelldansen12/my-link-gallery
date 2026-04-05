@@ -74,8 +74,6 @@ const Index = () => {
       <div className="page-base-glass" aria-hidden="true" />
 
       <div className="relative z-10">
-      <BackgroundColorToggle />
-
       {/* Header */}
       <header className="border-b border-border bg-card/85 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6 md:py-8">
@@ -88,6 +86,7 @@ const Index = () => {
             <p>Team leader // somewhat IT guy // bedroom DJ by night</p>
           </div>
           <div className="flex items-center gap-3">
+            <BackgroundColorToggle />
             <ThemeToggle />
           </div>
           </div>
@@ -162,9 +161,9 @@ const Index = () => {
         </div>
 
         {/* Main layout */}
-        <div className="flex flex-col gap-4 md:flex-row">
+        <div className="grid gap-4 lg:grid-cols-[14rem_minmax(0,1fr)] lg:items-start">
           {/* Sidebar */}
-          <aside className="w-full shrink-0 md:w-56">
+          <aside className="w-full shrink-0 lg:w-56">
             <FilterSidebar
               selectedTags={selectedTags}
               onToggleTag={toggleTag}

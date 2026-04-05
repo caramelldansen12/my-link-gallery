@@ -29,15 +29,15 @@ const BackgroundColorToggle = () => {
   }, [tint]);
 
   return (
-    <div className="fixed right-4 top-1/2 z-40 -translate-y-1/2">
-      <div className="flex flex-col items-center gap-2 rounded-full border border-border bg-card/80 p-2 backdrop-blur-sm">
+    <div className="bg-color-toggle-wrapper">
+      <div className="bg-color-toggle-panel flex flex-col items-center gap-2 rounded-full border border-border bg-card/80 p-2 backdrop-blur-sm">
         {options.map((option) => {
           const isActive = tint === option.value;
           return (
             <button
               key={option.value}
               onClick={() => setTint(option.value)}
-              className={`h-6 w-6 rounded-full border transition-transform hover:scale-110 ${
+              className={`bg-color-toggle-swatch h-6 w-6 rounded-full border transition-transform hover:scale-110 ${
                 isActive ? "border-foreground ring-2 ring-ring ring-offset-1 ring-offset-background" : "border-border"
               } ${option.swatchClass}`}
               aria-label={`Set background tint to ${option.label}`}

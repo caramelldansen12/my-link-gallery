@@ -10,13 +10,13 @@ const LinkCard = ({ link }: LinkCardProps) => {
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="hover-chroma-border group block rounded-lg border border-border bg-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+      className="hover-chroma-border group block rounded-lg border border-border bg-card p-3 sm:p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
     >
-      <h3 className="mb-1 text-base font-semibold text-foreground transition-colors group-hover:text-foreground/70 font-sans">
+      <h3 className="mb-1 text-sm font-semibold text-foreground transition-colors group-hover:text-foreground/70 font-sans sm:text-base">
         {link.title}
       </h3>
 
-      <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
+      <p className="mb-2.5 text-[11px] leading-relaxed text-muted-foreground sm:mb-3 sm:text-xs">
         {link.description}
       </p>
 

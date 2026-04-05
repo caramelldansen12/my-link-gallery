@@ -322,13 +322,25 @@
 }
 
 @layer base {
+  html {
+    font-size: clamp(14px, 0.28vw + 13px, 16px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    min-width: 0;
+    overflow-x: hidden;
     font-family: 'Reddit Sans', sans-serif;
+  }
+
+  #root {
+    min-height: 100dvh;
   }
 
   h1, h2, h3 {
@@ -356,6 +368,26 @@
   }
 }
 
+@media (max-width: 1024px) {
+  :root {
+    --radius: 0.68rem;
+  }
+
+  body {
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+
+  :root {
+    --radius: 0.62rem;
+  }
+}
+
 .resume-pill-wall {
   display: flex;
   flex-direction: column;
@@ -364,6 +396,106 @@
   overflow: hidden;
   padding-right: 0.25rem;
   opacity: 0.8;
+}
+
+.resume-overview-columns {
+  display: grid;
+  gap: 3.5rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.portrait-cards-scroll-track {
+  overscroll-behavior-x: contain;
+}
+
+.grouped-cards-track {
+  min-width: 100%;
+}
+
+.bg-color-toggle-wrapper {
+  position: fixed;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+}
+
+.portrait-only-block {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .resume-overview-columns {
+    gap: 1.5rem;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  .resume-overview-columns {
+    grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
+  }
+}
+
+@media (orientation: portrait) {
+  .resume-pill-wall {
+    display: none;
+  }
+
+  .bg-color-toggle-wrapper {
+    position: static;
+    top: auto;
+    right: auto;
+    transform: none;
+    z-index: auto;
+  }
+
+  .bg-color-toggle-panel {
+    flex-direction: row;
+    gap: 0.45rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .bg-color-toggle-swatch {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+
+  .portrait-hide-section {
+    display: none;
+  }
+
+  .portrait-only-block {
+    display: block;
+  }
+
+  .portrait-cards-scroll-track {
+    overflow-y: hidden;
+    overscroll-behavior-y: none;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .portrait-cards-scroll-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portrait-cards-scroll-track .grouped-cards-track {
+    width: max-content;
+    min-width: 0;
+  }
+
+  .portrait-cards-scroll-track .grouped-card {
+    flex: 0 0 calc(100vw - 2.5rem);
+    min-width: calc(100vw - 2.5rem);
+    max-width: 24rem;
+    touch-action: pan-x;
+  }
+
+  .portrait-card-content-text {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
 }
 
 .resume-pill-row {
