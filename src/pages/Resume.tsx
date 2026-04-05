@@ -418,7 +418,7 @@ const GroupedCardsCarousel = ({ cards }: { cards: GroupCard[] }) => {
                   {card.items.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-border bg-background/70 px-3 py-1 text-sm leading-relaxed text-foreground/90"
+                      className="hover-chroma-pill rounded-full border border-border bg-background/70 px-3 py-1 text-sm leading-relaxed text-foreground/90"
                     >
                       {item}
                     </span>
@@ -669,9 +669,9 @@ const RadialIntensityGrid = ({
         const endDeg = item.value * 3.6;
 
         return (
-          <div
+            <div
             key={item.trait}
-            className="rounded-xl border border-border/70 bg-card/60 px-2 py-2"
+              className="hover-chroma-border rounded-xl border border-border/70 bg-card/60 px-2 py-2"
           >
             <div
               className="mx-auto h-14 w-14 rounded-full p-[3px]"
@@ -691,6 +691,171 @@ const RadialIntensityGrid = ({
       })}
     </div>
   );
+};
+
+const MonochromePlusBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+    if (prefersReducedMotion || isCoarsePointer) {
+      return;
+    }
+
+    const canvas = canvasRef.current;
+
+    if (!canvas) {
+      return;
+    }
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+      return;
+    }
+
+    type PlusSign = {
+      baseX: number;
+      baseY: number;
+      offsetX: number;
+      offsetY: number;
+      scale: number;
+      size: number;
+    };
+
+    const signs: PlusSign[] = [];
+    const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const spacing = 108;
+    const plusSize = 7;
+    const influenceRadius = 160;
+    const targetFrameMs = 1000 / 30;
+    let frameId = 0;
+    let lastRenderTime = 0;
+
+    const getStrokeStyle = () => {
+      const foreground = getComputedStyle(document.documentElement)
+        .getPropertyValue("--foreground")
+        .trim();
+      return `hsl(${foreground} / 0.18)`;
+    };
+
+    let strokeStyle = getStrokeStyle();
+
+    const buildGrid = () => {
+      const dpr = Math.max(1, Math.min(1.25, window.devicePixelRatio || 1));
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      signs.length = 0;
+
+      for (let y = spacing / 2; y < height; y += spacing) {
+        for (let x = spacing / 2; x < width; x += spacing) {
+          signs.push({
+            baseX: x,
+            baseY: y,
+            offsetX: 0,
+            offsetY: 0,
+            scale: 1,
+            size: plusSize,
+          });
+        }
+      }
+    };
+
+    const draw = (timestamp: number) => {
+      if (document.hidden) {
+        frameId = window.requestAnimationFrame(draw);
+        return;
+      }
+
+      if (timestamp - lastRenderTime < targetFrameMs) {
+        frameId = window.requestAnimationFrame(draw);
+        return;
+      }
+
+      lastRenderTime = timestamp;
+      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      ctx.strokeStyle = strokeStyle;
+      ctx.lineWidth = 1.1;
+
+      for (const sign of signs) {
+        const dx = mouse.x - sign.baseX;
+        const dy = mouse.y - sign.baseY;
+        const distance = Math.hypot(dx, dy) || 1;
+        const influence = Math.max(0, 1 - distance / influenceRadius);
+        const angle = Math.atan2(dy, dx);
+
+        const targetOffset = influence * 12;
+        const targetX = Math.cos(angle) * targetOffset;
+        const targetY = Math.sin(angle) * targetOffset;
+        const targetScale = 1 + influence * 0.55;
+
+        sign.offsetX += (targetX - sign.offsetX) * 0.15;
+        sign.offsetY += (targetY - sign.offsetY) * 0.15;
+        sign.scale += (targetScale - sign.scale) * 0.14;
+
+        const x = sign.baseX + sign.offsetX;
+        const y = sign.baseY + sign.offsetY;
+        const half = (sign.size * sign.scale) / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(x, y - half);
+        ctx.lineTo(x, y + half);
+        ctx.moveTo(x - half, y);
+        ctx.lineTo(x + half, y);
+        ctx.stroke();
+      }
+
+      frameId = window.requestAnimationFrame(draw);
+    };
+
+    const handlePointerMove = (event: MouseEvent | TouchEvent) => {
+      if ("touches" in event && event.touches[0]) {
+        mouse.x = event.touches[0].clientX;
+        mouse.y = event.touches[0].clientY;
+        return;
+      }
+
+      if ("clientX" in event) {
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
+      }
+    };
+
+    const handleThemeMutation = () => {
+      strokeStyle = getStrokeStyle();
+    };
+
+    const mutationObserver = new MutationObserver(handleThemeMutation);
+    mutationObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "data-bg"],
+    });
+
+    buildGrid();
+    frameId = window.requestAnimationFrame(draw);
+
+    window.addEventListener("resize", buildGrid);
+    window.addEventListener("mousemove", handlePointerMove, { passive: true });
+    window.addEventListener("touchmove", handlePointerMove, { passive: true });
+
+    return () => {
+      mutationObserver.disconnect();
+      window.removeEventListener("resize", buildGrid);
+      window.removeEventListener("mousemove", handlePointerMove);
+      window.removeEventListener("touchmove", handlePointerMove);
+      window.cancelAnimationFrame(frameId);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-0" aria-hidden="true" />;
 };
 
 const Resume = () => {
@@ -764,7 +929,11 @@ const Resume = () => {
   }, []);
 
   return (
-    <div className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth bg-background text-foreground">
+    <div className="relative isolate flex h-screen min-h-screen flex-col overflow-hidden bg-background text-foreground">
+      <MonochromePlusBackground />
+      <div className="page-base-glass" aria-hidden="true" />
+
+      <div className="relative z-10 flex min-h-0 flex-1 flex-col">
       <BackgroundColorToggle />
 
       <header className="sticky top-0 z-30 border-b border-border bg-card/90 backdrop-blur-sm">
@@ -776,7 +945,7 @@ const Resume = () => {
         </div>
       </header>
 
-      <main>
+      <main className="min-h-0 flex-1 overflow-y-auto snap-y snap-mandatory scroll-smooth">
         {resumePages.map((page, index) => {
           const showSidePanel = !page.noCard && page.id !== "projects" && index !== 0 && index !== resumePages.length - 1;
 
@@ -789,9 +958,9 @@ const Resume = () => {
                 sectionRefs.current[index] = section;
               }
             }}
-            className="snap-start min-h-screen border-b border-border"
+            className="snap-start min-h-full border-b border-border"
           >
-            <div className="container mx-auto flex min-h-screen items-center px-4 py-12">
+            <div className="container mx-auto flex min-h-full items-center px-4 py-12">
               <div className="grid w-full gap-8 lg:grid-cols-[1.15fr_1.15fr_0.7fr] lg:grid-rows-[auto_1fr]">
                 <div
                   className="lg:col-span-3"
@@ -815,7 +984,7 @@ const Resume = () => {
                           const Icon = item.icon;
 
                           return (
-                            <div key={item.text} className="flex items-start gap-3 rounded-2xl border border-border/70 bg-card px-4 py-3">
+                            <div key={item.text} className="hover-chroma-border flex items-start gap-3 rounded-2xl border border-border/70 bg-card px-4 py-3">
                               <Icon className="mt-0.5 h-5 w-5 shrink-0 text-foreground" />
                               <p>{item.text}</p>
                             </div>
@@ -838,7 +1007,7 @@ const Resume = () => {
                       {otherWorkingExperiences.map((experience) => (
                         <article
                           key={experience.title}
-                          className="rounded-2xl border border-border/70 bg-card p-4 md:p-5"
+                          className="hover-chroma-border rounded-2xl border border-border/70 bg-card p-4 md:p-5"
                         >
                           <h3 className="text-lg font-semibold text-foreground md:text-xl">
                             {experience.title}
@@ -850,7 +1019,7 @@ const Resume = () => {
                             {experience.tags.map((tag) => (
                               <span
                                 key={tag}
-                                className="rounded-full border border-border bg-background/70 px-3 py-1 text-xs text-foreground"
+                                className="hover-chroma-pill rounded-full border border-border bg-background/70 px-3 py-1 text-xs text-foreground"
                               >
                                 {tag}
                               </span>
@@ -906,7 +1075,7 @@ const Resume = () => {
                               href={channel.href}
                               target={channel.href.startsWith("http") ? "_blank" : undefined}
                               rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition-transform duration-200 hover:-translate-y-0.5 ${channel.className}`}
+                              className={`hover-chroma-pill inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition-transform duration-200 hover:-translate-y-0.5 ${channel.className}`}
                             >
                               <span className="opacity-80">{channel.label}</span>
                               <span className="text-foreground/85">{channel.value}</span>
@@ -992,7 +1161,7 @@ const Resume = () => {
                               {hollandCodes.map((item) => (
                                 <span
                                   key={item}
-                                  className="rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
+                                  className="hover-chroma-pill rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
                                 >
                                   {item}
                                 </span>
@@ -1008,7 +1177,7 @@ const Resume = () => {
                               {jungianArchetypes.map((item) => (
                                 <span
                                   key={item}
-                                  className="rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
+                                  className="hover-chroma-pill rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
                                 >
                                   {item}
                                 </span>
@@ -1024,7 +1193,7 @@ const Resume = () => {
                               {schwartzValues.map((value, index) => (
                                 <span
                                   key={value}
-                                  className="rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
+                                  className="hover-chroma-pill rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
                                 >
                                   {index + 1}. {value}
                                 </span>
@@ -1040,7 +1209,7 @@ const Resume = () => {
                               {cliftonStrengths.map((item, index) => (
                                 <span
                                   key={item}
-                                  className="rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
+                                  className="hover-chroma-pill rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
                                 >
                                   {index + 1}. {item}
                                 </span>
@@ -1090,7 +1259,7 @@ const Resume = () => {
                         {page.highlights.map((item) => (
                           <span
                             key={item}
-                            className="rounded-full border border-border bg-card px-2.5 py-1 text-xs text-foreground"
+                            className="hover-chroma-pill rounded-full border border-border bg-card px-2.5 py-1 text-xs text-foreground"
                           >
                             {item}
                           </span>
@@ -1115,6 +1284,7 @@ const Resume = () => {
       >
         links →
       </Link>
+      </div>
     </div>
   );
 };

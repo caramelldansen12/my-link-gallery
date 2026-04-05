@@ -426,3 +426,95 @@
     transform: translateX(-50%);
   }
 }
+
+.page-base-glass {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 0% 0%, hsl(var(--foreground) / 0.02), transparent 58%),
+    radial-gradient(120% 80% at 100% 100%, hsl(var(--primary) / 0.03), transparent 60%),
+    linear-gradient(180deg, hsl(var(--card) / 0.16), hsl(var(--card) / 0.11));
+  border-top: 1px solid hsl(var(--border) / 0.24);
+  border-bottom: 1px solid hsl(var(--border) / 0.18);
+}
+
+.dark .page-base-glass {
+  background:
+    radial-gradient(120% 80% at 0% 0%, hsl(var(--foreground) / 0.03), transparent 58%),
+    radial-gradient(120% 80% at 100% 100%, hsl(var(--primary) / 0.04), transparent 60%),
+    linear-gradient(180deg, hsl(var(--card) / 0.22), hsl(var(--card) / 0.15));
+}
+
+.hover-chroma-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.hover-chroma-border::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  background:
+    radial-gradient(92px circle at var(--hb-x, 50%) var(--hb-y, 50%),
+      rgb(56 189 248 / 0.52) 0%,
+      rgb(59 130 246 / 0.46) 30%,
+      rgb(168 85 247 / 0.38) 56%,
+      rgb(244 114 182 / 0.28) 78%,
+      transparent 100%);
+  padding: 1px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.hover-chroma-border:hover::after {
+  opacity: 0.92;
+}
+
+.hover-chroma-pill {
+  position: relative;
+  isolation: isolate;
+}
+
+.hover-chroma-pill::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms ease;
+  background:
+    radial-gradient(70px circle at var(--hb-x, 50%) var(--hb-y, 50%),
+      rgb(56 189 248 / 0.46) 0%,
+      rgb(59 130 246 / 0.4) 34%,
+      rgb(168 85 247 / 0.32) 62%,
+      rgb(244 114 182 / 0.22) 82%,
+      transparent 100%);
+  padding: 1px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.hover-chroma-pill:hover::after {
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-chroma-border::after {
+    display: none;
+  }
+
+  .hover-chroma-pill::after {
+    display: none;
+  }
+}

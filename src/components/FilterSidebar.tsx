@@ -38,7 +38,7 @@ const FilterSection = ({
 
 const FilterSidebar = ({ selectedTags, onToggleTag }: FilterSidebarProps) => {
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
+    <div className="hover-chroma-border rounded-lg border border-border bg-card p-4">
 
       <FilterSection title="All Tags" titleClassName="mb-3 text-base font-semibold text-foreground font-sans">
         {allTags.map((tag) => (
