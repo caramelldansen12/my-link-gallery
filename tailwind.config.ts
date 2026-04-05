@@ -47,6 +47,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        tag: {
+          social: "hsl(var(--tag-social))",
+          "social-foreground": "hsl(var(--tag-social-foreground))",
+          project: "hsl(var(--tag-project))",
+          "project-foreground": "hsl(var(--tag-project-foreground))",
+          content: "hsl(var(--tag-content))",
+          "content-foreground": "hsl(var(--tag-content-foreground))",
+          tools: "hsl(var(--tag-tools))",
+          "tools-foreground": "hsl(var(--tag-tools-foreground))",
+          community: "hsl(var(--tag-community))",
+          "community-foreground": "hsl(var(--tag-community-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
