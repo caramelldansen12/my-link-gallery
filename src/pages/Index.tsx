@@ -1,9 +1,11 @@
 import { useState, useMemo } from "react";
 import { Search, X } from "lucide-react";
-import { links, LinkCategory, tagColorMap } from "@/data/links";
+import { links, LinkCategory } from "@/data/links";
 import ThemeToggle from "@/components/ThemeToggle";
 import LinkCard from "@/components/LinkCard";
 import FilterSidebar from "@/components/FilterSidebar";
+import LinkCarousel from "@/components/LinkCarousel";
+import SitemapFooter from "@/components/SitemapFooter";
 
 const Index = () => {
   const [search, setSearch] = useState("");
@@ -95,9 +97,9 @@ const Index = () => {
           </span>
 
           {activeFilters.map((f) => (
-            <span
+              <span
               key={f.label}
-              className="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground"
+              className="inline-flex items-center gap-1 rounded-full border border-foreground bg-foreground px-3 py-1 text-xs font-medium text-background"
             >
               {f.label}
               <button
@@ -151,7 +153,7 @@ const Index = () => {
                 </p>
                 <button
                   onClick={clearAll}
-                  className="mt-4 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+                  className="mt-4 rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background hover:opacity-90 transition-opacity"
                 >
                   Clear filters
                 </button>
@@ -161,10 +163,13 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="mt-16 border-t border-border bg-card py-8 text-center text-sm text-muted-foreground">
-        Made with ♥ — Replace these links with your own!
-      </footer>
+      {/* Link Carousel */}
+      <div className="container mx-auto px-4 py-12">
+        <LinkCarousel />
+      </div>
+
+      {/* Sitemap Footer */}
+      <SitemapFooter />
     </div>
   );
 };
