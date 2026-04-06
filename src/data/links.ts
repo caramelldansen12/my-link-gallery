@@ -1,408 +1,390 @@
-﻿export type LinkCategory = "Social" | "Projects" | "Content" | "Tools" | "Community";
-
-export interface LinkItem {
-  id: string;
+﻿export interface LinkItem {
   title: string;
   description: string;
   url: string;
-  category: LinkCategory;
   tags: string[];
   pinned?: boolean;
 }
 
-export const categories: LinkCategory[] = ["Social", "Projects", "Content", "Tools", "Community"];
+export type LinksPageSettings = {
+  title: string;
+  pageSize: number;
+  quickTags: string[];
+};
 
-export const tagColorMap: Record<LinkCategory, string> = {
-  Social: "bg-tag-social text-tag-social-foreground",
-  Projects: "bg-tag-project text-tag-project-foreground",
-  Content: "bg-tag-content text-tag-content-foreground",
-  Tools: "bg-tag-tools text-tag-tools-foreground",
-  Community: "bg-tag-community text-tag-community-foreground",
+export const linksPageSettings: LinksPageSettings = {
+  title: "Links",
+  pageSize: 12,
+  quickTags: ["Profile", "Personality", "Learning"],
 };
 
 export const links: LinkItem[] = [
   {
-    id: "spotify-main",
     title: "Spotify",
     description: "Primary Spotify profile.",
     url: "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
-    category: "Social",
     tags: ["Music", "Profile"],
   },
   {
-    id: "linkedin-main",
     title: "LinkedIn",
     description: "Main LinkedIn profile.",
     url: "https://linkedin.com/in/carlosgeraldine",
-    category: "Social",
     tags: ["Profile"],
   },
   {
-    id: "whatsapp-main",
     title: "WhatsApp",
     description: "Direct WhatsApp contact link.",
     url: "https://api.whatsapp.com/send?phone=6285770078016",
-    category: "Social",
     tags: ["Contact"],
   },
   {
-    id: "email-partnership",
     title: "Partnership Email",
     description: "Partnership email contact.",
     url: "mailto:carlosrichardgeraldine@bersama365.work.gd",
-    category: "Social",
     tags: ["Contact"],
   },
   {
-    id: "email-main",
     title: "Primary Email",
     description: "Primary email contact.",
     url: "mailto:carlosrichardgeraldine@outlook.com",
-    category: "Social",
     tags: ["Contact"],
   },
   {
-    id: "email-second",
     title: "Secondary Email",
     description: "Secondary email contact.",
     url: "mailto:carlosrichardgeraldine@gmail.com",
-    category: "Social",
     tags: ["Contact"],
   },
   {
-    id: "discord-main",
     title: "DISCORD",
     description: "Main Discord invite link.",
     url: "https://discord.gg/6KuyH5RBPQ",
-    category: "Community",
     tags: ["Community"],
   },
   {
-    id: "553781540",
     title: "Snowflake Directory",
     description: "Snowflake public profile directory.",
     url: "https://directory.snowflake.com/profile/76f67ac3-f4a8-4dcb-a3de-49880df61727",
-    category: "Tools",
     tags: ["Platform", "Profile"],
   },
   {
-    id: "553552486",
+    
     title: "ReplaceByClawd",
     description: "Personal profile shortlink destination.",
     url: "https://replacebyclawd.com/?url=https://linkedin.com/in/carlosgeraldine&job=eddcd6b31b05",
-    category: "Projects",
+    
     tags: ["Profile"],
   },
   {
-    id: "553242195",
+    
     title: "Denodo",
     description: "Denodo profile and identity page.",
     url: "https://auth.denodo.com/user-management/profile/0AAF396D287C18856B0BC2A0B272CF498A885265DCE5DB9388B321AEB0735C47",
-    category: "Tools",
+    
     tags: ["Platform"],
   },
   {
-    id: "548232260",
+    
     title: "My MBTI Personality Type",
     description: "TestMyPersona MBTI result.",
     url: "https://www.testmypersona.com/tests/mbti/results?r=EwFgzMCs4iUpMExwIy0tBKGYcVVYKEg9QzFScyYIA",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548232227",
+    
     title: "My Big Five Personality Results",
     description: "TestMyPersona Big Five result.",
     url: "https://www.testmypersona.com/tests/bigfive/results?r=KwFgzMkpCMBMcbXmEdzsum94icHKOiCEA",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548232186",
+    
     title: "My Enneagram Type",
     description: "TestMyPersona Enneagram result.",
     url: "https://www.testmypersona.com/tests/enneagram/results?r=CwVl2AmEU0QIxgMzTg6oEKmJPpEJMg",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548232154",
+    
     title: "My DISC Profile",
     description: "TestMyPersona DISC result.",
     url: "https://www.testmypersona.com/tests/disc/results?r=AwhM5SGZN0wIwODIA",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548232124",
+    
     title: "My Attachment Style",
     description: "TestMyPersona attachment style result.",
     url: "https://www.testmypersona.com/tests/attachment-style/results?r=EwRgLArGYrcgZjA0JgVMY0zpjUIA",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548232070",
+    
     title: "My Top CliftonStrengths",
     description: "TestMyPersona CliftonStrengths result.",
     url: "https://www.testmypersona.com/tests/clifton-strengths/results?r=EwFlEZxT2ZJAVmVMzGmO8BmHyww54tgcQQg",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548232037",
+    
     title: "My Core Values Results",
     description: "TestMyPersona core values result.",
     url: "https://www.testmypersona.com/tests/core-values/results?r=EzCMBZ1U2u4MxQSpECsrzp7nQ",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548231994",
+    
     title: "My Emotional Intelligence Results",
     description: "TestMyPersona emotional intelligence result.",
     url: "https://www.testmypersona.com/tests/emotional-intelligence/results?r=CwVmCYIRmBmcT3lMpZnsGV2IeBeIA",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548231915",
+    
     title: "My Holland Code Results",
     description: "TestMyPersona Holland code result.",
     url: "https://www.testmypersona.com/tests/holland-code/results?r=IwZgLMBMLKCsE5LApkWvHSqwhJJFGHnrNCuiLllMHkSUUA",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548231783",
+    
     title: "My Jungian Archetypes Test Results",
     description: "TestMyPersona Jungian archetypes result.",
     url: "https://www.testmypersona.com/tests/jungian-archetypes/results?r=Iw0VjYBYCYYhkRQsGwwolWwg",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548231747",
+    
     title: "My Character Strengths Results",
     description: "TestMyPersona character strengths result.",
     url: "https://www.testmypersona.com/tests/character-strengths/results?r=KwFmCYEYGZU5pUpEJynElibD3ESdfMaQveCqVBNRJOyIA",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "548231709",
+    
     title: "My Mental Age",
     description: "TestMyPersona mental age result.",
     url: "https://www.testmypersona.com/tests/mental-age/results?r=IwZgLGIKzDkEySaYrJWlGQ",
-    category: "Content",
+    
     tags: ["Personality"],
   },
   {
-    id: "544915959",
+    
     title: "Upwork",
     description: "Upwork freelancer profile.",
     url: "https://www.upwork.com/freelancers/~0170c75894fbe5f176?mp_source=share",
-    category: "Projects",
+    
     tags: ["Career", "Profile"],
   },
   {
-    id: "542451674",
+    
     title: "Google Skills",
     description: "Google Skills public profile.",
     url: "https://www.skills.google/public_profiles/3b3862a6-00b7-4981-a181-b76ec3ae5b8c",
-    category: "Tools",
+    
     tags: ["Learning", "Profile"],
   },
   {
-    id: "542448825",
+    
     title: "Google Developer Program",
     description: "Google Developer profile.",
     url: "https://g.dev/carlosgeraldine",
-    category: "Tools",
+    
     tags: ["Learning", "Profile"],
   },
   {
-    id: "539098259",
+    
     title: "Pegasystems",
     description: "Pega account profile.",
     url: "https://accounts.pega.com/profile/carlosgeraldine",
-    category: "Tools",
+    
     tags: ["Platform", "Profile"],
   },
   {
-    id: "539040803",
+    
     title: "Outsystems",
     description: "Outsystems profile page.",
     url: "https://www.outsystems.com/profile/4r01oaulnq/overview",
-    category: "Tools",
+    
     tags: ["Platform", "Profile"],
   },
   {
-    id: "538540254",
+    
     title: "The Linux Foundation",
     description: "Linux Foundation open profile.",
     url: "https://openprofile.dev/profile/carlgeralz.ofc",
-    category: "Tools",
+    
     tags: ["Learning", "Profile"],
   },
   {
-    id: "538538470",
+    
     title: "Project Management Institute",
     description: "PMI community profile.",
     url: "https://community.pmi.org/profile/carlgeralz",
-    category: "Community",
+    
     tags: ["Profile", "Community"],
   },
   {
-    id: "538532832",
+    
     title: "OpenLearn - Open University UK",
     description: "OpenLearn profile page.",
     url: "https://www.open.edu/openlearn/profiles/zu113901",
-    category: "Tools",
+    
     tags: ["Learning"],
   },
   {
-    id: "525255634",
+    
     title: "Last.fm - old account",
     description: "Legacy Last.fm account.",
     url: "https://last.fm/user/caramelldansen2",
-    category: "Social",
+    
     tags: ["Music"],
   },
   {
-    id: "495705797",
+    
     title: "Spotify - Playlists",
     description: "Spotify playlists profile.",
     url: "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
-    category: "Social",
+    
     tags: ["Music"],
   },
   {
-    id: "495705796",
+    
     title: "LinkedIn - Latest Updates",
     description: "LinkedIn profile with latest updates.",
     url: "https://linkedin.com/in/carlosgeraldine",
-    category: "Social",
+    
     tags: ["Profile"],
   },
   {
-    id: "530027353",
+    
     title: "AWS Skill Builder",
     description: "AWS Skill Builder profile.",
     url: "https://skillsprofile.skillbuilder.aws/user/carlosgeraldine",
-    category: "Tools",
+    
     tags: ["Learning"],
   },
   {
-    id: "522594231",
+    
     title: "Accredible",
     description: "Credential wallet profile.",
     url: "https://www.credential.net/profile/carlosgeraldine/wallet",
-    category: "Projects",
+    
     tags: ["Credentials"],
   },
   {
-    id: "519661019",
+    
     title: "G2 - Tech Stacks Review",
     description: "G2 user profile and reviews.",
     url: "https://www.g2.com/users/carlosgeraldine",
-    category: "Content",
+    
     tags: ["Reviews"],
   },
   {
-    id: "497828669",
+    
     title: "ServiceNow University",
     description: "ServiceNow learning public profile.",
     url: "https://learning.servicenow.com/lxp/en/pages/nl-public-resume?id=nl_public&user=carlosrich262822",
-    category: "Tools",
+    
     tags: ["Learning", "Credentials"],
   },
   {
-    id: "533685215",
+    
     title: "Jobstreet Resume",
     description: "Jobstreet resume profile.",
     url: "https://id.jobstreet.com/profiles/carlos-geraldine-4rBTsVWybP",
-    category: "Projects",
+    
     tags: ["Career"],
   },
   {
-    id: "495707225",
+    
     title: "Credly",
     description: "Credly badges and certifications profile.",
     url: "https://credly.com/users/carlosgeraldine",
-    category: "Projects",
+    
     tags: ["Credentials"],
   },
   {
-    id: "538529187",
+    
     title: "FutureLearn",
     description: "FutureLearn profile page.",
     url: "https://www.futurelearn.com/profiles/19253127",
-    category: "Tools",
+    
     tags: ["Learning"],
   },
   {
-    id: "519660665",
+    
     title: "Study GRC",
     description: "Study GRC Discord community.",
     url: "https://discord.gg/studygrc",
-    category: "Community",
+    
     tags: ["Community"],
   },
   {
-    id: "519660053",
+    
     title: "Microsoft Certification Hub",
     description: "Microsoft certification Discord hub.",
     url: "https://discord.gg/hvtShSag8a",
-    category: "Community",
+    
     tags: ["Community", "Credentials"],
   },
   {
-    id: "505267162",
+    
     title: "Atlassian Community",
     description: "Atlassian community profile.",
     url: "https://community.atlassian.com/user/profile/1e54bb61-4b04-4e97-bd5d-4f5b8a46cc38",
-    category: "Community",
+    
     tags: ["Profile", "Community"],
   },
   {
-    id: "495706704",
+    
     title: "Microsoft Learn",
     description: "Microsoft Learn public profile.",
     url: "https://learn.microsoft.com/en-gb/users/carlosgeraldine/",
-    category: "Tools",
+    
     tags: ["Learning"],
   },
   {
-    id: "532939123",
+    
     title: "Creatio",
     description: "Creatio community profile.",
     url: "https://community.creatio.com/user/216284",
-    category: "Community",
+    
     tags: ["Community", "Platform"],
   },
   {
-    id: "497824222",
+    
     title: "Salesforce Trailblazer",
     description: "Salesforce Trailblazer profile.",
     url: "http://www.salesforce.com/trailblazer/carlosgeraldine",
-    category: "Tools",
+    
     tags: ["Learning"],
   },
   {
-    id: "525475940",
+    
     title: "Dicoding",
     description: "Dicoding learning profile.",
     url: "https://www.dicoding.com/users/carlgeralz/academies",
-    category: "Tools",
+    
     tags: ["Learning"],
   },
   {
-    id: "525256183",
+    
     title: "Last.fm - Music Listening History",
     description: "Current Last.fm listening history profile.",
     url: "https://last.fm/user/caramelldansen3",
-    category: "Projects",
+    
     tags: ["Music"],
   },
 ];

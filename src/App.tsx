@@ -1,12 +1,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Resume from "./pages/Resume.tsx";
 import ResumeBuilder from "./pages/ResumeBuilder.tsx";
+import LinkBuilder from "./pages/LinkBuilder.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -15,6 +16,26 @@ export const ATTRIBUTION_URL = "https://github.com/carlosrichardgeraldine/my-lin
 export const ATTRIBUTION_TEXT = `${ATTRIBUTION_LEAD}${ATTRIBUTION_URL}`;
 export const ATTRIBUTION_MARK = "𖤐";
 const ATTRIBUTION_FOOTER_ID = "origin-attribution-footer";
+const OWNER_NAME = "Carlos Richard Geraldine";
+
+const routeTitles: Record<string, string> = {
+  "/": "Resume",
+  "/resume": "Resume",
+  "/links": "Links",
+  "/resume-builder": "Resume Builder",
+  "/links-builder": "Links Builder",
+};
+
+const TitleManager = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const pageName = routeTitles[location.pathname] ?? "";
+    document.title = pageName ? `${OWNER_NAME} | ${pageName}` : OWNER_NAME;
+  }, [location.pathname]);
+
+  return null;
+};
 
 export const AttributionFooter = () => {
   const [integrityTick, setIntegrityTick] = useState(0);
@@ -84,11 +105,13 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="relative">
+          <TitleManager />
           <Routes>
             <Route path="/" element={<Resume />} />
             <Route path="/links" element={<Index />} />
             <Route path="/resume" element={<Navigate to="/" replace />} />
             <Route path="/resume-builder" element={<ResumeBuilder />} />
+            <Route path="/links-builder" element={<LinkBuilder />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

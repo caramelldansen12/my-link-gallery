@@ -1,18 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Search, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { links } from "@/data/links";
+import { links, linksPageSettings } from "@/data/links";
 import ThemeToggle from "@/components/ThemeToggle";
 import LinkCard from "@/components/LinkCard";
 import FilterSidebar from "@/components/FilterSidebar";
 import MonochromePlusBackground from "@/components/MonochromePlusBackground";
 
 const Index = () => {
-  const pageSize = 12;
+  const pageSize = Math.max(1, linksPageSettings.pageSize);
   const [search, setSearch] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const quickTags = ["Profile", "Personality", "Learning"];
+  const quickTags = linksPageSettings.quickTags;
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
@@ -76,8 +76,14 @@ const Index = () => {
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border bg-card/90 backdrop-blur-sm">
         <div className="container mx-auto flex h-12 items-center justify-between gap-3 px-4 md:h-14">
-          <h1 className="text-base font-semibold text-foreground md:text-xl">Links</h1>
+          <h1 className="text-base font-semibold text-foreground md:text-xl">{linksPageSettings.title}</h1>
           <div className="flex items-center gap-3">
+            <Link
+              to="/links-builder"
+              className="inline-flex items-center rounded-xl border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-card md:text-sm"
+            >
+              Build your own
+            </Link>
             <ThemeToggle />
           </div>
         </div>

@@ -61,7 +61,7 @@ const classNames = (...values: Array<string | false | undefined>) => values.filt
 const splitLines = (value: string) =>
   value
     .split(/\r?\n/)
-    .filter((item) => item.trim().length > 0);
+    .map((item) => item);
 
 const joinLines = (items: string[]) => items.join("\n");
 
@@ -781,15 +781,6 @@ const ResumePagesEditor = ({
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-foreground">ID</span>
-                    <input
-                      value={overviewPage.id}
-                      onChange={(event) => onChange(updatePage(items, 0, { id: event.target.value }))}
-                      className="w-full rounded-xl border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/40"
-                    />
-                  </label>
-
-                  <label className="space-y-2">
                     <span className="text-sm font-medium text-foreground">Title</span>
                     <input
                       value={overviewPage.title}
@@ -1021,15 +1012,6 @@ const ResumePagesEditor = ({
                           </div>
 
                           <div className="grid gap-4 md:grid-cols-2">
-                            <label className="space-y-2">
-                              <span className="text-sm font-medium text-foreground">ID</span>
-                              <input
-                                value={page.id}
-                                onChange={(event) => onChange(updatePage(items, itemIndex, { id: event.target.value }))}
-                                className="w-full rounded-xl border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/40"
-                              />
-                            </label>
-
                             <label className="space-y-2">
                               <span className="text-sm font-medium text-foreground">Title</span>
                               <input
@@ -1903,6 +1885,7 @@ const ResumeBuilder = () => {
     const parsed = parseResumeContentFromSource(resumeCurrentSource);
     return parsed ?? createResumeBuilderContent();
   });
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(true);
   const [activeSection, setActiveSection] = useState<SectionId>("resumePages");
   const [isStatusExpanded, setIsStatusExpanded] = useState(false);
   const [isSectionsExpanded, setIsSectionsExpanded] = useState(false);
@@ -2155,6 +2138,33 @@ const ResumeBuilder = () => {
               className="inline-flex items-center justify-center rounded-2xl border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card"
             >
               Close
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isOnboardingOpen} onOpenChange={setIsOnboardingOpen}>
+        <DialogContent className="sm:max-w-xl">
+          <DialogHeader>
+            <DialogTitle>Build Your Own Resume Page</DialogTitle>
+            <DialogDescription>Follow these steps to customize and publish your resume page.</DialogDescription>
+          </DialogHeader>
+
+          <ol className="space-y-2 pl-5 text-sm leading-relaxed text-foreground/90 list-decimal">
+            <li>Clone the git repo.</li>
+            <li>Customize the Resume.tsx.</li>
+            <li>Locate and replace the Resume.tsx.</li>
+            <li>Run the web app locally.</li>
+            <li>Or deploy it to static web app hosting.</li>
+          </ol>
+
+          <DialogFooter>
+            <button
+              type="button"
+              onClick={() => setIsOnboardingOpen(false)}
+              className="inline-flex items-center justify-center rounded-2xl border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card"
+            >
+              Got it
             </button>
           </DialogFooter>
         </DialogContent>

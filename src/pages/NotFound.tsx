@@ -8,6 +8,10 @@ const NotFound = () => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.title = "Carlos Richard Geraldine | Not Found";
+  }, []);
+
   return (
     <div className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-muted">
       <div className="page-base-glass" aria-hidden="true" />
