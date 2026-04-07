@@ -10,8 +10,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import ResumePageNavigation from "@/components/ResumePageNavigation";
-import { useResumePageNavigation } from "@/hooks/useResumePageNavigation";
 import MonochromePlusBackground from "@/components/MonochromePlusBackground";
 import ResumeToolsPanel from "@/components/ResumeToolsPanel";
 
@@ -824,12 +822,6 @@ const Resume = () => {
     offsetTop: 0,
   });
 
-  const { goToPrevious, goToNext, isAtStart, isAtEnd } = useResumePageNavigation(
-    sectionRefs.current,
-    activeSectionId,
-    () => {}
-  );
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -1362,13 +1354,6 @@ const Resume = () => {
           );
         })}
       </main>
-
-      <ResumePageNavigation
-        onPrevious={goToPrevious}
-        onNext={goToNext}
-        isAtStart={isAtStart}
-        isAtEnd={isAtEnd}
-      />
 
       <Link
         to="#"

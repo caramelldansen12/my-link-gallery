@@ -303,15 +303,26 @@ const ResumeToolsPanel = ({ isOpen, onClose }: ResumeToolsPanelProps) => {
   useEffect(() => {
     const raw = readCookie(TODO_COOKIE_KEY);
     if (!raw) {
+      previousAllTodosDoneRef.current = false;
       return;
     }
 
     try {
       const parsed = JSON.parse(raw) as TodoItem[];
       if (Array.isArray(parsed)) {
-        setTodos(parsed.filter((item) => typeof item.id === "string" && typeof item.text === "string"));
+        const normalized = parsed
+          .filter((item) => typeof item.id === "string" && typeof item.text === "string")
+          .map((item) => ({
+            ...item,
+            done: Boolean(item.done),
+          }));
+
+        // Seed completion baseline from persisted state so opening the page does not trigger confetti.
+        previousAllTodosDoneRef.current = normalized.length > 0 && normalized.every((item) => item.done);
+        setTodos(normalized);
       }
     } catch {
+      previousAllTodosDoneRef.current = false;
       setTodos([]);
     }
   }, []);
@@ -332,9 +343,9 @@ const ResumeToolsPanel = ({ isOpen, onClose }: ResumeToolsPanelProps) => {
     focusAudio.preload = "auto";
     breakAudio.preload = "auto";
     sessionEndedAudio.preload = "auto";
-    focusAudio.volume = 0.8;
-    breakAudio.volume = 0.8;
-    sessionEndedAudio.volume = 0.8;
+    focusAudio.volume = 0.5;
+    breakAudio.volume = 0.5;
+    sessionEndedAudio.volume = 0.5;
     focusAudio.muted = isNotificationMuted;
     breakAudio.muted = isNotificationMuted;
     sessionEndedAudio.muted = isNotificationMuted;
@@ -510,7 +521,7 @@ const ResumeToolsPanel = ({ isOpen, onClose }: ResumeToolsPanelProps) => {
             return;
           }
 
-          controller.pause();
+          controller.pause(); 
         }
       );
 

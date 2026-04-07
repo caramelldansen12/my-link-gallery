@@ -87,6 +87,23 @@ const stripContactSupplementalBlocks = (source: string) => {
   return next;
 };
 
+const stripResumePageNavigation = (source: string) => {
+  let next = source;
+
+  next = next.replace(/\r?\nimport\s+ResumePageNavigation\s+from\s+"@\/components\/ResumePageNavigation";\r?\n/, "\n");
+  next = next.replace(/\r?\nimport\s+\{\s*useResumePageNavigation\s*\}\s+from\s+"@\/hooks\/useResumePageNavigation";\r?\n/, "\n");
+  next = next.replace(
+    /\r?\n\s*const\s+\{\s*goToPrevious\s*,\s*goToNext\s*,\s*isAtStart\s*,\s*isAtEnd\s*\}\s*=\s*useResumePageNavigation\([\s\S]*?\);\r?\n/,
+    "\n"
+  );
+  next = next.replace(
+    /\r?\n\s*<ResumePageNavigation[\s\S]*?\/>\s*\r?\n/,
+    "\n"
+  );
+
+  return next;
+};
+
 export const parseResumeContentFromSource = (source: string): ResumeBuilderContent | null => {
   try {
     const sanitizedSource = stripContactSupplementalBlocks(source);
@@ -180,6 +197,7 @@ export const buildResumeTsx = (content: ResumeBuilderContent, templateSource = r
   output = replaceConst(output, "rollingKeywordRows", formatJson(content.rollingKeywordRows));
   output = replaceConst(output, "overviewDetails", buildOverviewDetailsLiteral(content.overviewDetails));
   output = stripContactSupplementalBlocks(output);
+  output = stripResumePageNavigation(output);
 
   return output;
 };
