@@ -7,11 +7,12 @@ const deploymentPaths = [
   {
     title: "I already use Azure Static Web Apps",
     description:
-      "Keep Azure deployments on the upstream repository. Forks skip Azure workflows to avoid missing secret failures.",
+      "Keep Azure deployments on the upstream repository. Forks skip Azure workflows to avoid missing secret failures. Builder publish commits directly to the deployment branch and starts CI/CD immediately.",
     icon: ShieldCheck,
     steps: [
       "Push to main on the upstream repository to trigger Azure deploy.",
       "Use pull requests for preview environments when needed.",
+      "Publish from Resume Builder or Links Builder to trigger deployment automatically with no merge step.",
       "Keep AZURE_STATIC_WEB_APPS_API_TOKEN configured only in upstream secrets.",
     ],
   },
@@ -71,7 +72,8 @@ const DocsDeployment = () => {
             <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-4xl">Choose your publish path</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
               This project supports a dual deployment model: Azure Static Web Apps for upstream and GitHub Pages for forks.
-              Pick the path that matches your setup and follow the checklist.
+              Pick the path that matches your setup and follow the checklist. Resume Builder and Links Builder publish
+              both commit directly to the deployment branch and trigger CI/CD immediately.
             </p>
           </section>
 

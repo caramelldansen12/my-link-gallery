@@ -1,30 +1,30 @@
 import { useMemo, useState } from "react";
-import { publishResumeToFork, type ResumePublishResult } from "@/lib/resumePublishService";
+import { publishLinksToFork, type LinkPublishResult } from "@/lib/linkPublishService";
 import type { PublishError, PublishState } from "@/lib/types/resumePublish";
 
-type UseResumePublishReturn = {
+type UseLinkPublishReturn = {
   state: PublishState;
   error: PublishError | null;
-  result: ResumePublishResult | null;
+  result: LinkPublishResult | null;
   statusLabel: string;
-  publish: (token: string, resumeSource: string) => Promise<ResumePublishResult | null>;
+  publish: (token: string, linksSource: string) => Promise<LinkPublishResult | null>;
   reset: () => void;
 };
 
 const statusLabels: Record<PublishState, string> = {
   idle: "",
   validating: "Validating token and account access...",
-  preparing: "Preparing target repository...",
-  committing: "Committing Resume.tsx to the deployment branch...",
+  preparing: "Preparing a branch in your fork...",
+  committing: "Committing links.ts to the deployment branch...",
   creating_pr: "",
   success: "Publish completed.",
   error: "Publish failed.",
 };
 
-export const useResumePublish = (): UseResumePublishReturn => {
+export const useLinkPublish = (): UseLinkPublishReturn => {
   const [state, setState] = useState<PublishState>("idle");
   const [error, setError] = useState<PublishError | null>(null);
-  const [result, setResult] = useState<ResumePublishResult | null>(null);
+  const [result, setResult] = useState<LinkPublishResult | null>(null);
 
   const reset = () => {
     setState("idle");
@@ -32,13 +32,13 @@ export const useResumePublish = (): UseResumePublishReturn => {
     setResult(null);
   };
 
-  const publish = async (token: string, resumeSource: string) => {
+  const publish = async (token: string, linksSource: string) => {
     setState("validating");
     setError(null);
     setResult(null);
 
     try {
-      const publishResult = await publishResumeToFork(token, resumeSource, {
+      const publishResult = await publishLinksToFork(token, linksSource, {
         onStateChange: setState,
       });
 

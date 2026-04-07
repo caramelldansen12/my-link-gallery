@@ -32,7 +32,7 @@ const docsSections = [
   {
     title: "Deployment",
     body:
-      "Choose the right publishing path for your setup: keep Azure Static Web Apps on upstream, configure Azure first-time setup, or use GitHub Pages in a fork with no Azure dependency.",
+      "Choose the right publishing path for your setup: keep Azure Static Web Apps on upstream, configure Azure first-time setup, or use GitHub Pages in a fork with no Azure dependency. Resume Builder and Links Builder publish both commit directly and trigger deployment immediately.",
   },
   {
     title: "Notes",
