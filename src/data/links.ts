@@ -24,11 +24,11 @@ export const linksPageSettings = {
 
 export const links = [
   {
-    "title": "PornHub",
-    "description": "Primary PornHub profile.",
-    "url": "https://pornhub.com",
+    "title": "Spotify",
+    "description": "Primary Spotify profile.",
+    "url": "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
     "tags": [
-      "Porn",
+      "Music",
       "Profile"
     ]
   },
