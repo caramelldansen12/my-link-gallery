@@ -103,6 +103,12 @@ const Docs = () => {
             </div>
 
             <div className="flex items-center gap-2">
+              <Link
+                to="/"
+                className="inline-flex items-center rounded-xl border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-card md:text-sm"
+              >
+                Back to Home
+              </Link>
               <ThemeToggle />
             </div>
           </div>
