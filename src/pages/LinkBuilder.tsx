@@ -1,4 +1,4 @@
-import { Download, Redo2, RotateCcw, Undo2 } from "lucide-react";
+import { Download, Redo2, RotateCcw, Send, Undo2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import LinkItemsEditor from "@/components/link-builder/LinkItemsEditor";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -11,11 +11,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { createLinkBuilderContent, type LinkBuilderContent } from "@/data/linkBuilderContent";
+import { useLinkPublish } from "@/hooks/useLinkPublish";
 import { useHistoryState } from "@/hooks/useHistoryState";
-import { downloadLinksTs, parseLinkBuilderContentFromSource } from "@/lib/linkBuilderGenerator";
+import { buildLinksTs, downloadLinksTs, parseLinkBuilderContentFromSource } from "@/lib/linkBuilderGenerator";
 import linksCurrentSource from "@/data/links.ts?raw";
 import { toast } from "sonner";
+
+const publishModeLabels: Record<"used_existing_fork" | "created_new_fork" | "owner_mode_upstream", string> = {
+  used_existing_fork: "used existing fork",
+  created_new_fork: "created new fork",
+  owner_mode_upstream: "owner mode (upstream)",
+};
 
 const LinkBuilder = () => {
   const {
@@ -32,7 +40,22 @@ const LinkBuilder = () => {
   });
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(true);
   const [isGeneratedNotesOpen, setIsGeneratedNotesOpen] = useState(false);
+  const [isPublishOpen, setIsPublishOpen] = useState(false);
+  const [publishToken, setPublishToken] = useState("");
   const contentRef = useRef(content);
+  const {
+    state: publishState,
+    error: publishError,
+    result: publishResult,
+    statusLabel: publishStatusLabel,
+    publish,
+    reset: resetPublish,
+  } = useLinkPublish();
+
+  const isPublishing =
+    publishState === "validating" ||
+    publishState === "preparing" ||
+    publishState === "committing";
 
   useEffect(() => {
     contentRef.current = content;
@@ -55,6 +78,35 @@ const LinkBuilder = () => {
   const handleReset = () => {
     reset(createLinkBuilderContent());
     toast.success("Builder reset to the current links.ts defaults.");
+  };
+
+  const handlePublish = async () => {
+    const token = publishToken.trim();
+
+    if (!token) {
+      toast.error("Enter a GitHub token before publishing.");
+      return;
+    }
+
+    const generatedSource = buildLinksTs(contentRef.current);
+    const outcome = await publish(token, generatedSource);
+
+    setPublishToken("");
+
+    if (outcome) {
+      toast.success("Publish completed and PR is ready.");
+    } else {
+      toast.error("Publish failed. Review details in the dialog.");
+    }
+  };
+
+  const handlePublishDialogChange = (open: boolean) => {
+    setIsPublishOpen(open);
+
+    if (!open) {
+      setPublishToken("");
+      resetPublish();
+    }
   };
 
   return (
@@ -104,6 +156,14 @@ const LinkBuilder = () => {
                 <Download className="h-3.5 w-3.5" />
                 Generate
               </button>
+              <button
+                type="button"
+                onClick={() => setIsPublishOpen(true)}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-card md:text-sm"
+              >
+                <Send className="h-3.5 w-3.5" />
+                Publish
+              </button>
               <ThemeToggle />
             </div>
           </div>
@@ -139,11 +199,11 @@ const LinkBuilder = () => {
           </DialogHeader>
 
           <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed text-foreground/90">
-            <li>Clone the git repo.</li>
-            <li>Customize the links.ts file.</li>
-            <li>Locate and replace the links.ts file in your project.</li>
-            <li>Run the web app locally.</li>
-            <li>Or deploy it to static web app hosting.</li>
+            <li>Edit your links content in this builder.</li>
+            <li>Use Generate to download links.ts for manual workflows.</li>
+            <li>Use Publish to send generated links.ts to GitHub directly.</li>
+            <li>Publish auto-detects your fork, creates one if needed, or uses upstream owner mode.</li>
+            <li>Publish commits directly to the deployment branch and triggers CI/CD immediately.</li>
           </ol>
 
           <DialogFooter>
@@ -153,6 +213,94 @@ const LinkBuilder = () => {
               className="inline-flex items-center justify-center rounded-2xl border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card"
             >
               Got it
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isPublishOpen} onOpenChange={handlePublishDialogChange}>
+        <DialogContent className="sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Publish links.ts to GitHub</DialogTitle>
+            <DialogDescription>
+              This flow uses your fork when available, creates one automatically when needed, and falls back to the
+              existing repository when the token belongs to the upstream owner. It commits directly to the deployment
+              branch so CI/CD starts immediately without a merge step. The token is used in-memory only and cleared
+              when this dialog closes.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-3 text-sm leading-relaxed text-foreground/90">
+            <label className="block space-y-2">
+              <span className="text-sm font-medium text-foreground">GitHub personal access token</span>
+              <Input
+                type="password"
+                autoComplete="off"
+                spellCheck={false}
+                value={publishToken}
+                onChange={(event) => setPublishToken(event.target.value)}
+                placeholder="ghp_..."
+                disabled={isPublishing}
+              />
+            </label>
+
+            {publishStatusLabel ? <p className="text-sm text-muted-foreground">{publishStatusLabel}</p> : null}
+
+            {publishError ? (
+              <div className="rounded-2xl border border-destructive/40 bg-destructive/5 p-3 text-sm text-foreground">
+                <p className="font-medium">{publishError.message}</p>
+                {publishError.details ? <p className="mt-1 text-muted-foreground">{publishError.details}</p> : null}
+                {publishError.code === "network_or_cors" ? (
+                  <p className="mt-2 text-muted-foreground">
+                    Fallback: use Generate to download links.ts, commit it to your fork manually, then open a pull request.
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
+
+            {publishResult ? (
+              <div className="rounded-2xl border border-border/70 bg-background p-3 text-sm">
+                <p className="font-medium text-foreground">Publish complete</p>
+                <div className="mt-2">
+                  <span className="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-1 text-xs font-medium text-foreground">
+                    {publishModeLabels[publishResult.publishMode]}
+                  </span>
+                </div>
+                <p className="mt-1 text-muted-foreground">Fork: {publishResult.fork.fullName}</p>
+                <p className="mt-1 text-muted-foreground">Branch: {publishResult.branch}</p>
+                <p className="mt-1 text-muted-foreground">
+                  Deployment has been triggered automatically from this publish.
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <a
+                    href={publishResult.commitUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center rounded-xl border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-card md:text-sm"
+                  >
+                    View commit
+                  </a>
+                </div>
+              </div>
+            ) : null}
+          </div>
+
+          <DialogFooter>
+            <button
+              type="button"
+              onClick={() => handlePublishDialogChange(false)}
+              disabled={isPublishing}
+              className="inline-flex items-center justify-center rounded-2xl border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              onClick={handlePublish}
+              disabled={isPublishing}
+              className="inline-flex items-center justify-center rounded-2xl border border-foreground bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isPublishing ? "Publishing..." : "Publish to GitHub"}
             </button>
           </DialogFooter>
         </DialogContent>

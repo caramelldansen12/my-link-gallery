@@ -30,13 +30,14 @@ export type ForkRepository = {
   fullName: string;
 };
 
+export type PublishMode = "used_existing_fork" | "created_new_fork" | "owner_mode_upstream";
+
 export type PublishResult = {
   fork: ForkRepository;
   branch: string;
   commitUrl: string;
-  pullRequestUrl: string;
-  pullRequestNumber: number;
-  wasExistingPr: boolean;
+  publishMode: PublishMode;
+  deploymentTriggered: boolean;
 };
 
 export type PublishCallbacks = {

@@ -4,7 +4,7 @@ const GITHUB_API = "https://api.github.com";
 const UPSTREAM_OWNER = "carlosrichardgeraldine";
 const UPSTREAM_REPO = "my-link-gallery";
 const UPSTREAM_FULL_NAME = `${UPSTREAM_OWNER}/${UPSTREAM_REPO}`;
-const RESUME_PATH = "src/pages/Resume.tsx";
+const LINKS_PATH = "src/data/links.ts";
 
 type GithubUser = {
   login: string;
@@ -103,7 +103,7 @@ type ResolvedTarget = {
   mode: PublishMode;
 };
 
-export type ResumePublishResult = {
+export type LinkPublishResult = {
   fork: ForkRepository;
   branch: string;
   commitUrl: string;
@@ -210,19 +210,19 @@ const resolveTargetRepository = async (token: string): Promise<ResolvedTarget> =
   return createForkAndResolve(token, user.login);
 };
 
-const commitResumeFile = async (fork: ForkRepository, token: string, branch: string, resumeSource: string) => {
-  const contentPath = `/repos/${fork.owner}/${fork.name}/contents/${RESUME_PATH}?ref=${encodeURIComponent(branch)}`;
+const commitLinksFile = async (repo: ForkRepository, token: string, branch: string, linksSource: string) => {
+  const contentPath = `/repos/${repo.owner}/${repo.name}/contents/${LINKS_PATH}?ref=${encodeURIComponent(branch)}`;
   const existing = await apiRequest<{ sha: string }>(contentPath, token);
 
   try {
-    const updatePath = `/repos/${fork.owner}/${fork.name}/contents/${RESUME_PATH}`;
+    const updatePath = `/repos/${repo.owner}/${repo.name}/contents/${LINKS_PATH}`;
 
     const response = await apiRequest<{ content: { html_url: string } }>(updatePath, token, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        message: "chore: update resume from builder",
-        content: toBase64(resumeSource),
+        message: "chore: update links from builder",
+        content: toBase64(linksSource),
         branch,
         sha: existing.sha,
       }),
@@ -233,7 +233,7 @@ const commitResumeFile = async (fork: ForkRepository, token: string, branch: str
     if ((error as PublishError).code === "unexpected") {
       createPublishError({
         code: "commit_failed",
-        message: "Unable to commit Resume.tsx in the target repository.",
+        message: "Unable to commit links.ts in the target repository.",
         details: (error as PublishError).details,
       });
     }
@@ -246,25 +246,25 @@ const notifyState = (callbacks: PublishCallbacks | undefined, state: PublishStat
   callbacks?.onStateChange?.(state);
 };
 
-export const publishResumeToFork = async (
+export const publishLinksToFork = async (
   token: string,
-  resumeSource: string,
+  linksSource: string,
   callbacks?: PublishCallbacks
-): Promise<ResumePublishResult> => {
+): Promise<LinkPublishResult> => {
   notifyState(callbacks, "validating");
 
   notifyState(callbacks, "preparing");
   const target = await resolveTargetRepository(token);
-  const fork = target.repository;
-  const branch = fork.defaultBranch;
+  const repo = target.repository;
+  const branch = repo.defaultBranch;
 
   notifyState(callbacks, "committing");
-  const commitUrl = await commitResumeFile(fork, token, branch, resumeSource);
+  const commitUrl = await commitLinksFile(repo, token, branch, linksSource);
 
   notifyState(callbacks, "success");
 
   return {
-    fork,
+    fork: repo,
     branch,
     commitUrl,
     publishMode: target.mode,

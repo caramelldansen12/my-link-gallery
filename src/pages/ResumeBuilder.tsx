@@ -31,6 +31,12 @@ import { toast } from "sonner";
 
 const classNames = (...values: Array<string | false | undefined>) => values.filter(Boolean).join(" ");
 
+const publishModeLabels: Record<"used_existing_fork" | "created_new_fork" | "owner_mode_upstream", string> = {
+  used_existing_fork: "used existing fork",
+  created_new_fork: "created new fork",
+  owner_mode_upstream: "owner mode (upstream)",
+};
+
 const ResumeBuilder = () => {
   const {
     value: content,
@@ -66,8 +72,7 @@ const ResumeBuilder = () => {
   const isPublishing =
     publishState === "validating" ||
     publishState === "preparing" ||
-    publishState === "committing" ||
-    publishState === "creating_pr";
+    publishState === "committing";
 
   useEffect(() => {
     const element = builderStatusRef.current;
@@ -123,7 +128,7 @@ const ResumeBuilder = () => {
     setPublishToken("");
 
     if (outcome) {
-      toast.success("Publish completed and PR is ready.");
+      toast.success("Publish completed and deployment started.");
     } else {
       toast.error("Publish failed. Review details in the dialog.");
     }
@@ -325,7 +330,8 @@ const ResumeBuilder = () => {
             <DialogTitle>Publish Resume.tsx to GitHub</DialogTitle>
             <DialogDescription>
               This flow uses your fork when available, creates one automatically when needed, and falls back to the
-              existing repository when the token belongs to the upstream owner.
+              existing repository when the token belongs to the upstream owner. It commits directly to the deployment
+              branch so CI/CD starts immediately without a merge step.
               The token is used in-memory only and cleared when this dialog closes.
             </DialogDescription>
           </DialogHeader>
@@ -361,8 +367,16 @@ const ResumeBuilder = () => {
             {publishResult ? (
               <div className="rounded-2xl border border-border/70 bg-background p-3 text-sm">
                 <p className="font-medium text-foreground">Publish complete</p>
+                <div className="mt-2">
+                  <span className="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-1 text-xs font-medium text-foreground">
+                    {publishModeLabels[publishResult.publishMode]}
+                  </span>
+                </div>
                 <p className="mt-1 text-muted-foreground">Fork: {publishResult.fork.fullName}</p>
                 <p className="mt-1 text-muted-foreground">Branch: {publishResult.branch}</p>
+                <p className="mt-1 text-muted-foreground">
+                  Deployment has been triggered automatically from this publish.
+                </p>
                 <div className="mt-2 flex flex-wrap gap-2">
                   <a
                     href={publishResult.commitUrl}
@@ -371,14 +385,6 @@ const ResumeBuilder = () => {
                     className="inline-flex items-center rounded-xl border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-card md:text-sm"
                   >
                     View commit
-                  </a>
-                  <a
-                    href={publishResult.pullRequestUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center rounded-xl border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-card md:text-sm"
-                  >
-                    View PR #{publishResult.pullRequestNumber}
                   </a>
                 </div>
               </div>
@@ -414,11 +420,11 @@ const ResumeBuilder = () => {
           </DialogHeader>
 
           <ol className="space-y-2 pl-5 text-sm leading-relaxed text-foreground/90 list-decimal">
-            <li>Clone the git repo.</li>
-            <li>Customize the Resume.tsx.</li>
-            <li>Locate and replace the Resume.tsx.</li>
-            <li>Run the web app locally.</li>
-            <li>Or deploy it to static web app hosting.</li>
+            <li>Edit your resume content in this builder.</li>
+            <li>Use Generate to download Resume.tsx for manual workflows.</li>
+            <li>Use Publish to send generated Resume.tsx to GitHub directly.</li>
+            <li>Publish auto-detects your fork, creates one if needed, or uses upstream owner mode.</li>
+            <li>Publish commits directly to the deployment branch and triggers CI/CD immediately.</li>
           </ol>
 
           <DialogFooter>
