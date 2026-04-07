@@ -163,8 +163,8 @@ const buildOverviewDetailsLiteral = (details: Array<{ text: string }>) => {
   return `[\n${lines.join(",\n")}\n]`;
 };
 
-export const buildResumeTsx = (content: ResumeBuilderContent) => {
-  let output = resumeTemplate;
+export const buildResumeTsx = (content: ResumeBuilderContent, templateSource = resumeTemplate) => {
+  let output = templateSource;
 
   const resumePagesWithoutLinguisticPsychometrics = removeLinguisticPsychometricsPage(content.resumePages);
 
@@ -184,8 +184,8 @@ export const buildResumeTsx = (content: ResumeBuilderContent) => {
   return output;
 };
 
-export const downloadResumeTsx = (content: ResumeBuilderContent) => {
-  const file = new Blob([buildResumeTsx(content)], { type: "text/plain;charset=utf-8" });
+export const downloadResumeTsx = (content: ResumeBuilderContent, templateSource = resumeTemplate) => {
+  const file = new Blob([buildResumeTsx(content, templateSource)], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(file);
   const anchor = document.createElement("a");
 

@@ -49,6 +49,11 @@ const docsSections = [
     body:
       "A complete visual component catalog is available in docs, including project-specific UI elements, installed UI primitives, and credits for the libraries and creators behind them.",
   },
+  {
+    title: "Legal",
+    body:
+      "A combined legal page is available for Privacy Notice, AGPL 3.0 License notice, and Terms and Conditions, including first-visit agreement flow.",
+  },
 ];
 
 const quickLinks = [
@@ -94,6 +99,10 @@ const docsContents = [
   {
     title: "Visual Components",
     href: "/docs/visual-components",
+  },
+  {
+    title: "Legal",
+    href: "/legal",
   },
 ];
 

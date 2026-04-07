@@ -109,7 +109,7 @@ const ResumeBuilder = () => {
   };
 
   const handleGenerate = () => {
-    downloadResumeTsx(content);
+    downloadResumeTsx(content, resumeCurrentSource);
     setIsNotesOpen(true);
     toast.success("Resume.tsx downloaded.");
   };
@@ -122,7 +122,7 @@ const ResumeBuilder = () => {
       return;
     }
 
-    const generatedSource = buildResumeTsx(content);
+    const generatedSource = buildResumeTsx(content, resumeCurrentSource);
     const outcome = await publish(token, generatedSource);
 
     setPublishToken("");

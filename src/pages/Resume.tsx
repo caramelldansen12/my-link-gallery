@@ -2,6 +2,14 @@ import { ArrowLeft, ArrowRightLeft, Briefcase, ChevronLeft, ChevronRight, MapPin
 import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToggle";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import ResumePageNavigation from "@/components/ResumePageNavigation";
 import { useResumePageNavigation } from "@/hooks/useResumePageNavigation";
 import MonochromePlusBackground from "@/components/MonochromePlusBackground";
@@ -810,6 +818,7 @@ const Resume = () => {
   const overviewCardsRef = useRef<HTMLDivElement | null>(null);
   const [activeSectionId, setActiveSectionId] = useState("overview");
   const [isToolsOpen, setIsToolsOpen] = useState(false);
+  const [isToolsReminderOpen, setIsToolsReminderOpen] = useState(false);
   const [overviewWallMetrics, setOverviewWallMetrics] = useState({
     height: 0,
     offsetTop: 0,
@@ -885,6 +894,7 @@ const Resume = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsToolsOpen(false);
+        setIsToolsReminderOpen(false);
       }
     };
 
@@ -894,6 +904,12 @@ const Resume = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  useEffect(() => {
+    if (isToolsOpen) {
+      setIsToolsReminderOpen(true);
+    }
+  }, [isToolsOpen]);
 
   return (
     <div className="relative isolate h-screen min-h-screen overflow-hidden bg-background text-foreground">
@@ -907,6 +923,33 @@ const Resume = () => {
       >
         <ResumeToolsPanel isOpen={isToolsOpen} onClose={() => setIsToolsOpen(false)} />
       </div>
+
+      <Dialog open={isToolsReminderOpen} onOpenChange={setIsToolsReminderOpen}>
+        <DialogContent className="sm:max-w-xl">
+          <DialogHeader>
+            <DialogTitle>Welcome to Tools</DialogTitle>
+            <DialogDescription>
+              Press <span className="font-medium text-foreground">Escape</span> to go back to home.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-3 text-sm leading-relaxed text-foreground/90">
+            <p>
+              Carlos loved learning, but staying focused wasn't always easy. One day he found a simple rhythm: short bursts of study, gentle lofi beats, and calm breaks. Studying suddenly felt lighter and clearer. Now it's your turn to step into that same flow.
+            </p>
+          </div>
+
+          <DialogFooter>
+            <button
+              type="button"
+              onClick={() => setIsToolsReminderOpen(false)}
+              className="inline-flex items-center justify-center rounded-2xl border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card"
+            >
+              Got it
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div className={`relative z-20 flex h-full min-h-0 flex-col bg-transparent transition-transform duration-500 ease-out ${isToolsOpen ? "translate-x-full" : "translate-x-0"}`}>
       <header className="sticky top-0 z-40 border-b border-border bg-card/90 backdrop-blur-sm">
@@ -1333,6 +1376,7 @@ const Resume = () => {
         onClick={(event) => {
           event.preventDefault();
           setIsToolsOpen(true);
+          setIsToolsReminderOpen(true);
         }}
         className={`fixed bottom-4 left-4 z-40 select-none text-5xl font-bold leading-none tracking-tight text-foreground transition-all duration-300 origin-bottom-left hover:scale-110 md:bottom-6 md:left-6 md:text-7xl ${
           isToolsOpen ? "opacity-100" : "opacity-25"
