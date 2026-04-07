@@ -10,8 +10,8 @@ import ResumeToolsPanel from "@/components/ResumeToolsPanel";
 const resumePages = [
   {
     "id": "overview",
-    "title": "Carlos Richard Geraldine",
-    "subtitle": "Bridge, design, and deliver solutions that matter."
+    "title": "Kyle Jaden",
+    "subtitle": "Bridge and deliver solutions that matter."
   },
   {
     "id": "work-1",
@@ -108,22 +108,22 @@ const resumePages = [
 ];
 
 const projectItems = [
-  "Microsoft Office 365, Purview DLP and Intune Implementation at national multi-finance company in Jakarta.",
-  "Extending Dynamics 365 CRM with Power Platform for ISV Success and private school in Jakarta + Google Workspace migration to Microsoft 365 for Education.",
+  "Microsoft Office 365, Purview DLP and Intune Implementation at national multi-finance company in Tangerang.",
+  "Extending Dynamics 365 CRM with Power Platform for private school in Jakarta + Google Workspace migration to Microsoft 365 for Education.",
   "Snowflake Hands-On Essentials Data Warehouse, Data App (Streamlit), Data Lake, Data Engineering & Data Science labs.",
   "ServiceNow Administration Fundamentals, Configure the CMDB & CMDB Health Simulator.",
-  "Anaplan Level 1 & 2 Model Builder Exercise.",
   "Salesforce Agentforce Service & Prompt Builder Templates.",
   "Microsoft PowerUp Challenge Portfolio - simple Power Apps, Power Automate and Power BI solutions.",
   "CI/CD, Serverless and Microservices using OpenStack (Podman, Kubernetes, OpenShift and Tekton) with IBM Skills Network.",
   "Implementing CI/CD using Docker, Jenkins, Grafana, Prometheus with Dicoding Indonesia.",
   "Rice University Engineering Project Management Capstone Project",
-  "University of California, Irvine Project Management Capstone Project"
+  "University of California, Irvine Project Management Capstone Project",
+  "Anaplan Level 1 & 2 Model Builder Exercise."
 ];
 
 const otherWorkingExperiences = [
   {
-    "title": "Project Coordinator (Laravel/React Webdev Project) at Goals Academy",
+    "title": "Project Leader (Node.js/React Webdev Project) at Alameda Academy",
     "subtitle": "Freelance & On-site, Jan 2024 - Dec 2024 (1 year)",
     "tags": [
       "Project Management",
@@ -131,7 +131,7 @@ const otherWorkingExperiences = [
     ]
   },
   {
-    "title": "Business to Business (B2B) Area Account Officer at PT Agrinesia Raya",
+    "title": "Business to Business (B2B) Area Account Officer at PT PrimeBread Indonesia",
     "subtitle": "Contract & On-site, Nov 2022 - Dec 2023 (1 year 2 months)",
     "tags": [
       "B2B Marketing",
@@ -139,7 +139,7 @@ const otherWorkingExperiences = [
     ]
   },
   {
-    "title": "Optician Assistant and Sales Counter at Optik Internasional Group",
+    "title": "Optician Assistant and Sales Counter at Optik Melawai",
     "subtitle": "Contract, Oct 2019 - Oct 2022 (3 years 1 months)",
     "tags": [
       "Sales",
@@ -150,25 +150,11 @@ const otherWorkingExperiences = [
 
 const educationDetails = [
   {
-    "institution": "University of the People",
+    "institution": "University of California, Berkeley",
     "degree": "Bachelor of Science - BS, Computer Science",
     "period": "Oct 2023 - Jun 2027",
     "grade": "Grade: 3.25/4.0",
     "focus": "Database Management System (DBMS), Operating Systems"
-  },
-  {
-    "institution": "",
-    "degree": "",
-    "period": "",
-    "grade": "",
-    "focus": ""
-  },
-  {
-    "institution": "",
-    "degree": "",
-    "period": "",
-    "grade": "",
-    "focus": ""
   }
 ];
 
@@ -179,13 +165,8 @@ const honorsAndAwards = [
     "note": "Professional Scholarship Awardee"
   },
   {
-    "title": "University of the People Full Scholarship",
-    "issuer": "Issued by University of the People · Dec 2024",
-    "note": "Scholarship Awardee"
-  },
-  {
-    "title": "Beasiswa Kemendikbudristek ICE Institute Semester 2024.1",
-    "issuer": "Issued by Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia · Feb 2024",
+    "title": "University of California Full Scholarship",
+    "issuer": "Issued by University of California · Dec 2024",
     "note": "Scholarship Awardee"
   }
 ];
@@ -319,20 +300,20 @@ const toolsAndEquipment = {
 };
 
 const highlightedCredentials = [
+  "SailPoint Identity Security Leader Credential",
+  "Palo Alto Certified Network Security Associate (PCNSA)",
+  "Collibra Data Governance Foundations",
+  "Microsoft Certified: Dynamics 365 Customer Service Functional Consultant Associate",
   "Microsoft Certified: Power Platform Solution Architect Expert",
   "Microsoft Certified: Power Platform Functional Consultant Associate",
   "Microsoft Certified: Information Security Administrator Associate",
   "Microsoft Certified: Identity and Access Administrator Associate",
   "Microsoft Certified: Dynamics 365 Customer Experience Analyst Associate",
   "Microsoft Certified: Dynamics 365 Field Service Functional Consultant Associate",
-  "Microsoft Certified: Dynamics 365 Customer Service Functional Consultant Associate",
   "Snowflake SnowPro Associate: Platform Certification",
-  "GitHub Foundations",
   "ServiceNow Suite Certification - Data Foundations (CMDB and CSDM) Professional",
   "SAP Certified - Business Transformation Consultant",
   "SAP Certified - Organizational Change Management",
-  "SailPoint Identity Security Leader Credential",
-  "Fortinet Certified Associate Cybersecurity",
   "LinkedIn Learning Change Management Professional Certificate",
   "Microsoft Business Analyst Professional Certificate",
   "Microsoft and LinkedIn Career Essentials in System Administration",
@@ -348,44 +329,32 @@ const highlightedCredentials = [
 const contactChannels = [
   {
     "label": "Email",
-    "value": "carlosrichardgeraldine@outlook.com",
-    "href": "mailto:carlosrichardgeraldine@outlook.com",
+    "value": "kylejaden@outlook.com",
+    "href": "mailto:kylejaden@outlook.com",
     "className": "border-red-400/80 text-red-500 dark:text-red-300"
   },
   {
     "label": "LinkedIn",
-    "value": "linkedin.com/in/carlosgeraldine",
+    "value": "linkedin.com/in/kylejaden",
     "href": "https://www.linkedin.com/in/carlosgeraldine/",
     "className": "border-blue-400/80 text-blue-600 dark:text-blue-300"
   },
   {
     "label": "WhatsApp",
-    "value": "+62 857-7007-8016",
+    "value": "+62 857-7007-8808",
     "href": "https://wa.me/6285770078016",
     "className": "border-emerald-400/80 text-emerald-600 dark:text-emerald-300"
-  },
-  {
-    "label": "Phone",
-    "value": "+62 857-7007-8016",
-    "href": "tel:+6285770078016",
-    "className": "border-sky-400/80 text-sky-600 dark:text-sky-300"
-  },
-  {
-    "label": "SMS",
-    "value": "+62 857-7007-8016",
-    "href": "sms:+6285770078016",
-    "className": "border-yellow-400/80 text-yellow-700 dark:text-yellow-300"
   }
 ];
 
 const overviewDetails = [
   {
     icon: MapPin,
-    text: "Kemanggisan, West Jakarta",
+    text: "Slipi, West Jakarta",
   },
   {
     icon: MapPinned,
-    text: "from Malang, East Java",
+    text: "from Banyuwangi, East Java",
   },
   {
     icon: ArrowRightLeft,
