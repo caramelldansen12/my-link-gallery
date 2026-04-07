@@ -1215,8 +1215,6 @@ const Resume = () => {
                           ))}
                         </div>
                       </div>
-                        </div>
-                      </div>
                     </div>
                   ) : page.id === "linguistic-psychometrics" ? (
                     <div className="grid gap-8 lg:grid-cols-2">
