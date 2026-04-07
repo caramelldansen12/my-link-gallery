@@ -104,6 +104,67 @@ const stripResumePageNavigation = (source: string) => {
   return next;
 };
 
+const enforceFirstVisitToolsReminder = (source: string) => {
+  let next = source;
+
+  if (!next.includes('const TOOLS_REMINDER_SEEN_KEY = "my-link-gallery.tools-reminder-seen.v1";')) {
+    next = next.replace(
+      /const\s+jungianArchetypes\s*=\s*\[[\s\S]*?\];\r?\n/,
+      (match) => `${match}\nconst TOOLS_REMINDER_SEEN_KEY = "my-link-gallery.tools-reminder-seen.v1";\n`
+    );
+  }
+
+  if (!next.includes("const [shouldShowToolsReminder, setShouldShowToolsReminder] = useState(false);")) {
+    next = next.replace(
+      /const \[isToolsReminderOpen, setIsToolsReminderOpen\] = useState\(false\);\r?\n/,
+      "const [isToolsReminderOpen, setIsToolsReminderOpen] = useState(false);\n  const [shouldShowToolsReminder, setShouldShowToolsReminder] = useState(false);\n"
+    );
+  }
+
+  if (!next.includes("window.localStorage.getItem(TOOLS_REMINDER_SEEN_KEY)")) {
+    next = next.replace(
+      /\r?\n  useEffect\(\(\) => \{/,
+      `
+  useEffect(() => {
+    try {
+      const hasSeenReminder = window.localStorage.getItem(TOOLS_REMINDER_SEEN_KEY) === "1";
+      setShouldShowToolsReminder(!hasSeenReminder);
+    } catch {
+      setShouldShowToolsReminder(true);
+    }
+  }, []);
+
+  useEffect(() => {`
+    );
+  }
+
+  next = next.replace(
+    /\r?\n  useEffect\(\(\) => \{\r?\n    if \(isToolsOpen\) \{\r?\n      setIsToolsReminderOpen\(true\);\r?\n    \}\r?\n  \}, \[isToolsOpen\]\);\r?\n/,
+    "\n"
+  );
+
+  next = next.replace(
+    /onClick=\{\(event\) => \{\r?\n\s*event\.preventDefault\(\);\r?\n\s*setIsToolsOpen\(true\);\r?\n\s*setIsToolsReminderOpen\(true\);\r?\n\s*\}\}/,
+    `onClick={(event) => {
+          event.preventDefault();
+          setIsToolsOpen(true);
+
+          if (shouldShowToolsReminder) {
+            setIsToolsReminderOpen(true);
+            setShouldShowToolsReminder(false);
+
+            try {
+              window.localStorage.setItem(TOOLS_REMINDER_SEEN_KEY, "1");
+            } catch {
+              // Ignore storage failures and allow session-only behavior.
+            }
+          }
+        }}`
+  );
+
+  return next;
+};
+
 export const parseResumeContentFromSource = (source: string): ResumeBuilderContent | null => {
   try {
     const sanitizedSource = stripContactSupplementalBlocks(source);
@@ -198,6 +259,7 @@ export const buildResumeTsx = (content: ResumeBuilderContent, templateSource = r
   output = replaceConst(output, "overviewDetails", buildOverviewDetailsLiteral(content.overviewDetails));
   output = stripContactSupplementalBlocks(output);
   output = stripResumePageNavigation(output);
+  output = enforceFirstVisitToolsReminder(output);
 
   return output;
 };

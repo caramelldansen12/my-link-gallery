@@ -221,6 +221,8 @@ const hollandCodes = ["IAE", "Investigative", "Artistic", "Enterprising"];
 
 const jungianArchetypes = ["Primary - The Explorer", "Secondary - The Rebel"];
 
+const TOOLS_REMINDER_SEEN_KEY = "my-link-gallery.tools-reminder-seen.v1";
+
 const keySkills = {
   proficient: [
     "Business Analysis",
@@ -817,10 +819,20 @@ const Resume = () => {
   const [activeSectionId, setActiveSectionId] = useState("overview");
   const [isToolsOpen, setIsToolsOpen] = useState(false);
   const [isToolsReminderOpen, setIsToolsReminderOpen] = useState(false);
+  const [shouldShowToolsReminder, setShouldShowToolsReminder] = useState(false);
   const [overviewWallMetrics, setOverviewWallMetrics] = useState({
     height: 0,
     offsetTop: 0,
   });
+
+  useEffect(() => {
+    try {
+      const hasSeenReminder = window.localStorage.getItem(TOOLS_REMINDER_SEEN_KEY) === "1";
+      setShouldShowToolsReminder(!hasSeenReminder);
+    } catch {
+      setShouldShowToolsReminder(true);
+    }
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -896,12 +908,6 @@ const Resume = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-
-  useEffect(() => {
-    if (isToolsOpen) {
-      setIsToolsReminderOpen(true);
-    }
-  }, [isToolsOpen]);
 
   return (
     <div className="relative isolate h-screen min-h-screen overflow-hidden bg-background text-foreground">
@@ -1361,7 +1367,17 @@ const Resume = () => {
         onClick={(event) => {
           event.preventDefault();
           setIsToolsOpen(true);
-          setIsToolsReminderOpen(true);
+
+          if (shouldShowToolsReminder) {
+            setIsToolsReminderOpen(true);
+            setShouldShowToolsReminder(false);
+
+            try {
+              window.localStorage.setItem(TOOLS_REMINDER_SEEN_KEY, "1");
+            } catch {
+              // Ignore storage failures and allow session-only behavior.
+            }
+          }
         }}
         className={`fixed bottom-4 left-4 z-40 select-none text-5xl font-bold leading-none tracking-tight text-foreground transition-all duration-300 origin-bottom-left hover:scale-110 md:bottom-6 md:left-6 md:text-7xl ${
           isToolsOpen ? "opacity-100" : "opacity-25"
