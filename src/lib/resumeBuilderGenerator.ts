@@ -276,5 +276,3 @@ export const downloadResumeTsx = (content: ResumeBuilderContent, templateSource 
 
   window.setTimeout(() => URL.revokeObjectURL(url), 0);
 };
-
-// trigger github workflow run
