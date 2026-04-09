@@ -974,7 +974,7 @@ export default function Resume() {
                 sectionRefs.current[index] = section;
               }
             }}
-            className={`snap-start min-h-full border-b border-border ${
+            className={`snap-start snap-always min-h-full border-b border-border ${
               page.id === "tools-equipment" ? "portrait-hide-section" : ""
             }`}
           >
