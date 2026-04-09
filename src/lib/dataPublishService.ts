@@ -5,10 +5,9 @@ const UPSTREAM_OWNER = "carlosrichardgeraldine";
 const UPSTREAM_REPO = "my-link-gallery";
 const UPSTREAM_FULL_NAME = `${UPSTREAM_OWNER}/${UPSTREAM_REPO}`;
 const DATA_PATH = "src/data/data.json";
+const WORKFLOWS_DIR = ".github/workflows";
 
-type GithubUser = {
-  login: string;
-};
+type GithubUser = { login: string };
 
 type GithubRepo = {
   name: string;
@@ -91,36 +90,6 @@ const apiRequest = async <T>(path: string, token: string, init?: RequestInit): P
 
 const wait = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
 
-type WorkflowFile = { path: string; sha: string; type: string };
-
-const deleteWorkflowsFromFork = async (fork: ForkRepository, token: string, branch: string): Promise<void> => {
-  let files: WorkflowFile[] = [];
-  try {
-    const result = await apiRequest<WorkflowFile[]>(
-      `/repos/${fork.owner}/${fork.name}/contents/.github/workflows?ref=${encodeURIComponent(branch)}`,
-      token
-    );
-    if (Array.isArray(result)) files = result;
-  } catch {
-    return;
-  }
-  await Promise.allSettled(
-    files
-      .filter((f) => f.type === "file")
-      .map((file) =>
-        apiRequest(`/repos/${fork.owner}/${fork.name}/contents/${file.path}`, token, {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: "chore: remove default CI workflows (deploy using your own static hosting)",
-            sha: file.sha,
-            branch,
-          }),
-        }).catch(() => {})
-      )
-  );
-};
-
 type ResolvedTarget = {
   repository: ForkRepository;
   mode: PublishMode;
@@ -172,10 +141,7 @@ const createForkAndResolve = async (token: string, userLogin: string): Promise<R
 
   for (let attempt = 0; attempt < 10; attempt += 1) {
     const resolved = await findExistingTargetRepository(token, userLogin);
-    if (resolved) {
-      await deleteWorkflowsFromFork(resolved, token, resolved.defaultBranch);
-      return { repository: resolved, mode: "created_new_fork" };
-    }
+    if (resolved) return { repository: resolved, mode: "created_new_fork" };
     await wait(1200);
   }
 
@@ -202,39 +168,87 @@ const resolveTargetRepository = async (token: string): Promise<ResolvedTarget> =
   return createForkAndResolve(token, user.login);
 };
 
-const getFileSha = async (repo: ForkRepository, token: string, branch: string): Promise<string | null> => {
+type WorkflowFile = { path: string; sha: string; type: string };
+
+const getWorkflowFilePaths = async (repo: ForkRepository, token: string, branch: string): Promise<string[]> => {
   try {
-    const contentPath = `/repos/${repo.owner}/${repo.name}/contents/${DATA_PATH}?ref=${encodeURIComponent(branch)}`;
-    const result = await apiRequest<{ sha: string }>(contentPath, token);
-    return result.sha ?? null;
+    const result = await apiRequest<WorkflowFile[]>(
+      `/repos/${repo.owner}/${repo.name}/contents/${WORKFLOWS_DIR}?ref=${encodeURIComponent(branch)}`,
+      token
+    );
+    if (!Array.isArray(result)) return [];
+    return result.filter((f) => f.type === "file").map((f) => f.path);
   } catch {
-    return null;
+    return [];
   }
 };
 
-const commitDataFile = async (repo: ForkRepository, token: string, branch: string, dataSource: string) => {
-  const existingSha = await getFileSha(repo, token, branch);
+type TreeItem =
+  | { path: string; mode: "100644"; type: "blob"; sha: string }
+  | { path: string; mode: "100644"; type: "blob"; sha: null };
 
+const commitDataWithCleanup = async (
+  repo: ForkRepository,
+  token: string,
+  branch: string,
+  dataSource: string
+): Promise<string> => {
   try {
-    const updatePath = `/repos/${repo.owner}/${repo.name}/contents/${DATA_PATH}`;
-    const body: Record<string, unknown> = {
-      message: existingSha
-        ? "chore: update data.json from builder"
-        : "chore: add data.json from builder",
-      content: toBase64(dataSource),
-      branch,
-    };
+    const base = `/repos/${repo.owner}/${repo.name}`;
 
-    if (existingSha) {
-      body.sha = existingSha;
-    }
+    const branchInfo = await apiRequest<{
+      commit: { sha: string; commit: { tree: { sha: string } } };
+    }>(`${base}/branches/${encodeURIComponent(branch)}`, token);
 
-    const response = await apiRequest<{ content: { html_url: string } }>(updatePath, token, {
-      method: "PUT",
+    const baseCommitSha = branchInfo.commit.sha;
+    const baseTreeSha = branchInfo.commit.commit.tree.sha;
+
+    const [blobResponse, workflowPaths] = await Promise.all([
+      apiRequest<{ sha: string }>(`${base}/git/blobs`, token, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: toBase64(dataSource), encoding: "base64" }),
+      }),
+      getWorkflowFilePaths(repo, token, branch),
+    ]);
+
+    const treeItems: TreeItem[] = [
+      { path: DATA_PATH, mode: "100644", type: "blob", sha: blobResponse.sha },
+      ...workflowPaths.map((p): TreeItem => ({ path: p, mode: "100644", type: "blob", sha: null })),
+    ];
+
+    const newTree = await apiRequest<{ sha: string }>(`${base}/git/trees`, token, {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify({ base_tree: baseTreeSha, tree: treeItems }),
     });
-    return response.content.html_url;
+
+    const commitMessage =
+      workflowPaths.length > 0
+        ? "chore: update data.json and remove CI workflows from builder"
+        : "chore: update data.json from builder";
+
+    const newCommit = await apiRequest<{ sha: string; html_url: string }>(
+      `${base}/git/commits`,
+      token,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: commitMessage,
+          tree: newTree.sha,
+          parents: [baseCommitSha],
+        }),
+      }
+    );
+
+    await apiRequest(`${base}/git/refs/heads/${encodeURIComponent(branch)}`, token, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sha: newCommit.sha, force: false }),
+    });
+
+    return newCommit.html_url;
   } catch (error) {
     if ((error as PublishError).code === "unexpected") {
       createPublishError({
@@ -264,7 +278,7 @@ export const publishDataToFork = async (
   const branch = repo.defaultBranch;
 
   notifyState(callbacks, "committing");
-  const commitUrl = await commitDataFile(repo, token, branch, dataSource);
+  const commitUrl = await commitDataWithCleanup(repo, token, branch, dataSource);
 
   notifyState(callbacks, "success");
 
