@@ -202,21 +202,37 @@ const resolveTargetRepository = async (token: string): Promise<ResolvedTarget> =
   return createForkAndResolve(token, user.login);
 };
 
+const getFileSha = async (repo: ForkRepository, token: string, branch: string): Promise<string | null> => {
+  try {
+    const contentPath = `/repos/${repo.owner}/${repo.name}/contents/${DATA_PATH}?ref=${encodeURIComponent(branch)}`;
+    const result = await apiRequest<{ sha: string }>(contentPath, token);
+    return result.sha ?? null;
+  } catch {
+    return null;
+  }
+};
+
 const commitDataFile = async (repo: ForkRepository, token: string, branch: string, dataSource: string) => {
-  const contentPath = `/repos/${repo.owner}/${repo.name}/contents/${DATA_PATH}?ref=${encodeURIComponent(branch)}`;
-  const existing = await apiRequest<{ sha: string }>(contentPath, token);
+  const existingSha = await getFileSha(repo, token, branch);
 
   try {
     const updatePath = `/repos/${repo.owner}/${repo.name}/contents/${DATA_PATH}`;
+    const body: Record<string, unknown> = {
+      message: existingSha
+        ? "chore: update data.json from builder"
+        : "chore: add data.json from builder",
+      content: toBase64(dataSource),
+      branch,
+    };
+
+    if (existingSha) {
+      body.sha = existingSha;
+    }
+
     const response = await apiRequest<{ content: { html_url: string } }>(updatePath, token, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: "chore: update data.json from builder",
-        content: toBase64(dataSource),
-        branch,
-        sha: existing.sha,
-      }),
+      body: JSON.stringify(body),
     });
     return response.content.html_url;
   } catch (error) {
