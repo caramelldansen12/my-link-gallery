@@ -1,5 +1,4 @@
 import { createRoot } from "react-dom/client";
-import Clarity from "@microsoft/clarity";
 import App from "./App.tsx";
 import "./index.css";
 
@@ -142,17 +141,5 @@ const setupHoverBorderPointerTracking = () => {
 
 setupHoverBorderPointerTracking();
 initializeThemeMode();
-
-const stored = localStorage.getItem("my-link-gallery.legal.accepted.v1");
-if (stored) {
-  try {
-    const parsed = JSON.parse(stored);
-    if (parsed?.clarityConsent === true) {
-      Clarity.init("w7t8i6b7ve");
-    }
-  } catch {
-    // ignore malformed data
-  }
-}
 
 createRoot(document.getElementById("root")!).render(<App />);
