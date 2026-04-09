@@ -644,7 +644,8 @@ const PagedCardsDeck = ({
   showLogo?: boolean;
   isActive?: boolean;
 }) => {
-  const cardsPerPage = 8;
+  const isMobileView = useIsMobile();
+  const cardsPerPage = isMobileView ? 4 : 8;
   const [currentPage, setCurrentPage] = useState(1);
   const [hoverSide, setHoverSide] = useState<"left" | "right" | null>(null);
   const [isHovered, setIsHovered] = useState(false);
