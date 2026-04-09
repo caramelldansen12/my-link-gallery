@@ -61,8 +61,14 @@ const resumePages = [
   },
   {
     id: "key-skills",
-    title: "Key Skills & Tools",
-    subtitle: "Capability levels and platform proficiency across business, technical, and delivery functions.",
+    title: "Key Skills",
+    subtitle: "Capability levels across business, technical, and delivery functions.",
+    noCard: true,
+  },
+  {
+    id: "tools-equipment",
+    title: "Tools and Equipment",
+    subtitle: "Core platforms and tools grouped by proficiency level.",
     noCard: true,
   },
   {
@@ -413,16 +419,6 @@ const toolsAndEquipmentCards: GroupCard[] = [
   { title: "Fluent", items: toolsAndEquipment.fluent },
   { title: "Entry-level", items: toolsAndEquipment.entryLevel },
   { title: "Introductory", items: toolsAndEquipment.introductory },
-];
-
-const mergedSkillsAndToolsCards: GroupCard[] = [
-  { title: "Skills · Proficient", items: keySkills.proficient },
-  { title: "Skills · Fluent", items: keySkills.fluent },
-  { title: "Skills · Entry-level", items: keySkills.entryLevel },
-  { title: "Tools · Proficient", items: toolsAndEquipment.proficient },
-  { title: "Tools · Fluent", items: toolsAndEquipment.fluent },
-  { title: "Tools · Entry-level", items: toolsAndEquipment.entryLevel },
-  { title: "Tools · Introductory", items: toolsAndEquipment.introductory },
 ];
 
 const groupBorderGradients = [
@@ -1159,7 +1155,9 @@ export default function Resume() {
                       </div>
                     </div>
                   ) : page.id === "key-skills" ? (
-                    <PagedGroupedDeck cards={mergedSkillsAndToolsCards} isActive={activeSectionId === "key-skills"} />
+                    <PagedGroupedDeck cards={keySkillsCards} isActive={activeSectionId === "key-skills"} />
+                  ) : page.id === "tools-equipment" ? (
+                    <PagedGroupedDeck cards={toolsAndEquipmentCards} isActive={activeSectionId === "tools-equipment"} />
                   ) : page.id === "contact" ? (
                     <div className="grid gap-8 md:grid-cols-2">
                       <div className="space-y-3">
