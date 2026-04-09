@@ -1,6 +1,7 @@
 import type { ForkRepository, PublishCallbacks, PublishError, PublishMode, PublishState } from "@/lib/types/resumePublish";
 import docsTsxRaw from "@/pages/Docs.tsx?raw";
 import legalTsxRaw from "@/pages/Legal.tsx?raw";
+import viteConfigRaw from "../../vite.config.ts?raw";
 
 const GITHUB_API = "https://api.github.com";
 const UPSTREAM_OWNER = "carlosrichardgeraldine";
@@ -12,6 +13,7 @@ const WORKFLOWS_DIR = ".github/workflows";
 const SOURCE_SYNC_FILES: Array<{ path: string; content: string }> = [
   { path: "src/pages/Docs.tsx", content: docsTsxRaw },
   { path: "src/pages/Legal.tsx", content: legalTsxRaw },
+  { path: "vite.config.ts", content: viteConfigRaw },
 ];
 
 type GithubUser = { login: string };

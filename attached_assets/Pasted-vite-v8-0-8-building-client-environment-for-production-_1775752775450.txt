@@ -1,0 +1,60 @@
+vite v8.0.8 building client environment for production...
+
+transforming...✓ 1759 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                     1.93 kB │ gzip:  0.77 kB
+dist/assets/index-BKL-yXhL.css                     91.61 kB │ gzip: 16.12 kB
+dist/assets/chevron-down-Dag967sW.js                0.11 kB │ gzip:  0.13 kB
+dist/assets/x-By6m0Uck.js                           0.14 kB │ gzip:  0.14 kB
+dist/assets/route-CrzGTVAX.js                       0.24 kB │ gzip:  0.19 kB
+dist/assets/shield-check-B-MciOKK.js                0.30 kB │ gzip:  0.23 kB
+dist/assets/component-CsIp9owd.js                   0.68 kB │ gzip:  0.25 kB
+dist/assets/NotFound-NdkOOqg0.js                    0.86 kB │ gzip:  0.48 kB
+dist/assets/DocsNotes-BgUYKVb0.js                   3.38 kB │ gzip:  1.36 kB
+dist/assets/DocsDataFlow-D7oknghr.js                3.61 kB │ gzip:  1.45 kB
+dist/assets/DocsUiUx-C7NcOOfS.js                    4.00 kB │ gzip:  1.60 kB
+dist/assets/DocsRoutes-BbfBNtLY.js                  4.02 kB │ gzip:  1.45 kB
+dist/assets/checkbox-YR0n34FT.js                    4.13 kB │ gzip:  1.76 kB
+dist/assets/DocsDevelopment-D6IUGs21.js             4.15 kB │ gzip:  1.38 kB
+dist/assets/DocsArchitecture-B_myev1h.js            4.43 kB │ gzip:  1.77 kB
+dist/assets/DocsOverviewManual-CflsU9of.js          5.55 kB │ gzip:  2.28 kB
+dist/assets/DocsDeployment-BiyGJgs8.js              5.83 kB │ gzip:  2.03 kB
+dist/assets/Legal-BGxQThI9.js                       7.10 kB │ gzip:  2.16 kB
+dist/assets/DocsVisualComponents-ESradDs8.js        7.27 kB │ gzip:  2.37 kB
+dist/assets/Docs-RfUXmvmk.js                        8.02 kB │ gzip:  2.83 kB
+dist/assets/links-Bhxr-kWo.js                       8.06 kB │ gzip:  2.44 kB
+dist/assets/dialog-Ct-n28BM.js                      8.55 kB │ gzip:  3.16 kB
+dist/assets/Index-DbU16wtY.js                      10.66 kB │ gzip:  3.40 kB
+dist/assets/resume-data-BXVNGriY.js                11.34 kB │ gzip:  4.36 kB
+dist/assets/dist-Dg49TbDw.js                       31.70 kB │ gzip:  9.07 kB
+dist/assets/MonochromePlusBackground-B42UR2bM.js   32.56 kB │ gzip:  9.95 kB
+dist/assets/index-BmOSAOuz.js                      63.69 kB │ gzip: 20.46 kB
+dist/assets/Resume-CH0HGmjc.js                     66.16 kB │ gzip: 17.71 kB
+dist/assets/es2015-qYreTq52.js                     76.79 kB │ gzip: 26.87 kB
+dist/assets/Builder-BcIAdgEp.js                    87.05 kB │ gzip: 15.69 kB
+dist/assets/dist-CbZfor8K.js                      162.67 kB │ gzip: 53.53 kB
+
+✓ built in 1.18s
+Build script snippets done in 9 sec(s).
+Preparing output...
+
+Copying files to destination directory '/bin/staticsites/6d1c7457-7d6b-48db-ace2-3c3b0fb38c36-swa-oryx/app'...
+Copying to destination directory done in 3 sec(s).
+Total time for destination directory preparation done in 3 sec(s).
+
+Removing existing manifest file
+Creating a manifest file...
+Manifest file created.
+Copying .ostype to manifest output directory.
+
+Total execution done in 14 sec(s).
+
+
+---End of Oryx build logs---
+Try to validate location at: '/bin/staticsites/6d1c7457-7d6b-48db-ace2-3c3b0fb38c36-swa-oryx/app/build'.
+The app build failed to produce artifact folder: 'build'. Please ensure this property is configured correctly in your workflow file.
+
+For further information, please visit the Azure Static Web Apps documentation at https://docs.microsoft.com/en-us/azure/static-web-apps/
+If you believe this behavior is unexpected, please raise a GitHub issue at https://github.com/azure/static-web-apps/issues/
+Exiting
