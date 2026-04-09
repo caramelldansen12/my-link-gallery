@@ -1,4 +1,4 @@
-import linksDataJson from "@/data/links-data.json";
+import dataJson from "@/data/data.json";
 
 export interface LinkItem {
   title: string;
@@ -14,6 +14,6 @@ export type LinksPageSettings = {
   quickTags: string[];
 };
 
-export const linksPageSettings: LinksPageSettings = linksDataJson.settings;
+export const linksPageSettings: LinksPageSettings = dataJson.links.settings;
 
-export const links: LinkItem[] = linksDataJson.links;
+export const links: LinkItem[] = dataJson.links.links;

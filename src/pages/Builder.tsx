@@ -12,22 +12,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { createResumeBuilderContent, type ResumeBuilderContent } from "@/data/resumeBuilderContent";
 import { createLinkBuilderContent, type LinkBuilderContent } from "@/data/linkBuilderContent";
 import { BuilderPanel } from "@/features/resume-builder/BuilderPanel";
 import { sections, type SectionId } from "@/features/resume-builder/config";
 import { useHistoryState } from "@/hooks/useHistoryState";
-import { useResumePublish } from "@/hooks/useResumePublish";
-import { useLinkPublish } from "@/hooks/useLinkPublish";
-import { buildResumeDataJson, downloadResumeDataJson } from "@/lib/resumeBuilderGenerator";
-import { buildLinksDataJson, downloadLinksDataJson } from "@/lib/linkBuilderGenerator";
+import { useDataPublish } from "@/hooks/useDataPublish";
+import { buildDataJson, downloadDataJson } from "@/lib/dataGenerator";
 import { toast } from "sonner";
 
 type ActiveTab = "resume" | "links";
@@ -67,20 +59,6 @@ const Builder = () => {
   const resumeBuilderStatusRef = useRef<HTMLElement | null>(null);
   const resumeEditorScrollRef = useRef<HTMLDivElement | null>(null);
 
-  const {
-    state: resumePublishState,
-    error: resumePublishError,
-    result: resumePublishResult,
-    statusLabel: resumePublishStatusLabel,
-    publish: resumePublish,
-    reset: resumeResetPublish,
-  } = useResumePublish();
-
-  const isResumePublishing =
-    resumePublishState === "validating" ||
-    resumePublishState === "preparing" ||
-    resumePublishState === "committing";
-
   useEffect(() => {
     const element = resumeBuilderStatusRef.current;
     if (!element) return;
@@ -102,7 +80,7 @@ const Builder = () => {
   const handleResumeReset = () => {
     resumeReset(createResumeBuilderContent());
     setResumeActiveSection("resumePages");
-    toast.success("Builder reset to the current resume-data.json defaults.");
+    toast.success("Resume builder reset to current data.json defaults.");
   };
 
   const resumeSectionButtons = sections.map((section) => {
@@ -140,20 +118,6 @@ const Builder = () => {
 
   const linksContentRef = useRef(linksContent);
 
-  const {
-    state: linksPublishState,
-    error: linksPublishError,
-    result: linksPublishResult,
-    statusLabel: linksPublishStatusLabel,
-    publish: linksPublish,
-    reset: linksResetPublish,
-  } = useLinkPublish();
-
-  const isLinksPublishing =
-    linksPublishState === "validating" ||
-    linksPublishState === "preparing" ||
-    linksPublishState === "committing";
-
   useEffect(() => {
     linksContentRef.current = linksContent;
   }, [linksContent]);
@@ -168,79 +132,63 @@ const Builder = () => {
 
   const handleLinksReset = () => {
     linksReset(createLinkBuilderContent());
-    toast.success("Builder reset to the current links-data.json defaults.");
+    toast.success("Links builder reset to current data.json defaults.");
   };
 
-  // ── Shared: Generate dropdown ────────────────────────────────────────────
-  const handleDownloadResume = () => {
-    downloadResumeDataJson(resumeContent);
-    toast.success("resume-data.json downloaded.");
-  };
-
-  const handleDownloadLinks = () => {
-    downloadLinksDataJson(linksContentRef.current);
-    toast.success("links-data.json downloaded.");
+  // ── Shared: Download button ───────────────────────────────────────────────
+  const handleDownload = () => {
+    downloadDataJson(resumeContent, linksContentRef.current);
+    toast.success("data.json downloaded.");
   };
 
   // ── Shared: Combined publish ──────────────────────────────────────────────
   const [isPublishOpen, setIsPublishOpen] = useState(false);
   const [publishToken, setPublishToken] = useState("");
 
-  const isPublishing = isResumePublishing || isLinksPublishing;
+  const {
+    state: publishState,
+    error: publishError,
+    result: publishResult,
+    statusLabel: publishStatusLabel,
+    publish,
+    reset: resetPublish,
+  } = useDataPublish();
+
+  const isPublishing =
+    publishState === "validating" ||
+    publishState === "preparing" ||
+    publishState === "committing";
 
   const handlePublishDialogChange = (open: boolean) => {
     setIsPublishOpen(open);
     if (!open) {
       setPublishToken("");
-      resumeResetPublish();
-      linksResetPublish();
+      resetPublish();
     }
   };
 
-  const handleCombinedPublish = async () => {
+  const handlePublish = async () => {
     const token = publishToken.trim();
     if (!token) { toast.error("Enter a GitHub token before publishing."); return; }
 
-    const resumeSource = buildResumeDataJson(resumeContent);
-    const linksSource = buildLinksDataJson(linksContentRef.current);
-
-    const [resumeOutcome, linksOutcome] = await Promise.allSettled([
-      resumePublish(token, resumeSource),
-      linksPublish(token, linksSource),
-    ]);
-
+    const dataSource = buildDataJson(resumeContent, linksContentRef.current);
+    const outcome = await publish(token, dataSource);
     setPublishToken("");
 
-    const resumeOk = resumeOutcome.status === "fulfilled" && resumeOutcome.value !== null;
-    const linksOk = linksOutcome.status === "fulfilled" && linksOutcome.value !== null;
-
-    if (resumeOk && linksOk) toast.success("Both files published successfully.");
-    else if (resumeOk) toast.warning("resume-data.json published, but links-data.json failed.");
-    else if (linksOk) toast.warning("links-data.json published, but resume-data.json failed.");
-    else toast.error("Both publishes failed. Review details in the dialog.");
+    if (outcome) toast.success("data.json published successfully.");
+    else toast.error("Publish failed. Review details in the dialog.");
   };
 
   // ── Shared toolbar ────────────────────────────────────────────────────────
-  const generateDropdown = (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button
-          type="button"
-          title="Generate"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-foreground bg-foreground text-background transition-colors hover:opacity-90"
-        >
-          <Download className="h-4 w-4" />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[160px]">
-        <DropdownMenuItem onClick={handleDownloadResume}>
-          Download resume-data.json
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleDownloadLinks}>
-          Download links-data.json
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+  const downloadButton = (
+    <button
+      type="button"
+      onClick={handleDownload}
+      title="Download data.json"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-foreground bg-foreground text-background transition-colors hover:opacity-90"
+    >
+      <Download className="h-4 w-4" />
+    </button>
   );
 
   const publishButton = (
@@ -271,7 +219,7 @@ const Builder = () => {
         aria-label="Reset" title="Reset">
         <RotateCcw className="h-4 w-4" />
       </button>
-      {generateDropdown}
+      {downloadButton}
       {publishButton}
     </>
   );
@@ -293,7 +241,7 @@ const Builder = () => {
         aria-label="Reset" title="Reset">
         <RotateCcw className="h-4 w-4" />
       </button>
-      {generateDropdown}
+      {downloadButton}
       {publishButton}
     </>
   );
@@ -429,13 +377,13 @@ const Builder = () => {
         </div>
       </div>
 
-      {/* ── Combined publish dialog ───────────────────────────────── */}
+      {/* ── Publish dialog ───────────────────────────────── */}
       <Dialog open={isPublishOpen} onOpenChange={handlePublishDialogChange}>
         <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle>Publish to GitHub</DialogTitle>
             <DialogDescription>
-              Publishes both <span className="font-medium text-foreground">resume-data.json</span> and <span className="font-medium text-foreground">links-data.json</span> to your fork simultaneously. The token is used in-memory only and cleared when this dialog closes.
+              Publishes <span className="font-medium text-foreground">data.json</span> — containing both your resume and links data — to your fork in a single commit. The token is used in-memory only and cleared when this dialog closes.
             </DialogDescription>
           </DialogHeader>
 
@@ -453,60 +401,29 @@ const Builder = () => {
               />
             </label>
 
-            {/* Resume status */}
-            {(resumePublishState !== "idle" || resumePublishError || resumePublishResult) && (
+            {/* Publish status */}
+            {(publishState !== "idle" || publishError || publishResult) && (
               <div className="rounded-2xl border border-border/70 bg-muted/30 p-4 space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">resume-data.json</p>
-                {resumePublishStatusLabel && <p className="text-sm text-muted-foreground">{resumePublishStatusLabel}</p>}
-                {resumePublishError && (
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">data.json</p>
+                {publishStatusLabel && <p className="text-sm text-muted-foreground">{publishStatusLabel}</p>}
+                {publishError && (
                   <div className="rounded-xl border border-destructive/40 bg-destructive/5 p-3 text-sm">
-                    <p className="font-medium text-foreground">{resumePublishError.message}</p>
-                    {resumePublishError.details && <p className="mt-1 text-muted-foreground">{resumePublishError.details}</p>}
-                    {resumePublishError.code === "network_or_cors" && (
-                      <p className="mt-2 text-muted-foreground">Use Generate → Download resume-data.json to get the file manually.</p>
+                    <p className="font-medium text-foreground">{publishError.message}</p>
+                    {publishError.details && <p className="mt-1 text-muted-foreground">{publishError.details}</p>}
+                    {publishError.code === "network_or_cors" && (
+                      <p className="mt-2 text-muted-foreground">Use the download button to get data.json manually.</p>
                     )}
                   </div>
                 )}
-                {resumePublishResult && (
+                {publishResult && (
                   <div className="space-y-1">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-0.5 text-xs font-medium text-foreground">
-                        {publishModeLabels[resumePublishResult.publishMode]}
+                        {publishModeLabels[publishResult.publishMode]}
                       </span>
-                      <span className="text-muted-foreground text-xs">Branch: {resumePublishResult.branch}</span>
+                      <span className="text-muted-foreground text-xs">Branch: {publishResult.branch}</span>
                     </div>
-                    <a href={resumePublishResult.commitUrl} target="_blank" rel="noreferrer"
-                      className="inline-flex items-center rounded-lg border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:bg-card">
-                      View commit
-                    </a>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Links status */}
-            {(linksPublishState !== "idle" || linksPublishError || linksPublishResult) && (
-              <div className="rounded-2xl border border-border/70 bg-muted/30 p-4 space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">links-data.json</p>
-                {linksPublishStatusLabel && <p className="text-sm text-muted-foreground">{linksPublishStatusLabel}</p>}
-                {linksPublishError && (
-                  <div className="rounded-xl border border-destructive/40 bg-destructive/5 p-3 text-sm">
-                    <p className="font-medium text-foreground">{linksPublishError.message}</p>
-                    {linksPublishError.details && <p className="mt-1 text-muted-foreground">{linksPublishError.details}</p>}
-                    {linksPublishError.code === "network_or_cors" && (
-                      <p className="mt-2 text-muted-foreground">Use Generate → Download links-data.json to get the file manually.</p>
-                    )}
-                  </div>
-                )}
-                {linksPublishResult && (
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-0.5 text-xs font-medium text-foreground">
-                        {publishModeLabels[linksPublishResult.publishMode]}
-                      </span>
-                      <span className="text-muted-foreground text-xs">Branch: {linksPublishResult.branch}</span>
-                    </div>
-                    <a href={linksPublishResult.commitUrl} target="_blank" rel="noreferrer"
+                    <a href={publishResult.commitUrl} target="_blank" rel="noreferrer"
                       className="inline-flex items-center rounded-lg border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:bg-card">
                       View commit
                     </a>
@@ -521,15 +438,15 @@ const Builder = () => {
               className="inline-flex items-center justify-center rounded-2xl border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card disabled:cursor-not-allowed disabled:opacity-60">
               Close
             </button>
-            <button type="button" onClick={handleCombinedPublish} disabled={isPublishing}
+            <button type="button" onClick={handlePublish} disabled={isPublishing}
               className="inline-flex items-center justify-center rounded-2xl border border-foreground bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60">
-              {isPublishing ? "Publishing..." : "Publish Both to GitHub"}
+              {isPublishing ? "Publishing..." : "Publish to GitHub"}
             </button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
-      {/* ── Combined onboarding (shown once) ─────────────────────── */}
+      {/* ── Onboarding dialog ─────────────────────────────── */}
       <Dialog open={isOnboardingOpen} onOpenChange={setIsOnboardingOpen}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
@@ -543,20 +460,20 @@ const Builder = () => {
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Resume tab</p>
               <ul className="space-y-1 pl-4 list-disc text-foreground/80">
                 <li>Edit resume sections, projects, and credentials.</li>
-                <li>Use <span className="font-medium text-foreground">Generate → Download resume-data.json</span> for a manual download.</li>
+                <li>Use the <span className="font-medium text-foreground">download button</span> to save data.json locally.</li>
               </ul>
             </div>
             <div className="space-y-1.5">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Links tab</p>
               <ul className="space-y-1 pl-4 list-disc text-foreground/80">
                 <li>Add, reorder, and edit all your link cards.</li>
-                <li>Use <span className="font-medium text-foreground">Generate → Download links-data.json</span> for a manual download.</li>
+                <li>Use the <span className="font-medium text-foreground">download button</span> to save data.json locally.</li>
               </ul>
             </div>
             <div className="rounded-xl border border-border bg-muted/30 px-4 py-3 space-y-1">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Publishing</p>
               <p className="text-foreground/80">
-                The <span className="font-medium text-foreground">Publish</span> button sends <span className="font-medium text-foreground">both</span> files to GitHub simultaneously. It auto-detects your fork, creates one if needed, and commits directly to the deployment branch.
+                The <span className="font-medium text-foreground">Publish</span> button commits a single <span className="font-medium text-foreground">data.json</span> — containing both your resume and links — to GitHub. It auto-detects your fork, creates one if needed, and commits directly to the deployment branch.
               </p>
             </div>
           </div>

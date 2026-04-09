@@ -1,5 +1,5 @@
 import type { ResumeBuilderContent } from "@/data/resumeBuilderContent";
-import resumeDataJson from "@/data/resume-data.json";
+import dataJson from "@/data/data.json";
 
 export const resumeBuilderStorageKey = "my-link-gallery.resume-builder.draft.v1";
 
@@ -7,11 +7,11 @@ const LINGUISTIC_PSYCHOMETRICS_PAGE_ID = "linguistic-psychometrics";
 
 const OVERVIEW_ICON_NAMES = ["MapPin", "MapPinned", "ArrowRightLeft", "Briefcase"] as const;
 
-const linguisticPsychometricsPage = resumeDataJson.resumePages.find(
+const linguisticPsychometricsPage = dataJson.resume.resumePages.find(
   (page) => page.id === LINGUISTIC_PSYCHOMETRICS_PAGE_ID
 );
 
-export const buildResumeDataJson = (content: ResumeBuilderContent): string => {
+export const buildResumeSection = (content: ResumeBuilderContent) => {
   const outputPages = [...content.resumePages];
 
   if (linguisticPsychometricsPage) {
@@ -28,7 +28,7 @@ export const buildResumeDataJson = (content: ResumeBuilderContent): string => {
     text: content.overviewDetails[index]?.text ?? "",
   }));
 
-  const output = {
+  return {
     resumePages: outputPages,
     overviewDetails: outputOverviewDetails,
     rollingKeywordRows: content.rollingKeywordRows,
@@ -41,19 +41,4 @@ export const buildResumeDataJson = (content: ResumeBuilderContent): string => {
     highlightedCredentials: content.highlightedCredentials,
     contactChannels: content.contactChannels,
   };
-
-  return JSON.stringify(output, null, 2);
-};
-
-export const downloadResumeDataJson = (content: ResumeBuilderContent) => {
-  const file = new Blob([buildResumeDataJson(content)], { type: "application/json;charset=utf-8" });
-  const url = URL.createObjectURL(file);
-  const anchor = document.createElement("a");
-
-  anchor.href = url;
-  anchor.download = "resume-data.json";
-  anchor.rel = "noopener noreferrer";
-  anchor.click();
-
-  window.setTimeout(() => URL.revokeObjectURL(url), 0);
 };

@@ -13,25 +13,26 @@ import {
 } from "@/components/ui/dialog";
 import MonochromePlusBackground from "@/components/MonochromePlusBackground";
 import ResumeToolsPanel from "@/components/ResumeToolsPanel";
-import resumeDataJson from "@/data/resume-data.json";
+import dataJson from "@/data/data.json";
 import type { ContactChannel } from "@/data/resumeBuilderContent";
 
 const OVERVIEW_ICON_MAP = { MapPin, MapPinned, ArrowRightLeft, Briefcase } as const;
 
-const resumePages = resumeDataJson.resumePages;
-const projectItems = resumeDataJson.projectItems;
-const otherWorkingExperiences = resumeDataJson.otherWorkingExperiences;
-const educationDetails = resumeDataJson.educationDetails;
-const honorsAndAwards = resumeDataJson.honorsAndAwards;
-const keySkills = resumeDataJson.keySkills;
-const toolsAndEquipment = resumeDataJson.toolsAndEquipment;
-const highlightedCredentials = resumeDataJson.highlightedCredentials;
-const contactChannels = (resumeDataJson.contactChannels as ContactChannel[]).filter((ch) => !ch.hidden);
-const overviewDetails = (resumeDataJson.overviewDetails as Array<{ icon: string; text: string }>).map((item) => ({
+const resumeData = dataJson.resume;
+const resumePages = resumeData.resumePages;
+const projectItems = resumeData.projectItems;
+const otherWorkingExperiences = resumeData.otherWorkingExperiences;
+const educationDetails = resumeData.educationDetails;
+const honorsAndAwards = resumeData.honorsAndAwards;
+const keySkills = resumeData.keySkills;
+const toolsAndEquipment = resumeData.toolsAndEquipment;
+const highlightedCredentials = resumeData.highlightedCredentials;
+const contactChannels = (resumeData.contactChannels as ContactChannel[]).filter((ch) => !ch.hidden);
+const overviewDetails = (resumeData.overviewDetails as Array<{ icon: string; text: string }>).map((item) => ({
   icon: OVERVIEW_ICON_MAP[item.icon as keyof typeof OVERVIEW_ICON_MAP] ?? MapPin,
   text: item.text,
 }));
-const rollingKeywordRows = resumeDataJson.rollingKeywordRows;
+const rollingKeywordRows = resumeData.rollingKeywordRows;
 
 const linguisticScores = [
   {

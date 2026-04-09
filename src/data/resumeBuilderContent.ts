@@ -1,4 +1,4 @@
-import resumeDataJson from "@/data/resume-data.json";
+import dataJson from "@/data/data.json";
 
 export type ResumePageContent = {
   id: string;
@@ -71,7 +71,7 @@ export type ResumeBuilderContent = {
 const LINGUISTIC_PSYCHOMETRICS_PAGE_ID = "linguistic-psychometrics";
 
 export const createResumeBuilderContent = (): ResumeBuilderContent => {
-  const data = resumeDataJson;
+  const data = dataJson.resume;
 
   return {
     resumePages: (data.resumePages as ResumePageContent[]).filter(

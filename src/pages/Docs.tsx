@@ -108,6 +108,7 @@ const docsContents = [
 
 const Docs = () => {
   return (
+    <>
     <div className="relative isolate min-h-screen overflow-hidden bg-background text-foreground">
       <MonochromePlusBackground />
       <div className="page-base-glass" aria-hidden="true" />
@@ -210,6 +211,7 @@ const Docs = () => {
         Back to Home
       </Link>
     </div>
+    </>
   );
 };
 

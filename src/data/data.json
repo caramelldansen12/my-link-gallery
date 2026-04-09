@@ -1,0 +1,888 @@
+{
+  "resume": {
+    "resumePages": [
+      {
+        "id": "overview",
+        "title": "Carlos Richard Geraldine",
+        "subtitle": "Bridge, design, and deliver solutions that matter."
+      },
+      {
+        "id": "work-1",
+        "title": "Microsoft 365 Engineer at SoftwareOne Indonesia",
+        "subtitle": "Freelance & On-site, Oct 2025 – Mar 2026 (7 months)",
+        "summary": "Microsoft 365 engineering work centered on secure productivity, DLP deployment, and operational support for more than 10,000 users.",
+        "body": [
+          "Delivered configurations and policies for Microsoft 365, SharePoint Online, Exchange Online, Entra ID, Purview, and Intune, validating them and troubleshooting user and admin-reported issues to ensure compliance and secure endpoint and app management.",
+          "Streamlined enterprise secure productivity deployments by resolving configuration inquiries and designing business dashboard using Power BI, reducing policy misconfigurations and accelerating rollout timelines.",
+          "Successfully deployed Data Loss Prevention (DLP) policies with 99% adoption rate to more than 10,000 users across Indonesia, ensuring consistent data governance and strengthening the organization's information-protection posture."
+        ],
+        "highlights": [
+          "Microsoft 365",
+          "SharePoint",
+          "Intune",
+          "Purview",
+          "DLP"
+        ],
+        "accent": "bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500",
+        "borderClass": "border-emerald-400/70"
+      },
+      {
+        "id": "work-2",
+        "title": "Functional Consultant at PT Dinamika Teknologi Informasi",
+        "subtitle": "Contract & Remote, Jan 2025 – Sep 2025 (9 months)",
+        "summary": "Functional consulting and project delivery for Dynamics 365 CRM, Power Platform, and Microsoft 365 for Education implementation.",
+        "body": [
+          "Collaborated with stakeholders to gather business requirements and translate them into functional specifications of Microsoft Dynamics 365 CRM and Power Platform solutions.",
+          "Extended Dynamics 365 CE into 7 modules for education management system application using Power Platform and provided relevant training for the back-office staff and office administrator.",
+          "Supported the implementation and provided training session of Microsoft 365 for Education, which includes Office 365, Teams for Education, SharePoint Online, and Entra for teachers, educators and school admins."
+        ],
+        "highlights": [
+          "Dynamics 365",
+          "Power Platform",
+          "Project Management",
+          "Training"
+        ],
+        "accent": "bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500",
+        "borderClass": "border-amber-400/70"
+      },
+      {
+        "id": "other-working-experience",
+        "title": "Other Working Experience",
+        "subtitle": "Additional role history before current consulting and M365 roles.",
+        "noCard": true
+      },
+      {
+        "id": "projects",
+        "title": "Projects",
+        "subtitle": "Selected implementations and practice portfolios."
+      },
+      {
+        "id": "key-skills",
+        "title": "Key Skills & Tools",
+        "subtitle": "Capability levels and core platforms grouped by proficiency.",
+        "noCard": true
+      },
+      {
+        "id": "highlighted-credentials",
+        "title": "Highlighted Credentials",
+        "subtitle": "Selected certifications and professional credentials.",
+        "noCard": true
+      },
+      {
+        "id": "linguistic-psychometrics",
+        "title": "Linguistic and Psychometrics",
+        "subtitle": "Language proficiency and behavioral assessment profile.",
+        "summary": "Strengths: strong language proficiency, analytical depth, and exploratory drive. Weaknesses: uneven consistency and emotional volatility under pressure. Opportunities: roles in strategy, communication, and cross-functional leadership. Threats: burnout risk and overextension in high-change environments.",
+        "highlights": [
+          "CEFR C1",
+          "INFJ",
+          "Type 3",
+          "IAE",
+          "Explorer",
+          "Analytical"
+        ],
+        "borderClass": "border-sky-400/70"
+      },
+      {
+        "id": "education-honors",
+        "title": "Education & Honors",
+        "subtitle": "Academic background and notable recognitions.",
+        "noCard": true
+      },
+      {
+        "id": "contact",
+        "title": "Contact",
+        "subtitle": "",
+        "body": [
+          "Email: carlosrichardgeraldine@outlook.com",
+          "LinkedIn: https://www.linkedin.com/in/carlosgeraldine/",
+          "WhatsApp: https://wa.me/6285770078016"
+        ],
+        "highlights": [
+          "Email",
+          "LinkedIn",
+          "WhatsApp",
+          "Linktree"
+        ],
+        "accent": "bg-gradient-to-r from-slate-500 via-zinc-500 to-stone-500",
+        "borderClass": "border-slate-400/70"
+      }
+    ],
+    "overviewDetails": [
+      {
+        "icon": "MapPin",
+        "text": "Kemanggisan, West Jakarta"
+      },
+      {
+        "icon": "MapPinned",
+        "text": "from Malang, East Java"
+      },
+      {
+        "icon": "ArrowRightLeft",
+        "text": "Ready to relocate across the country"
+      },
+      {
+        "icon": "Briefcase",
+        "text": "Full time, contract, paid internship"
+      }
+    ],
+    "rollingKeywordRows": [
+      [
+        "Leadership",
+        "Communication",
+        "Collaboration",
+        "Stakeholder Management",
+        "Problem Solving",
+        "Critical Thinking",
+        "Adaptability",
+        "Initiative"
+      ],
+      [
+        "Business Analysis",
+        "Project Delivery",
+        "Functional Consultant",
+        "Presales",
+        "Documentation",
+        "Process Mapping",
+        "Requirements Gathering",
+        "Change Management"
+      ],
+      [
+        "Microsoft 365",
+        "SharePoint Online",
+        "Exchange Online",
+        "Power Platform",
+        "Dynamics 365",
+        "Entra ID",
+        "Purview",
+        "Intune"
+      ],
+      [
+        "Data Loss Prevention",
+        "Identity & Access",
+        "Security Baseline",
+        "Governance",
+        "Compliance",
+        "Endpoint Management",
+        "Admin Support",
+        "Troubleshooting"
+      ],
+      [
+        "Power BI",
+        "Power Apps",
+        "Power Automate",
+        "Dataverse",
+        "SQL",
+        "Python",
+        "Dashboard",
+        "Automation"
+      ],
+      [
+        "ServiceNow",
+        "Anaplan",
+        "Salesforce",
+        "Snowflake",
+        "Azure",
+        "DevOps",
+        "CI/CD",
+        "Docker"
+      ],
+      [
+        "Training",
+        "Workshops",
+        "User Enablement",
+        "Knowledge Transfer",
+        "Presentation",
+        "Mentoring",
+        "Teamwork",
+        "Coordination"
+      ],
+      [
+        "Growth Mindset",
+        "Continuous Learning",
+        "Certification",
+        "Cross-functional",
+        "Execution",
+        "Ownership",
+        "Delivery Focus",
+        "Impact"
+      ],
+      [
+        "Customer Success",
+        "Solution Design",
+        "Roadmap",
+        "Discovery",
+        "Scoping",
+        "Backlog",
+        "Sprint",
+        "Iteration"
+      ],
+      [
+        "KPI",
+        "SLA",
+        "Escalation",
+        "Root Cause",
+        "Risk Mitigation",
+        "Incident Response",
+        "Service Quality",
+        "Optimization"
+      ],
+      [
+        "Documentation",
+        "Standard Operating Procedure",
+        "Playbook",
+        "Handover",
+        "Governance Model",
+        "Audit Readiness",
+        "Controls",
+        "Assurance"
+      ],
+      [
+        "Productivity",
+        "Reliability",
+        "Scalability",
+        "Security",
+        "Performance",
+        "Adoption",
+        "Enablement",
+        "Outcome"
+      ]
+    ],
+    "projectItems": [
+      "Microsoft Office 365, Purview DLP and Intune Implementation at national multi-finance company in Jakarta.",
+      "Extending Dynamics 365 CRM with Power Platform for ISV Success and private school in Jakarta + Google Workspace migration to Microsoft 365 for Education.",
+      "Snowflake Hands-On Essentials Data Warehouse, Data App (Streamlit), Data Lake, Data Engineering & Data Science labs.",
+      "ServiceNow Administration Fundamentals, Configure the CMDB & CMDB Health Simulator.",
+      "Anaplan Level 1 & 2 Model Builder Exercise.",
+      "Salesforce Agentforce Service & Prompt Builder Templates.",
+      "Microsoft PowerUp Challenge Portfolio - simple Power Apps, Power Automate and Power BI solutions.",
+      "CI/CD, Serverless and Microservices using OpenStack (Podman, Kubernetes, OpenShift and Tekton) with IBM Skills Network.",
+      "Implementing CI/CD using Docker, Jenkins, Grafana, Prometheus with Dicoding Indonesia.",
+      "Rice University Engineering Project Management Capstone Project",
+      "University of California, Irvine Project Management Capstone Project"
+    ],
+    "otherWorkingExperiences": [
+      {
+        "title": "Project Coordinator (Laravel/React Webdev Project) at Goals Academy",
+        "subtitle": "Freelance & On-site, Jan 2024 - Dec 2024 (1 year)",
+        "tags": [
+          "Project Management",
+          "Web Development"
+        ]
+      },
+      {
+        "title": "Business to Business (B2B) Area Account Officer at PT Agrinesia Raya",
+        "subtitle": "Contract & On-site, Nov 2022 - Dec 2023 (1 year 2 months)",
+        "tags": [
+          "B2B Marketing",
+          "Sales"
+        ]
+      },
+      {
+        "title": "Optician Assistant and Sales Counter at Optik Internasional Group",
+        "subtitle": "Contract, Oct 2019 - Oct 2022 (3 years 1 months)",
+        "tags": [
+          "Sales",
+          "Customer Service"
+        ]
+      }
+    ],
+    "educationDetails": [
+      {
+        "institution": "University of the People",
+        "degree": "Bachelor of Science - BS, Computer Science",
+        "period": "Oct 2023 - Jun 2027",
+        "grade": "Grade: 3.25/4.0",
+        "focus": "Database Management System (DBMS), Operating Systems"
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "period": "",
+        "grade": "",
+        "focus": ""
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "period": "",
+        "grade": "",
+        "focus": ""
+      }
+    ],
+    "honorsAndAwards": [
+      {
+        "title": "ASEAN Youth for Digital Action",
+        "issuer": "Issued by ASEAN & Orbit Future Academy · Feb 2025",
+        "note": "Professional Scholarship Awardee"
+      },
+      {
+        "title": "University of the People Full Scholarship",
+        "issuer": "Issued by University of the People · Dec 2024",
+        "note": "Scholarship Awardee"
+      },
+      {
+        "title": "Beasiswa Kemendikbudristek ICE Institute Semester 2024.1",
+        "issuer": "Issued by Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia · Feb 2024",
+        "note": "Scholarship Awardee"
+      }
+    ],
+    "keySkills": {
+      "proficient": [
+        "Business Analysis",
+        "IT Solutions Design",
+        "Low-code-no-code AI Platform"
+      ],
+      "fluent": [
+        "Project Management",
+        "Presales",
+        "Cloud Computing",
+        "IT Support",
+        "System Administration",
+        "Identity & Access Management",
+        "Data Loss Prevention",
+        "IT Service Management"
+      ],
+      "entryLevel": [
+        "Microsoft Licensing",
+        "Data Analysis",
+        "Data Engineering",
+        "Database Administration",
+        "Mobile Device Management"
+      ]
+    },
+    "toolsAndEquipment": {
+      "proficient": [
+        "Power Apps",
+        "Power Automate",
+        "Power BI",
+        "Dataverse",
+        "Purview"
+      ],
+      "fluent": [
+        "Dynamics 365 CRM",
+        "SharePoint Online",
+        "Exchange Online",
+        "Microsoft 365",
+        "Office 365",
+        "Snowflake",
+        "SQL",
+        "Python",
+        "Jira",
+        "Confluence",
+        "Camunda",
+        "Signavio",
+        "BPMN",
+        "DMN",
+        "UML",
+        "DFD",
+        "FSD",
+        "BRD/PRD"
+      ],
+      "entryLevel": [
+        "Copilot Studio",
+        "Azure Admin",
+        "Azure DevOps",
+        "Intune",
+        "Anaplan",
+        "Delinea",
+        "ManageEngine",
+        "Google Cloud Security Command Center",
+        "ServiceNow",
+        "Microsoft Entra",
+        "Microsoft Defender",
+        "CyberArk PAM",
+        "Debian",
+        "Ubuntu"
+      ],
+      "introductory": [
+        "Microsoft Fabric",
+        "Azure AI Services",
+        "Microsoft Foundry",
+        "Dynamics 365 ERP",
+        "Oracle Cloud",
+        "Oracle Fusion ERP",
+        "AWS Cloud Services",
+        "Salesforce",
+        "Creatio",
+        "Datadog",
+        "Okta",
+        "Docker",
+        "Elastic"
+      ]
+    },
+    "highlightedCredentials": [
+      "Microsoft Certified: Power Platform Solution Architect Expert",
+      "Microsoft Certified: Power Platform Functional Consultant Associate",
+      "Microsoft Certified: Information Security Administrator Associate",
+      "Microsoft Certified: Identity and Access Administrator Associate",
+      "Microsoft Certified: Dynamics 365 Customer Experience Analyst Associate",
+      "Microsoft Certified: Dynamics 365 Field Service Functional Consultant Associate",
+      "Microsoft Certified: Dynamics 365 Customer Service Functional Consultant Associate",
+      "Snowflake SnowPro Associate: Platform Certification",
+      "GitHub Foundations",
+      "ServiceNow Suite Certification - Data Foundations (CMDB and CSDM) Professional",
+      "SAP Certified - Business Transformation Consultant",
+      "SAP Certified - Organizational Change Management",
+      "SailPoint Identity Security Leader Credential",
+      "Fortinet Certified Associate Cybersecurity",
+      "LinkedIn Learning Change Management Professional Certificate",
+      "Microsoft Business Analyst Professional Certificate",
+      "Microsoft and LinkedIn Career Essentials in System Administration",
+      "Google Cybersecurity Professional Certificate",
+      "Google Business Intelligence Professional Certificate",
+      "Google IT Support Professional Certificate",
+      "Google Project Management Professional Certificate",
+      "ISC2 Certified in Cybersecurity",
+      "Certified ARIS Modeler Associate",
+      "Camunda Knowledge - Business Analyst"
+    ],
+    "contactChannels": [
+      {
+        "label": "Email",
+        "value": "carlosrichardgeraldine@outlook.com",
+        "href": "mailto:carlosrichardgeraldine@outlook.com",
+        "className": "border-red-400/80 text-red-500 dark:text-red-300",
+        "hidden": false
+      },
+      {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/carlosgeraldine",
+        "href": "https://www.linkedin.com/in/carlosgeraldine/",
+        "className": "border-blue-400/80 text-blue-600 dark:text-blue-300",
+        "hidden": false
+      },
+      {
+        "label": "WhatsApp",
+        "value": "+62 857-7007-8016",
+        "href": "https://wa.me/6285770078016",
+        "className": "border-emerald-400/80 text-emerald-600 dark:text-emerald-300",
+        "hidden": false
+      },
+      {
+        "label": "Phone",
+        "value": "+62 857-7007-8016",
+        "href": "tel:+6285770078016",
+        "className": "border-sky-400/80 text-sky-600 dark:text-sky-300",
+        "hidden": false
+      },
+      {
+        "label": "SMS",
+        "value": "+62 857-7007-8016",
+        "href": "sms:+6285770078016",
+        "className": "border-yellow-400/80 text-yellow-700 dark:text-yellow-300",
+        "hidden": false
+      }
+    ]
+  },
+  "links": {
+    "settings": {
+      "title": "Links",
+      "pageSize": 12,
+      "quickTags": [
+        "Profile",
+        "Personality",
+        "Learning"
+      ]
+    },
+    "links": [
+      {
+        "title": "Spotify",
+        "description": "Primary Spotify profile.",
+        "url": "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
+        "tags": [
+          "Music",
+          "Profile"
+        ]
+      },
+      {
+        "title": "LinkedIn",
+        "description": "Main LinkedIn profile.",
+        "url": "https://linkedin.com/in/carlosgeraldine",
+        "tags": [
+          "Profile"
+        ]
+      },
+      {
+        "title": "WhatsApp",
+        "description": "Direct WhatsApp contact link.",
+        "url": "https://api.whatsapp.com/send?phone=6285770078016",
+        "tags": [
+          "Contact"
+        ]
+      },
+      {
+        "title": "Partnership Email",
+        "description": "Partnership email contact.",
+        "url": "mailto:carlosrichardgeraldine@bersama365.work.gd",
+        "tags": [
+          "Contact"
+        ]
+      },
+      {
+        "title": "Primary Email",
+        "description": "Primary email contact.",
+        "url": "mailto:carlosrichardgeraldine@outlook.com",
+        "tags": [
+          "Contact"
+        ]
+      },
+      {
+        "title": "Secondary Email",
+        "description": "Secondary email contact.",
+        "url": "mailto:carlosrichardgeraldine@gmail.com",
+        "tags": [
+          "Contact"
+        ]
+      },
+      {
+        "title": "DISCORD",
+        "description": "Main Discord invite link.",
+        "url": "https://discord.gg/6KuyH5RBPQ",
+        "tags": [
+          "Community"
+        ]
+      },
+      {
+        "title": "Snowflake Directory",
+        "description": "Snowflake public profile directory.",
+        "url": "https://directory.snowflake.com/profile/76f67ac3-f4a8-4dcb-a3de-49880df61727",
+        "tags": [
+          "Platform",
+          "Profile"
+        ]
+      },
+      {
+        "title": "ReplaceByClawd",
+        "description": "Personal profile shortlink destination.",
+        "url": "https://replacebyclawd.com/?url=https://linkedin.com/in/carlosgeraldine&job=eddcd6b31b05",
+        "tags": [
+          "Profile"
+        ]
+      },
+      {
+        "title": "Denodo",
+        "description": "Denodo profile and identity page.",
+        "url": "https://auth.denodo.com/user-management/profile/0AAF396D287C18856B0BC2A0B272CF498A885265DCE5DB9388B321AEB0735C47",
+        "tags": [
+          "Platform"
+        ]
+      },
+      {
+        "title": "My MBTI Personality Type",
+        "description": "TestMyPersona MBTI result.",
+        "url": "https://www.testmypersona.com/tests/mbti/results?r=EwFgzMCs4iUpMExwIy0tBKGYcVVYKEg9QzFScyYIA",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Big Five Personality Results",
+        "description": "TestMyPersona Big Five result.",
+        "url": "https://www.testmypersona.com/tests/bigfive/results?r=KwFgzMkpCMBMcbXmEdzsum94icHKOiCEA",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Enneagram Type",
+        "description": "TestMyPersona Enneagram result.",
+        "url": "https://www.testmypersona.com/tests/enneagram/results?r=CwVl2AmEU0QIxgMzTg6oEKmJPpEJMg",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My DISC Profile",
+        "description": "TestMyPersona DISC result.",
+        "url": "https://www.testmypersona.com/tests/disc/results?r=AwhM5SGZN0wIwODIA",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Attachment Style",
+        "description": "TestMyPersona attachment style result.",
+        "url": "https://www.testmypersona.com/tests/attachment-style/results?r=EwRgLArGYrcgZjA0JgVMY0zpjUIA",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Top CliftonStrengths",
+        "description": "TestMyPersona CliftonStrengths result.",
+        "url": "https://www.testmypersona.com/tests/clifton-strengths/results?r=EwFlEZxT2ZJAVmVMzGmO8BmHyww54tgcQQg",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Core Values Results",
+        "description": "TestMyPersona core values result.",
+        "url": "https://www.testmypersona.com/tests/core-values/results?r=EzCMBZ1U2u4MxQSpECsrzp7nQ",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Emotional Intelligence Results",
+        "description": "TestMyPersona emotional intelligence result.",
+        "url": "https://www.testmypersona.com/tests/emotional-intelligence/results?r=CwVmCYIRmBmcT3lMpZnsGV2IeBeIA",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Holland Code Results",
+        "description": "TestMyPersona Holland code result.",
+        "url": "https://www.testmypersona.com/tests/holland-code/results?r=IwZgLMBMLKCsE5LApkWvHSqwhJJFGHnrNCuiLllMHkSUUA",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Jungian Archetypes Test Results",
+        "description": "TestMyPersona Jungian archetypes result.",
+        "url": "https://www.testmypersona.com/tests/jungian-archetypes/results?r=Iw0VjYBYCYYhkRQsGwwolWwg",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Character Strengths Results",
+        "description": "TestMyPersona character strengths result.",
+        "url": "https://www.testmypersona.com/tests/character-strengths/results?r=KwFmCYEYGZU5pUpEJynElibD3ESdfMaQveCqVBNRJOyIA",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "My Mental Age",
+        "description": "TestMyPersona mental age result.",
+        "url": "https://www.testmypersona.com/tests/mental-age/results?r=IwZgLGIKzDkEySaYrJWlGQ",
+        "tags": [
+          "Personality"
+        ]
+      },
+      {
+        "title": "Upwork",
+        "description": "Upwork freelancer profile.",
+        "url": "https://www.upwork.com/freelancers/~0170c75894fbe5f176?mp_source=share",
+        "tags": [
+          "Career",
+          "Profile"
+        ]
+      },
+      {
+        "title": "Google Skills",
+        "description": "Google Skills public profile.",
+        "url": "https://www.skills.google/public_profiles/3b3862a6-00b7-4981-a181-b76ec3ae5b8c",
+        "tags": [
+          "Learning",
+          "Profile"
+        ]
+      },
+      {
+        "title": "Google Developer Program",
+        "description": "Google Developer profile.",
+        "url": "https://g.dev/carlosgeraldine",
+        "tags": [
+          "Learning",
+          "Profile"
+        ]
+      },
+      {
+        "title": "Pegasystems",
+        "description": "Pega account profile.",
+        "url": "https://accounts.pega.com/profile/carlosgeraldine",
+        "tags": [
+          "Platform",
+          "Profile"
+        ]
+      },
+      {
+        "title": "Outsystems",
+        "description": "Outsystems profile page.",
+        "url": "https://www.outsystems.com/profile/4r01oaulnq/overview",
+        "tags": [
+          "Platform",
+          "Profile"
+        ]
+      },
+      {
+        "title": "The Linux Foundation",
+        "description": "Linux Foundation open profile.",
+        "url": "https://openprofile.dev/profile/carlgeralz.ofc",
+        "tags": [
+          "Learning",
+          "Profile"
+        ]
+      },
+      {
+        "title": "Project Management Institute",
+        "description": "PMI community profile.",
+        "url": "https://community.pmi.org/profile/carlgeralz",
+        "tags": [
+          "Profile",
+          "Community"
+        ]
+      },
+      {
+        "title": "OpenLearn - Open University UK",
+        "description": "OpenLearn profile page.",
+        "url": "https://www.open.edu/openlearn/profiles/zu113901",
+        "tags": [
+          "Learning"
+        ]
+      },
+      {
+        "title": "Last.fm - old account",
+        "description": "Legacy Last.fm account.",
+        "url": "https://last.fm/user/caramelldansen2",
+        "tags": [
+          "Music"
+        ]
+      },
+      {
+        "title": "Spotify - Playlists",
+        "description": "Spotify playlists profile.",
+        "url": "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
+        "tags": [
+          "Music"
+        ]
+      },
+      {
+        "title": "LinkedIn - Latest Updates",
+        "description": "LinkedIn profile with latest updates.",
+        "url": "https://linkedin.com/in/carlosgeraldine",
+        "tags": [
+          "Profile"
+        ]
+      },
+      {
+        "title": "AWS Skill Builder",
+        "description": "AWS Skill Builder profile.",
+        "url": "https://skillsprofile.skillbuilder.aws/user/carlosgeraldine",
+        "tags": [
+          "Learning"
+        ]
+      },
+      {
+        "title": "Accredible",
+        "description": "Credential wallet profile.",
+        "url": "https://www.credential.net/profile/carlosgeraldine/wallet",
+        "tags": [
+          "Credentials"
+        ]
+      },
+      {
+        "title": "G2 - Tech Stacks Review",
+        "description": "G2 user profile and reviews.",
+        "url": "https://www.g2.com/users/carlosgeraldine",
+        "tags": [
+          "Reviews"
+        ]
+      },
+      {
+        "title": "ServiceNow University",
+        "description": "ServiceNow learning public profile.",
+        "url": "https://learning.servicenow.com/lxp/en/pages/nl-public-resume?id=nl_public&user=carlosrich262822",
+        "tags": [
+          "Learning",
+          "Credentials"
+        ]
+      },
+      {
+        "title": "Jobstreet Resume",
+        "description": "Jobstreet resume profile.",
+        "url": "https://id.jobstreet.com/profiles/carlos-geraldine-4rBTsVWybP",
+        "tags": [
+          "Career"
+        ]
+      },
+      {
+        "title": "Credly",
+        "description": "Credly badges and certifications profile.",
+        "url": "https://credly.com/users/carlosgeraldine",
+        "tags": [
+          "Credentials"
+        ]
+      },
+      {
+        "title": "FutureLearn",
+        "description": "FutureLearn profile page.",
+        "url": "https://www.futurelearn.com/profiles/19253127",
+        "tags": [
+          "Learning"
+        ]
+      },
+      {
+        "title": "Study GRC",
+        "description": "Study GRC Discord community.",
+        "url": "https://discord.gg/studygrc",
+        "tags": [
+          "Community"
+        ]
+      },
+      {
+        "title": "Microsoft Certification Hub",
+        "description": "Microsoft certification Discord hub.",
+        "url": "https://discord.gg/hvtShSag8a",
+        "tags": [
+          "Community",
+          "Credentials"
+        ]
+      },
+      {
+        "title": "Atlassian Community",
+        "description": "Atlassian community profile.",
+        "url": "https://community.atlassian.com/user/profile/1e54bb61-4b04-4e97-bd5d-4f5b8a46cc38",
+        "tags": [
+          "Profile",
+          "Community"
+        ]
+      },
+      {
+        "title": "Microsoft Learn",
+        "description": "Microsoft Learn public profile.",
+        "url": "https://learn.microsoft.com/en-gb/users/carlosgeraldine/",
+        "tags": [
+          "Learning"
+        ]
+      },
+      {
+        "title": "Creatio",
+        "description": "Creatio community profile.",
+        "url": "https://community.creatio.com/user/216284",
+        "tags": [
+          "Community",
+          "Platform"
+        ]
+      },
+      {
+        "title": "Salesforce Trailblazer",
+        "description": "Salesforce Trailblazer profile.",
+        "url": "http://www.salesforce.com/trailblazer/carlosgeraldine",
+        "tags": [
+          "Learning"
+        ]
+      },
+      {
+        "title": "Dicoding",
+        "description": "Dicoding learning profile.",
+        "url": "https://www.dicoding.com/users/carlgeralz/academies",
+        "tags": [
+          "Learning"
+        ]
+      },
+      {
+        "title": "Last.fm - Music Listening History",
+        "description": "Current Last.fm listening history profile.",
+        "url": "https://last.fm/user/caramelldansen3",
+        "tags": [
+          "Music"
+        ]
+      }
+    ]
+  }
+}
