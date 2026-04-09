@@ -3,43 +3,43 @@
     "resumePages": [
       {
         "id": "overview",
-        "title": "Carlos Richard Geraldine",
-        "subtitle": "Bridge, design, and deliver solutions that matter."
+        "title": "Jordan Alex Mitchell",
+        "subtitle": "Design, deliver, and scale solutions that create real business impact."
       },
       {
         "id": "work-1",
-        "title": "Microsoft 365 Engineer at SoftwareOne Indonesia",
-        "subtitle": "Freelance & On-site, Oct 2025 – Mar 2026 (7 months)",
-        "summary": "Microsoft 365 engineering work centered on secure productivity, DLP deployment, and operational support for more than 10,000 users.",
+        "title": "Salesforce Platform Engineer at CloudBridge Solutions",
+        "subtitle": "Contract & Remote, Nov 2024 – May 2025 (7 months)",
+        "summary": "Salesforce platform engineering focused on CRM automation, data integrity, and end-to-end deployment support for over 8,000 users across North America.",
         "body": [
-          "Delivered configurations and policies for Microsoft 365, SharePoint Online, Exchange Online, Entra ID, Purview, and Intune, validating them and troubleshooting user and admin-reported issues to ensure compliance and secure endpoint and app management.",
-          "Streamlined enterprise secure productivity deployments by resolving configuration inquiries and designing business dashboard using Power BI, reducing policy misconfigurations and accelerating rollout timelines.",
-          "Successfully deployed Data Loss Prevention (DLP) policies with 99% adoption rate to more than 10,000 users across Indonesia, ensuring consistent data governance and strengthening the organization's information-protection posture."
+          "Designed and deployed Salesforce configurations, flows, validation rules, and permission sets, resolving admin and user-reported issues to ensure data quality and platform compliance.",
+          "Accelerated CRM adoption by building a custom executive dashboard in Tableau, reducing manual reporting overhead by 40% and improving sales pipeline visibility for regional directors.",
+          "Successfully rolled out a territory management restructure and CPQ rule updates with a 97% user acceptance rate across six regional offices, strengthening revenue operations governance."
         ],
         "highlights": [
-          "Microsoft 365",
-          "SharePoint",
-          "Intune",
-          "Purview",
-          "DLP"
+          "Salesforce",
+          "CPQ",
+          "Tableau",
+          "Flow Builder",
+          "Apex"
         ],
         "accent": "bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500",
         "borderClass": "border-emerald-400/70"
       },
       {
         "id": "work-2",
-        "title": "Functional Consultant at PT Dinamika Teknologi Informasi",
-        "subtitle": "Contract & Remote, Jan 2025 – Sep 2025 (9 months)",
-        "summary": "Functional consulting and project delivery for Dynamics 365 CRM, Power Platform, and Microsoft 365 for Education implementation.",
+        "title": "Business Analyst at Nexora Digital Partners",
+        "subtitle": "Contract & Remote, Feb 2024 – Oct 2024 (9 months)",
+        "summary": "Functional analysis and project delivery for ServiceNow ITSM, process automation, and enterprise workflow redesign for mid-market and public sector clients.",
         "body": [
-          "Collaborated with stakeholders to gather business requirements and translate them into functional specifications of Microsoft Dynamics 365 CRM and Power Platform solutions.",
-          "Extended Dynamics 365 CE into 7 modules for education management system application using Power Platform and provided relevant training for the back-office staff and office administrator.",
-          "Supported the implementation and provided training session of Microsoft 365 for Education, which includes Office 365, Teams for Education, SharePoint Online, and Entra for teachers, educators and school admins."
+          "Partnered with business stakeholders to elicit requirements and convert them into functional specifications for ServiceNow ITSM and custom workflow solutions.",
+          "Redesigned 5 core incident and change management processes using BPMN notation, reducing average resolution time by 22% across the client's service desk.",
+          "Facilitated user acceptance testing sessions and delivered onboarding training for 3 enterprise clients, ensuring smooth go-live transitions and positive adoption outcomes."
         ],
         "highlights": [
-          "Dynamics 365",
-          "Power Platform",
-          "Project Management",
+          "ServiceNow",
+          "ITSM",
+          "Process Mapping",
           "Training"
         ],
         "accent": "bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500",
@@ -48,7 +48,7 @@
       {
         "id": "other-working-experience",
         "title": "Other Working Experience",
-        "subtitle": "Additional role history before current consulting and M365 roles.",
+        "subtitle": "Additional role history before current consulting and platform roles.",
         "noCard": true
       },
       {
@@ -79,15 +79,15 @@
         "title": "Contact",
         "subtitle": "",
         "body": [
-          "Email: carlosrichardgeraldine@outlook.com",
-          "LinkedIn: https://www.linkedin.com/in/carlosgeraldine/",
-          "WhatsApp: https://wa.me/6285770078016"
+          "Email: jordan.mitchell@protonmail.com",
+          "LinkedIn: https://www.linkedin.com/in/jordanmitchell/",
+          "Phone: +1 312-555-0174"
         ],
         "highlights": [
           "Email",
           "LinkedIn",
-          "WhatsApp",
-          "Linktree"
+          "Phone",
+          "Calendar"
         ],
         "accent": "bg-gradient-to-r from-slate-500 via-zinc-500 to-stone-500",
         "borderClass": "border-slate-400/70"
@@ -96,15 +96,15 @@
     "overviewDetails": [
       {
         "icon": "MapPin",
-        "text": "Kemanggisan, West Jakarta"
+        "text": "Midtown, Chicago, Illinois"
       },
       {
         "icon": "MapPinned",
-        "text": "from Malang, East Java"
+        "text": "from Austin, Texas"
       },
       {
         "icon": "ArrowRightLeft",
-        "text": "Ready to relocate across the country"
+        "text": "Open to relocation and hybrid arrangements"
       },
       {
         "icon": "Briefcase",
@@ -133,41 +133,41 @@
         "Change Management"
       ],
       [
-        "Microsoft 365",
-        "SharePoint Online",
-        "Exchange Online",
-        "Power Platform",
-        "Dynamics 365",
-        "Entra ID",
-        "Purview",
-        "Intune"
+        "Salesforce",
+        "ServiceNow",
+        "Workday",
+        "Tableau",
+        "Jira",
+        "Confluence",
+        "AWS",
+        "Azure"
       ],
       [
-        "Data Loss Prevention",
+        "Data Governance",
         "Identity & Access",
         "Security Baseline",
-        "Governance",
         "Compliance",
         "Endpoint Management",
         "Admin Support",
-        "Troubleshooting"
+        "Troubleshooting",
+        "Risk Mitigation"
       ],
       [
         "Power BI",
-        "Power Apps",
-        "Power Automate",
-        "Dataverse",
+        "Looker",
+        "dbt",
+        "Databricks",
         "SQL",
         "Python",
         "Dashboard",
         "Automation"
       ],
       [
-        "ServiceNow",
-        "Anaplan",
-        "Salesforce",
         "Snowflake",
-        "Azure",
+        "Anaplan",
+        "HubSpot",
+        "Zendesk",
+        "Okta",
         "DevOps",
         "CI/CD",
         "Docker"
@@ -234,38 +234,38 @@
       ]
     ],
     "projectItems": [
-      "Microsoft Office 365, Purview DLP and Intune Implementation at national multi-finance company in Jakarta.",
-      "Extending Dynamics 365 CRM with Power Platform for ISV Success and private school in Jakarta + Google Workspace migration to Microsoft 365 for Education.",
-      "Snowflake Hands-On Essentials Data Warehouse, Data App (Streamlit), Data Lake, Data Engineering & Data Science labs.",
-      "ServiceNow Administration Fundamentals, Configure the CMDB & CMDB Health Simulator.",
-      "Anaplan Level 1 & 2 Model Builder Exercise.",
-      "Salesforce Agentforce Service & Prompt Builder Templates.",
-      "Microsoft PowerUp Challenge Portfolio - simple Power Apps, Power Automate and Power BI solutions.",
-      "CI/CD, Serverless and Microservices using OpenStack (Podman, Kubernetes, OpenShift and Tekton) with IBM Skills Network.",
-      "Implementing CI/CD using Docker, Jenkins, Grafana, Prometheus with Dicoding Indonesia.",
+      "Salesforce Sales Cloud and CPQ implementation for a regional logistics company in Chicago.",
+      "ServiceNow ITSM workflow redesign and custom catalog items for a B2B SaaS startup in Austin.",
+      "Snowflake Hands-On Essentials: Data Warehouse, Data App (Streamlit), Data Lake, and Data Engineering labs.",
+      "AWS Solutions Architect practice labs: EC2, S3, RDS, Lambda, and VPC networking.",
+      "Anaplan Level 1 & 2 Model Builder exercises.",
+      "Salesforce Agentforce and Prompt Builder template development.",
+      "Personal CI/CD pipeline using GitHub Actions, Docker, and Grafana for a side project portfolio.",
+      "Completed Google Project Management and Business Intelligence Professional Certificate capstone projects.",
+      "HubSpot CRM migration and workflow automation for a non-profit organization.",
       "Rice University Engineering Project Management Capstone Project",
-      "University of California, Irvine Project Management Capstone Project"
+      "UC Davis SQL for Data Science Capstone Project"
     ],
     "otherWorkingExperiences": [
       {
-        "title": "Project Coordinator (Laravel/React Webdev Project) at Goals Academy",
-        "subtitle": "Freelance & On-site, Jan 2024 - Dec 2024 (1 year)",
+        "title": "Project Lead (Vue.js / Node.js Web App) at Launchpad Labs",
+        "subtitle": "Freelance & Remote, Mar 2023 - Feb 2024 (1 year)",
         "tags": [
           "Project Management",
           "Web Development"
         ]
       },
       {
-        "title": "Business to Business (B2B) Area Account Officer at PT Agrinesia Raya",
-        "subtitle": "Contract & On-site, Nov 2022 - Dec 2023 (1 year 2 months)",
+        "title": "Account Manager at Vertex Distribution Group",
+        "subtitle": "Contract & On-site, Jun 2021 - Dec 2022 (1 year 7 months)",
         "tags": [
-          "B2B Marketing",
-          "Sales"
+          "B2B Sales",
+          "Account Management"
         ]
       },
       {
-        "title": "Optician Assistant and Sales Counter at Optik Internasional Group",
-        "subtitle": "Contract, Oct 2019 - Oct 2022 (3 years 1 months)",
+        "title": "Retail Sales Associate at ClearView Optical",
+        "subtitle": "Part-time, Jan 2018 - May 2021 (3 years 5 months)",
         "tags": [
           "Sales",
           "Customer Service"
@@ -274,11 +274,11 @@
     ],
     "educationDetails": [
       {
-        "institution": "University of the People",
+        "institution": "Western Governors University",
         "degree": "Bachelor of Science - BS, Computer Science",
-        "period": "Oct 2023 - Jun 2027",
-        "grade": "Grade: 3.25/4.0",
-        "focus": "Database Management System (DBMS), Operating Systems"
+        "period": "Sep 2022 - Jul 2026",
+        "grade": "Grade: 3.41/4.0",
+        "focus": "Software Engineering, Data Structures & Algorithms"
       },
       {
         "institution": "",
@@ -297,26 +297,26 @@
     ],
     "honorsAndAwards": [
       {
-        "title": "ASEAN Youth for Digital Action",
-        "issuer": "Issued by ASEAN & Orbit Future Academy · Feb 2025",
+        "title": "Digital Futures Scholarship Awardee",
+        "issuer": "Issued by TechRise Foundation · Mar 2025",
         "note": "Professional Scholarship Awardee"
       },
       {
-        "title": "University of the People Full Scholarship",
-        "issuer": "Issued by University of the People · Dec 2024",
+        "title": "Western Governors University Merit Scholarship",
+        "issuer": "Issued by Western Governors University · Jan 2023",
         "note": "Scholarship Awardee"
       },
       {
-        "title": "Beasiswa Kemendikbudristek ICE Institute Semester 2024.1",
-        "issuer": "Issued by Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia · Feb 2024",
-        "note": "Scholarship Awardee"
+        "title": "National Society of Leadership and Success Inductee",
+        "issuer": "Issued by NSLS · Nov 2022",
+        "note": "Leadership Honor Society Inductee"
       }
     ],
     "keySkills": {
       "proficient": [
         "Business Analysis",
-        "IT Solutions Design",
-        "Low-code-no-code AI Platform"
+        "CRM Platform Configuration",
+        "Low-code Workflow Automation"
       ],
       "fluent": [
         "Project Management",
@@ -325,11 +325,11 @@
         "IT Support",
         "System Administration",
         "Identity & Access Management",
-        "Data Loss Prevention",
+        "Data Governance",
         "IT Service Management"
       ],
       "entryLevel": [
-        "Microsoft Licensing",
+        "Salesforce Licensing",
         "Data Analysis",
         "Data Engineering",
         "Database Administration",
@@ -338,23 +338,19 @@
     },
     "toolsAndEquipment": {
       "proficient": [
-        "Power Apps",
-        "Power Automate",
-        "Power BI",
-        "Dataverse",
-        "Purview"
+        "Salesforce Flow Builder",
+        "Tableau",
+        "Jira",
+        "Confluence",
+        "Power BI"
       ],
       "fluent": [
-        "Dynamics 365 CRM",
-        "SharePoint Online",
-        "Exchange Online",
-        "Microsoft 365",
-        "Office 365",
+        "ServiceNow ITSM",
+        "HubSpot CRM",
+        "Workday HCM",
         "Snowflake",
         "SQL",
         "Python",
-        "Jira",
-        "Confluence",
         "Camunda",
         "Signavio",
         "BPMN",
@@ -365,97 +361,92 @@
         "BRD/PRD"
       ],
       "entryLevel": [
-        "Copilot Studio",
-        "Azure Admin",
+        "Salesforce CPQ",
+        "AWS Admin",
         "Azure DevOps",
-        "Intune",
+        "Okta",
         "Anaplan",
         "Delinea",
         "ManageEngine",
-        "Google Cloud Security Command Center",
-        "ServiceNow",
-        "Microsoft Entra",
-        "Microsoft Defender",
+        "Databricks",
+        "Zendesk",
+        "Looker",
+        "dbt",
         "CyberArk PAM",
-        "Debian",
         "Ubuntu"
       ],
       "introductory": [
-        "Microsoft Fabric",
-        "Azure AI Services",
-        "Microsoft Foundry",
+        "Vertex AI",
+        "AWS SageMaker",
+        "Google Cloud Run",
         "Dynamics 365 ERP",
         "Oracle Cloud",
         "Oracle Fusion ERP",
-        "AWS Cloud Services",
-        "Salesforce",
         "Creatio",
         "Datadog",
-        "Okta",
+        "Elastic",
         "Docker",
-        "Elastic"
+        "Terraform",
+        "Kubernetes",
+        "Grafana"
       ]
     },
     "highlightedCredentials": [
-      "Microsoft Certified: Power Platform Solution Architect Expert",
-      "Microsoft Certified: Power Platform Functional Consultant Associate",
-      "Microsoft Certified: Information Security Administrator Associate",
-      "Microsoft Certified: Identity and Access Administrator Associate",
-      "Microsoft Certified: Dynamics 365 Customer Experience Analyst Associate",
-      "Microsoft Certified: Dynamics 365 Field Service Functional Consultant Associate",
-      "Microsoft Certified: Dynamics 365 Customer Service Functional Consultant Associate",
-      "Snowflake SnowPro Associate: Platform Certification",
-      "GitHub Foundations",
-      "ServiceNow Suite Certification - Data Foundations (CMDB and CSDM) Professional",
-      "SAP Certified - Business Transformation Consultant",
-      "SAP Certified - Organizational Change Management",
-      "SailPoint Identity Security Leader Credential",
-      "Fortinet Certified Associate Cybersecurity",
-      "LinkedIn Learning Change Management Professional Certificate",
-      "Microsoft Business Analyst Professional Certificate",
-      "Microsoft and LinkedIn Career Essentials in System Administration",
-      "Google Cybersecurity Professional Certificate",
+      "Salesforce Certified: Platform App Builder",
+      "Salesforce Certified: Administrator",
+      "Salesforce Certified: Business Analyst",
+      "ServiceNow Certified System Administrator",
+      "AWS Certified Cloud Practitioner",
+      "AWS Certified Solutions Architect – Associate",
+      "Snowflake SnowPro Core Certification",
+      "Google Project Management Professional Certificate",
       "Google Business Intelligence Professional Certificate",
       "Google IT Support Professional Certificate",
-      "Google Project Management Professional Certificate",
+      "Google Cybersecurity Professional Certificate",
       "ISC2 Certified in Cybersecurity",
+      "GitHub Foundations",
+      "LinkedIn Learning Change Management Professional Certificate",
       "Certified ARIS Modeler Associate",
-      "Camunda Knowledge - Business Analyst"
+      "Camunda Knowledge - Business Analyst",
+      "Fortinet Certified Associate Cybersecurity",
+      "SAP Certified - Business Transformation Consultant",
+      "HubSpot Revenue Operations Certification",
+      "Tableau Desktop Specialist"
     ],
     "contactChannels": [
       {
         "label": "Email",
-        "value": "carlosrichardgeraldine@outlook.com",
-        "href": "mailto:carlosrichardgeraldine@outlook.com",
+        "value": "jordan.mitchell@protonmail.com",
+        "href": "mailto:jordan.mitchell@protonmail.com",
         "className": "border-red-400/80 text-red-500 dark:text-red-300",
         "hidden": false
       },
       {
         "label": "LinkedIn",
-        "value": "linkedin.com/in/carlosgeraldine",
-        "href": "https://www.linkedin.com/in/carlosgeraldine/",
+        "value": "linkedin.com/in/jordanmitchell",
+        "href": "https://www.linkedin.com/in/jordanmitchell/",
         "className": "border-blue-400/80 text-blue-600 dark:text-blue-300",
         "hidden": false
       },
       {
-        "label": "WhatsApp",
-        "value": "+62 857-7007-8016",
-        "href": "https://wa.me/6285770078016",
-        "className": "border-emerald-400/80 text-emerald-600 dark:text-emerald-300",
-        "hidden": false
-      },
-      {
         "label": "Phone",
-        "value": "+62 857-7007-8016",
-        "href": "tel:+6285770078016",
+        "value": "+1 312-555-0174",
+        "href": "tel:+13125550174",
         "className": "border-sky-400/80 text-sky-600 dark:text-sky-300",
         "hidden": false
       },
       {
         "label": "SMS",
-        "value": "+62 857-7007-8016",
-        "href": "sms:+6285770078016",
+        "value": "+1 312-555-0174",
+        "href": "sms:+13125550174",
         "className": "border-yellow-400/80 text-yellow-700 dark:text-yellow-300",
+        "hidden": false
+      },
+      {
+        "label": "Calendar",
+        "value": "Book a meeting",
+        "href": "https://calendly.com/jordanmitchell",
+        "className": "border-violet-400/80 text-violet-600 dark:text-violet-300",
         "hidden": false
       }
     ]
@@ -474,7 +465,7 @@
       {
         "title": "Spotify",
         "description": "Primary Spotify profile.",
-        "url": "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
+        "url": "https://open.spotify.com/user/jordanmitchell",
         "tags": [
           "Music",
           "Profile"
@@ -483,31 +474,23 @@
       {
         "title": "LinkedIn",
         "description": "Main LinkedIn profile.",
-        "url": "https://linkedin.com/in/carlosgeraldine",
+        "url": "https://linkedin.com/in/jordanmitchell",
         "tags": [
           "Profile"
         ]
       },
       {
-        "title": "WhatsApp",
-        "description": "Direct WhatsApp contact link.",
-        "url": "https://api.whatsapp.com/send?phone=6285770078016",
-        "tags": [
-          "Contact"
-        ]
-      },
-      {
-        "title": "Partnership Email",
-        "description": "Partnership email contact.",
-        "url": "mailto:carlosrichardgeraldine@bersama365.work.gd",
-        "tags": [
-          "Contact"
-        ]
-      },
-      {
         "title": "Primary Email",
         "description": "Primary email contact.",
-        "url": "mailto:carlosrichardgeraldine@outlook.com",
+        "url": "mailto:jordan.mitchell@protonmail.com",
+        "tags": [
+          "Contact"
+        ]
+      },
+      {
+        "title": "Work Email",
+        "description": "Work email contact.",
+        "url": "mailto:j.mitchell@cloudbridgesolutions.io",
         "tags": [
           "Contact"
         ]
@@ -515,15 +498,15 @@
       {
         "title": "Secondary Email",
         "description": "Secondary email contact.",
-        "url": "mailto:carlosrichardgeraldine@gmail.com",
+        "url": "mailto:jordanalexmitchell@gmail.com",
         "tags": [
           "Contact"
         ]
       },
       {
         "title": "DISCORD",
-        "description": "Main Discord invite link.",
-        "url": "https://discord.gg/6KuyH5RBPQ",
+        "description": "Main Discord community server.",
+        "url": "https://discord.gg/jordanmitchell",
         "tags": [
           "Community"
         ]
@@ -531,32 +514,16 @@
       {
         "title": "Snowflake Directory",
         "description": "Snowflake public profile directory.",
-        "url": "https://directory.snowflake.com/profile/76f67ac3-f4a8-4dcb-a3de-49880df61727",
+        "url": "https://directory.snowflake.com/profile/jordanmitchell",
         "tags": [
           "Platform",
           "Profile"
         ]
       },
       {
-        "title": "ReplaceByClawd",
-        "description": "Personal profile shortlink destination.",
-        "url": "https://replacebyclawd.com/?url=https://linkedin.com/in/carlosgeraldine&job=eddcd6b31b05",
-        "tags": [
-          "Profile"
-        ]
-      },
-      {
-        "title": "Denodo",
-        "description": "Denodo profile and identity page.",
-        "url": "https://auth.denodo.com/user-management/profile/0AAF396D287C18856B0BC2A0B272CF498A885265DCE5DB9388B321AEB0735C47",
-        "tags": [
-          "Platform"
-        ]
-      },
-      {
         "title": "My MBTI Personality Type",
         "description": "TestMyPersona MBTI result.",
-        "url": "https://www.testmypersona.com/tests/mbti/results?r=EwFgzMCs4iUpMExwIy0tBKGYcVVYKEg9QzFScyYIA",
+        "url": "https://www.testmypersona.com/tests/mbti/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -564,7 +531,7 @@
       {
         "title": "My Big Five Personality Results",
         "description": "TestMyPersona Big Five result.",
-        "url": "https://www.testmypersona.com/tests/bigfive/results?r=KwFgzMkpCMBMcbXmEdzsum94icHKOiCEA",
+        "url": "https://www.testmypersona.com/tests/bigfive/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -572,7 +539,7 @@
       {
         "title": "My Enneagram Type",
         "description": "TestMyPersona Enneagram result.",
-        "url": "https://www.testmypersona.com/tests/enneagram/results?r=CwVl2AmEU0QIxgMzTg6oEKmJPpEJMg",
+        "url": "https://www.testmypersona.com/tests/enneagram/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -580,7 +547,7 @@
       {
         "title": "My DISC Profile",
         "description": "TestMyPersona DISC result.",
-        "url": "https://www.testmypersona.com/tests/disc/results?r=AwhM5SGZN0wIwODIA",
+        "url": "https://www.testmypersona.com/tests/disc/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -588,7 +555,7 @@
       {
         "title": "My Attachment Style",
         "description": "TestMyPersona attachment style result.",
-        "url": "https://www.testmypersona.com/tests/attachment-style/results?r=EwRgLArGYrcgZjA0JgVMY0zpjUIA",
+        "url": "https://www.testmypersona.com/tests/attachment-style/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -596,7 +563,7 @@
       {
         "title": "My Top CliftonStrengths",
         "description": "TestMyPersona CliftonStrengths result.",
-        "url": "https://www.testmypersona.com/tests/clifton-strengths/results?r=EwFlEZxT2ZJAVmVMzGmO8BmHyww54tgcQQg",
+        "url": "https://www.testmypersona.com/tests/clifton-strengths/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -604,7 +571,7 @@
       {
         "title": "My Core Values Results",
         "description": "TestMyPersona core values result.",
-        "url": "https://www.testmypersona.com/tests/core-values/results?r=EzCMBZ1U2u4MxQSpECsrzp7nQ",
+        "url": "https://www.testmypersona.com/tests/core-values/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -612,7 +579,7 @@
       {
         "title": "My Emotional Intelligence Results",
         "description": "TestMyPersona emotional intelligence result.",
-        "url": "https://www.testmypersona.com/tests/emotional-intelligence/results?r=CwVmCYIRmBmcT3lMpZnsGV2IeBeIA",
+        "url": "https://www.testmypersona.com/tests/emotional-intelligence/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -620,7 +587,7 @@
       {
         "title": "My Holland Code Results",
         "description": "TestMyPersona Holland code result.",
-        "url": "https://www.testmypersona.com/tests/holland-code/results?r=IwZgLMBMLKCsE5LApkWvHSqwhJJFGHnrNCuiLllMHkSUUA",
+        "url": "https://www.testmypersona.com/tests/holland-code/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -628,7 +595,7 @@
       {
         "title": "My Jungian Archetypes Test Results",
         "description": "TestMyPersona Jungian archetypes result.",
-        "url": "https://www.testmypersona.com/tests/jungian-archetypes/results?r=Iw0VjYBYCYYhkRQsGwwolWwg",
+        "url": "https://www.testmypersona.com/tests/jungian-archetypes/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -636,7 +603,7 @@
       {
         "title": "My Character Strengths Results",
         "description": "TestMyPersona character strengths result.",
-        "url": "https://www.testmypersona.com/tests/character-strengths/results?r=KwFmCYEYGZU5pUpEJynElibD3ESdfMaQveCqVBNRJOyIA",
+        "url": "https://www.testmypersona.com/tests/character-strengths/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -644,7 +611,7 @@
       {
         "title": "My Mental Age",
         "description": "TestMyPersona mental age result.",
-        "url": "https://www.testmypersona.com/tests/mental-age/results?r=IwZgLGIKzDkEySaYrJWlGQ",
+        "url": "https://www.testmypersona.com/tests/mental-age/results?r=jordanmitchell",
         "tags": [
           "Personality"
         ]
@@ -652,7 +619,7 @@
       {
         "title": "Upwork",
         "description": "Upwork freelancer profile.",
-        "url": "https://www.upwork.com/freelancers/~0170c75894fbe5f176?mp_source=share",
+        "url": "https://www.upwork.com/freelancers/jordanmitchell",
         "tags": [
           "Career",
           "Profile"
@@ -661,7 +628,7 @@
       {
         "title": "Google Skills",
         "description": "Google Skills public profile.",
-        "url": "https://www.skills.google/public_profiles/3b3862a6-00b7-4981-a181-b76ec3ae5b8c",
+        "url": "https://www.skills.google/public_profiles/jordanmitchell",
         "tags": [
           "Learning",
           "Profile"
@@ -670,7 +637,7 @@
       {
         "title": "Google Developer Program",
         "description": "Google Developer profile.",
-        "url": "https://g.dev/carlosgeraldine",
+        "url": "https://g.dev/jordanmitchell",
         "tags": [
           "Learning",
           "Profile"
@@ -679,7 +646,7 @@
       {
         "title": "Pegasystems",
         "description": "Pega account profile.",
-        "url": "https://accounts.pega.com/profile/carlosgeraldine",
+        "url": "https://accounts.pega.com/profile/jordanmitchell",
         "tags": [
           "Platform",
           "Profile"
@@ -688,7 +655,7 @@
       {
         "title": "Outsystems",
         "description": "Outsystems profile page.",
-        "url": "https://www.outsystems.com/profile/4r01oaulnq/overview",
+        "url": "https://www.outsystems.com/profile/jordanmitchell/overview",
         "tags": [
           "Platform",
           "Profile"
@@ -697,7 +664,7 @@
       {
         "title": "The Linux Foundation",
         "description": "Linux Foundation open profile.",
-        "url": "https://openprofile.dev/profile/carlgeralz.ofc",
+        "url": "https://openprofile.dev/profile/jordanmitchell",
         "tags": [
           "Learning",
           "Profile"
@@ -706,7 +673,7 @@
       {
         "title": "Project Management Institute",
         "description": "PMI community profile.",
-        "url": "https://community.pmi.org/profile/carlgeralz",
+        "url": "https://community.pmi.org/profile/jordanmitchell",
         "tags": [
           "Profile",
           "Community"
@@ -715,7 +682,7 @@
       {
         "title": "OpenLearn - Open University UK",
         "description": "OpenLearn profile page.",
-        "url": "https://www.open.edu/openlearn/profiles/zu113901",
+        "url": "https://www.open.edu/openlearn/profiles/jordanmitchell",
         "tags": [
           "Learning"
         ]
@@ -723,7 +690,7 @@
       {
         "title": "Last.fm - old account",
         "description": "Legacy Last.fm account.",
-        "url": "https://last.fm/user/caramelldansen2",
+        "url": "https://last.fm/user/jordanmitchell-old",
         "tags": [
           "Music"
         ]
@@ -731,7 +698,7 @@
       {
         "title": "Spotify - Playlists",
         "description": "Spotify playlists profile.",
-        "url": "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
+        "url": "https://open.spotify.com/user/jordanmitchell",
         "tags": [
           "Music"
         ]
@@ -739,7 +706,7 @@
       {
         "title": "LinkedIn - Latest Updates",
         "description": "LinkedIn profile with latest updates.",
-        "url": "https://linkedin.com/in/carlosgeraldine",
+        "url": "https://linkedin.com/in/jordanmitchell",
         "tags": [
           "Profile"
         ]
@@ -747,7 +714,7 @@
       {
         "title": "AWS Skill Builder",
         "description": "AWS Skill Builder profile.",
-        "url": "https://skillsprofile.skillbuilder.aws/user/carlosgeraldine",
+        "url": "https://skillsprofile.skillbuilder.aws/user/jordanmitchell",
         "tags": [
           "Learning"
         ]
@@ -755,7 +722,7 @@
       {
         "title": "Accredible",
         "description": "Credential wallet profile.",
-        "url": "https://www.credential.net/profile/carlosgeraldine/wallet",
+        "url": "https://www.credential.net/profile/jordanmitchell/wallet",
         "tags": [
           "Credentials"
         ]
@@ -763,7 +730,7 @@
       {
         "title": "G2 - Tech Stacks Review",
         "description": "G2 user profile and reviews.",
-        "url": "https://www.g2.com/users/carlosgeraldine",
+        "url": "https://www.g2.com/users/jordanmitchell",
         "tags": [
           "Reviews"
         ]
@@ -771,16 +738,16 @@
       {
         "title": "ServiceNow University",
         "description": "ServiceNow learning public profile.",
-        "url": "https://learning.servicenow.com/lxp/en/pages/nl-public-resume?id=nl_public&user=carlosrich262822",
+        "url": "https://learning.servicenow.com/lxp/en/pages/nl-public-resume?id=nl_public&user=jordanmitchell",
         "tags": [
           "Learning",
           "Credentials"
         ]
       },
       {
-        "title": "Jobstreet Resume",
-        "description": "Jobstreet resume profile.",
-        "url": "https://id.jobstreet.com/profiles/carlos-geraldine-4rBTsVWybP",
+        "title": "Indeed Resume",
+        "description": "Indeed resume profile.",
+        "url": "https://www.indeed.com/me/jordanmitchell",
         "tags": [
           "Career"
         ]
@@ -788,7 +755,7 @@
       {
         "title": "Credly",
         "description": "Credly badges and certifications profile.",
-        "url": "https://credly.com/users/carlosgeraldine",
+        "url": "https://credly.com/users/jordanmitchell",
         "tags": [
           "Credentials"
         ]
@@ -796,7 +763,7 @@
       {
         "title": "FutureLearn",
         "description": "FutureLearn profile page.",
-        "url": "https://www.futurelearn.com/profiles/19253127",
+        "url": "https://www.futurelearn.com/profiles/jordanmitchell",
         "tags": [
           "Learning"
         ]
@@ -810,9 +777,9 @@
         ]
       },
       {
-        "title": "Microsoft Certification Hub",
-        "description": "Microsoft certification Discord hub.",
-        "url": "https://discord.gg/hvtShSag8a",
+        "title": "Salesforce Certification Hub",
+        "description": "Salesforce community Discord hub.",
+        "url": "https://discord.gg/salesforcecert",
         "tags": [
           "Community",
           "Credentials"
@@ -821,16 +788,16 @@
       {
         "title": "Atlassian Community",
         "description": "Atlassian community profile.",
-        "url": "https://community.atlassian.com/user/profile/1e54bb61-4b04-4e97-bd5d-4f5b8a46cc38",
+        "url": "https://community.atlassian.com/user/profile/jordanmitchell",
         "tags": [
           "Profile",
           "Community"
         ]
       },
       {
-        "title": "Microsoft Learn",
-        "description": "Microsoft Learn public profile.",
-        "url": "https://learn.microsoft.com/en-gb/users/carlosgeraldine/",
+        "title": "AWS re:Post",
+        "description": "AWS re:Post community profile.",
+        "url": "https://repost.aws/users/jordanmitchell",
         "tags": [
           "Learning"
         ]
@@ -838,7 +805,7 @@
       {
         "title": "Creatio",
         "description": "Creatio community profile.",
-        "url": "https://community.creatio.com/user/216284",
+        "url": "https://community.creatio.com/user/jordanmitchell",
         "tags": [
           "Community",
           "Platform"
@@ -847,15 +814,15 @@
       {
         "title": "Salesforce Trailblazer",
         "description": "Salesforce Trailblazer profile.",
-        "url": "http://www.salesforce.com/trailblazer/carlosgeraldine",
+        "url": "https://www.salesforce.com/trailblazer/jordanmitchell",
         "tags": [
           "Learning"
         ]
       },
       {
-        "title": "Dicoding",
-        "description": "Dicoding learning profile.",
-        "url": "https://www.dicoding.com/users/carlgeralz/academies",
+        "title": "Coursera",
+        "description": "Coursera learning profile.",
+        "url": "https://www.coursera.org/user/jordanmitchell",
         "tags": [
           "Learning"
         ]
@@ -863,7 +830,7 @@
       {
         "title": "Last.fm - Music Listening History",
         "description": "Current Last.fm listening history profile.",
-        "url": "https://last.fm/user/caramelldansen3",
+        "url": "https://last.fm/user/jordanmitchell",
         "tags": [
           "Music"
         ]
