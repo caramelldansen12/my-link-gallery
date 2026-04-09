@@ -108,8 +108,8 @@ export const AwardEditor = ({ items, onChange }: AwardEditorProps) => {
               <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-foreground/70" />
             ) : null}
 
-            <AccordionTrigger className="py-4 text-left no-underline hover:no-underline">
-              <div className="flex min-w-0 items-start gap-1.5 text-left">
+            <AccordionTrigger className="py-4 text-left no-underline hover:no-underline min-w-0 overflow-hidden">
+              <div className="flex min-w-0 flex-1 overflow-hidden items-start gap-1.5 text-left">
                 <button
                   type="button"
                   draggable

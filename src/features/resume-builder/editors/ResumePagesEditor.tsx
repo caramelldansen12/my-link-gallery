@@ -191,8 +191,8 @@ export const ResumePagesEditor = ({
         className="rounded-2xl border border-border/70 bg-background/90"
       >
         <AccordionItem value="overview" className="px-4">
-          <AccordionTrigger className="py-4 text-left no-underline hover:no-underline">
-            <div className="min-w-0 text-left">
+          <AccordionTrigger className="py-4 text-left no-underline hover:no-underline min-w-0 overflow-hidden">
+            <div className="min-w-0 overflow-hidden text-left">
               <div className="mt-1 truncate text-lg font-semibold text-foreground">Overview</div>
             </div>
           </AccordionTrigger>
@@ -288,8 +288,8 @@ export const ResumePagesEditor = ({
         </AccordionItem>
 
         <AccordionItem value="job-description" className="px-4">
-          <AccordionTrigger className="py-4 text-left no-underline hover:no-underline">
-            <div className="min-w-0 text-left">
+          <AccordionTrigger className="py-4 text-left no-underline hover:no-underline min-w-0 overflow-hidden">
+            <div className="min-w-0 overflow-hidden text-left">
               <div className="mt-1 truncate text-lg font-semibold text-foreground">Job Description</div>
             </div>
           </AccordionTrigger>
@@ -333,8 +333,8 @@ export const ResumePagesEditor = ({
                       {dropTarget?.kind === "job" && dropTarget.index === sectionIndex && dropTarget.position === "after" ? (
                         <div className="pointer-events-none absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-foreground/70" />
                       ) : null}
-                      <AccordionTrigger className="py-4 text-left no-underline hover:no-underline">
-                        <div className="flex min-w-0 items-center gap-1.5 text-left">
+                      <AccordionTrigger className="py-4 text-left no-underline hover:no-underline min-w-0 overflow-hidden">
+                        <div className="flex min-w-0 flex-1 overflow-hidden items-center gap-1.5 text-left">
                           <button
                             type="button"
                             draggable
