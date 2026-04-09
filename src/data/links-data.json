@@ -1,0 +1,301 @@
+{
+  "settings": {
+    "title": "Links",
+    "pageSize": 12,
+    "quickTags": [
+      "Profile",
+      "Personality",
+      "Learning"
+    ]
+  },
+  "links": [
+    {
+      "title": "Spotify",
+      "description": "Primary Spotify profile.",
+      "url": "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
+      "tags": ["Music", "Profile"]
+    },
+    {
+      "title": "LinkedIn",
+      "description": "Main LinkedIn profile.",
+      "url": "https://linkedin.com/in/carlosgeraldine",
+      "tags": ["Profile"]
+    },
+    {
+      "title": "WhatsApp",
+      "description": "Direct WhatsApp contact link.",
+      "url": "https://api.whatsapp.com/send?phone=6285770078016",
+      "tags": ["Contact"]
+    },
+    {
+      "title": "Partnership Email",
+      "description": "Partnership email contact.",
+      "url": "mailto:carlosrichardgeraldine@bersama365.work.gd",
+      "tags": ["Contact"]
+    },
+    {
+      "title": "Primary Email",
+      "description": "Primary email contact.",
+      "url": "mailto:carlosrichardgeraldine@outlook.com",
+      "tags": ["Contact"]
+    },
+    {
+      "title": "Secondary Email",
+      "description": "Secondary email contact.",
+      "url": "mailto:carlosrichardgeraldine@gmail.com",
+      "tags": ["Contact"]
+    },
+    {
+      "title": "DISCORD",
+      "description": "Main Discord invite link.",
+      "url": "https://discord.gg/6KuyH5RBPQ",
+      "tags": ["Community"]
+    },
+    {
+      "title": "Snowflake Directory",
+      "description": "Snowflake public profile directory.",
+      "url": "https://directory.snowflake.com/profile/76f67ac3-f4a8-4dcb-a3de-49880df61727",
+      "tags": ["Platform", "Profile"]
+    },
+    {
+      "title": "ReplaceByClawd",
+      "description": "Personal profile shortlink destination.",
+      "url": "https://replacebyclawd.com/?url=https://linkedin.com/in/carlosgeraldine&job=eddcd6b31b05",
+      "tags": ["Profile"]
+    },
+    {
+      "title": "Denodo",
+      "description": "Denodo profile and identity page.",
+      "url": "https://auth.denodo.com/user-management/profile/0AAF396D287C18856B0BC2A0B272CF498A885265DCE5DB9388B321AEB0735C47",
+      "tags": ["Platform"]
+    },
+    {
+      "title": "My MBTI Personality Type",
+      "description": "TestMyPersona MBTI result.",
+      "url": "https://www.testmypersona.com/tests/mbti/results?r=EwFgzMCs4iUpMExwIy0tBKGYcVVYKEg9QzFScyYIA",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Big Five Personality Results",
+      "description": "TestMyPersona Big Five result.",
+      "url": "https://www.testmypersona.com/tests/bigfive/results?r=KwFgzMkpCMBMcbXmEdzsum94icHKOiCEA",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Enneagram Type",
+      "description": "TestMyPersona Enneagram result.",
+      "url": "https://www.testmypersona.com/tests/enneagram/results?r=CwVl2AmEU0QIxgMzTg6oEKmJPpEJMg",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My DISC Profile",
+      "description": "TestMyPersona DISC result.",
+      "url": "https://www.testmypersona.com/tests/disc/results?r=AwhM5SGZN0wIwODIA",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Attachment Style",
+      "description": "TestMyPersona attachment style result.",
+      "url": "https://www.testmypersona.com/tests/attachment-style/results?r=EwRgLArGYrcgZjA0JgVMY0zpjUIA",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Top CliftonStrengths",
+      "description": "TestMyPersona CliftonStrengths result.",
+      "url": "https://www.testmypersona.com/tests/clifton-strengths/results?r=EwFlEZxT2ZJAVmVMzGmO8BmHyww54tgcQQg",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Core Values Results",
+      "description": "TestMyPersona core values result.",
+      "url": "https://www.testmypersona.com/tests/core-values/results?r=EzCMBZ1U2u4MxQSpECsrzp7nQ",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Emotional Intelligence Results",
+      "description": "TestMyPersona emotional intelligence result.",
+      "url": "https://www.testmypersona.com/tests/emotional-intelligence/results?r=CwVmCYIRmBmcT3lMpZnsGV2IeBeIA",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Holland Code Results",
+      "description": "TestMyPersona Holland code result.",
+      "url": "https://www.testmypersona.com/tests/holland-code/results?r=IwZgLMBMLKCsE5LApkWvHSqwhJJFGHnrNCuiLllMHkSUUA",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Jungian Archetypes Test Results",
+      "description": "TestMyPersona Jungian archetypes result.",
+      "url": "https://www.testmypersona.com/tests/jungian-archetypes/results?r=Iw0VjYBYCYYhkRQsGwwolWwg",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Character Strengths Results",
+      "description": "TestMyPersona character strengths result.",
+      "url": "https://www.testmypersona.com/tests/character-strengths/results?r=KwFmCYEYGZU5pUpEJynElibD3ESdfMaQveCqVBNRJOyIA",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "My Mental Age",
+      "description": "TestMyPersona mental age result.",
+      "url": "https://www.testmypersona.com/tests/mental-age/results?r=IwZgLGIKzDkEySaYrJWlGQ",
+      "tags": ["Personality"]
+    },
+    {
+      "title": "Upwork",
+      "description": "Upwork freelancer profile.",
+      "url": "https://www.upwork.com/freelancers/~0170c75894fbe5f176?mp_source=share",
+      "tags": ["Career", "Profile"]
+    },
+    {
+      "title": "Google Skills",
+      "description": "Google Skills public profile.",
+      "url": "https://www.skills.google/public_profiles/3b3862a6-00b7-4981-a181-b76ec3ae5b8c",
+      "tags": ["Learning", "Profile"]
+    },
+    {
+      "title": "Google Developer Program",
+      "description": "Google Developer profile.",
+      "url": "https://g.dev/carlosgeraldine",
+      "tags": ["Learning", "Profile"]
+    },
+    {
+      "title": "Pegasystems",
+      "description": "Pega account profile.",
+      "url": "https://accounts.pega.com/profile/carlosgeraldine",
+      "tags": ["Platform", "Profile"]
+    },
+    {
+      "title": "Outsystems",
+      "description": "Outsystems profile page.",
+      "url": "https://www.outsystems.com/profile/4r01oaulnq/overview",
+      "tags": ["Platform", "Profile"]
+    },
+    {
+      "title": "The Linux Foundation",
+      "description": "Linux Foundation open profile.",
+      "url": "https://openprofile.dev/profile/carlgeralz.ofc",
+      "tags": ["Learning", "Profile"]
+    },
+    {
+      "title": "Project Management Institute",
+      "description": "PMI community profile.",
+      "url": "https://community.pmi.org/profile/carlgeralz",
+      "tags": ["Profile", "Community"]
+    },
+    {
+      "title": "OpenLearn - Open University UK",
+      "description": "OpenLearn profile page.",
+      "url": "https://www.open.edu/openlearn/profiles/zu113901",
+      "tags": ["Learning"]
+    },
+    {
+      "title": "Last.fm - old account",
+      "description": "Legacy Last.fm account.",
+      "url": "https://last.fm/user/caramelldansen2",
+      "tags": ["Music"]
+    },
+    {
+      "title": "Spotify - Playlists",
+      "description": "Spotify playlists profile.",
+      "url": "https://open.spotify.com/user/31zlfgj4lyfgbfc4o6heaz6m4b2y?si=80aadda75c7d4315",
+      "tags": ["Music"]
+    },
+    {
+      "title": "LinkedIn - Latest Updates",
+      "description": "LinkedIn profile with latest updates.",
+      "url": "https://linkedin.com/in/carlosgeraldine",
+      "tags": ["Profile"]
+    },
+    {
+      "title": "AWS Skill Builder",
+      "description": "AWS Skill Builder profile.",
+      "url": "https://skillsprofile.skillbuilder.aws/user/carlosgeraldine",
+      "tags": ["Learning"]
+    },
+    {
+      "title": "Accredible",
+      "description": "Credential wallet profile.",
+      "url": "https://www.credential.net/profile/carlosgeraldine/wallet",
+      "tags": ["Credentials"]
+    },
+    {
+      "title": "G2 - Tech Stacks Review",
+      "description": "G2 user profile and reviews.",
+      "url": "https://www.g2.com/users/carlosgeraldine",
+      "tags": ["Reviews"]
+    },
+    {
+      "title": "ServiceNow University",
+      "description": "ServiceNow learning public profile.",
+      "url": "https://learning.servicenow.com/lxp/en/pages/nl-public-resume?id=nl_public&user=carlosrich262822",
+      "tags": ["Learning", "Credentials"]
+    },
+    {
+      "title": "Jobstreet Resume",
+      "description": "Jobstreet resume profile.",
+      "url": "https://id.jobstreet.com/profiles/carlos-geraldine-4rBTsVWybP",
+      "tags": ["Career"]
+    },
+    {
+      "title": "Credly",
+      "description": "Credly badges and certifications profile.",
+      "url": "https://credly.com/users/carlosgeraldine",
+      "tags": ["Credentials"]
+    },
+    {
+      "title": "FutureLearn",
+      "description": "FutureLearn profile page.",
+      "url": "https://www.futurelearn.com/profiles/19253127",
+      "tags": ["Learning"]
+    },
+    {
+      "title": "Study GRC",
+      "description": "Study GRC Discord community.",
+      "url": "https://discord.gg/studygrc",
+      "tags": ["Community"]
+    },
+    {
+      "title": "Microsoft Certification Hub",
+      "description": "Microsoft certification Discord hub.",
+      "url": "https://discord.gg/hvtShSag8a",
+      "tags": ["Community", "Credentials"]
+    },
+    {
+      "title": "Atlassian Community",
+      "description": "Atlassian community profile.",
+      "url": "https://community.atlassian.com/user/profile/1e54bb61-4b04-4e97-bd5d-4f5b8a46cc38",
+      "tags": ["Profile", "Community"]
+    },
+    {
+      "title": "Microsoft Learn",
+      "description": "Microsoft Learn public profile.",
+      "url": "https://learn.microsoft.com/en-gb/users/carlosgeraldine/",
+      "tags": ["Learning"]
+    },
+    {
+      "title": "Creatio",
+      "description": "Creatio community profile.",
+      "url": "https://community.creatio.com/user/216284",
+      "tags": ["Community", "Platform"]
+    },
+    {
+      "title": "Salesforce Trailblazer",
+      "description": "Salesforce Trailblazer profile.",
+      "url": "http://www.salesforce.com/trailblazer/carlosgeraldine",
+      "tags": ["Learning"]
+    },
+    {
+      "title": "Dicoding",
+      "description": "Dicoding learning profile.",
+      "url": "https://www.dicoding.com/users/carlgeralz/academies",
+      "tags": ["Learning"]
+    },
+    {
+      "title": "Last.fm - Music Listening History",
+      "description": "Current Last.fm listening history profile.",
+      "url": "https://last.fm/user/caramelldansen3",
+      "tags": ["Music"]
+    }
+  ]
+}

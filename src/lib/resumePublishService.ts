@@ -4,7 +4,7 @@ const GITHUB_API = "https://api.github.com";
 const UPSTREAM_OWNER = "carlosrichardgeraldine";
 const UPSTREAM_REPO = "my-link-gallery";
 const UPSTREAM_FULL_NAME = `${UPSTREAM_OWNER}/${UPSTREAM_REPO}`;
-const RESUME_PATH = "src/pages/Resume.tsx";
+const RESUME_PATH = "src/data/resume-data.json";
 
 type GithubUser = {
   login: string;
@@ -254,7 +254,7 @@ const commitResumeFile = async (fork: ForkRepository, token: string, branch: str
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        message: "chore: update resume from builder",
+        message: "chore: update resume-data.json from builder",
         content: toBase64(resumeSource),
         branch,
         sha: existing.sha,
@@ -266,7 +266,7 @@ const commitResumeFile = async (fork: ForkRepository, token: string, branch: str
     if ((error as PublishError).code === "unexpected") {
       createPublishError({
         code: "commit_failed",
-        message: "Unable to commit Resume.tsx in the target repository.",
+        message: "Unable to commit resume-data.json in the target repository.",
         details: (error as PublishError).details,
       });
     }

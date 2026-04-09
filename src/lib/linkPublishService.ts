@@ -4,7 +4,7 @@ const GITHUB_API = "https://api.github.com";
 const UPSTREAM_OWNER = "carlosrichardgeraldine";
 const UPSTREAM_REPO = "my-link-gallery";
 const UPSTREAM_FULL_NAME = `${UPSTREAM_OWNER}/${UPSTREAM_REPO}`;
-const LINKS_PATH = "src/data/links.ts";
+const LINKS_PATH = "src/data/links-data.json";
 
 type GithubUser = {
   login: string;
@@ -254,7 +254,7 @@ const commitLinksFile = async (repo: ForkRepository, token: string, branch: stri
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        message: "chore: update links from builder",
+        message: "chore: update links-data.json from builder",
         content: toBase64(linksSource),
         branch,
         sha: existing.sha,
@@ -266,7 +266,7 @@ const commitLinksFile = async (repo: ForkRepository, token: string, branch: stri
     if ((error as PublishError).code === "unexpected") {
       createPublishError({
         code: "commit_failed",
-        message: "Unable to commit links.ts in the target repository.",
+        message: "Unable to commit links-data.json in the target repository.",
         details: (error as PublishError).details,
       });
     }

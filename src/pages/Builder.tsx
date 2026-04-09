@@ -26,10 +26,8 @@ import { sections, type SectionId } from "@/features/resume-builder/config";
 import { useHistoryState } from "@/hooks/useHistoryState";
 import { useResumePublish } from "@/hooks/useResumePublish";
 import { useLinkPublish } from "@/hooks/useLinkPublish";
-import { buildResumeTsx, downloadResumeTsx, parseResumeContentFromSource } from "@/lib/resumeBuilderGenerator";
-import { buildLinksTs, downloadLinksTs, parseLinkBuilderContentFromSource } from "@/lib/linkBuilderGenerator";
-import resumeCurrentSource from "@/pages/Resume.tsx?raw";
-import linksCurrentSource from "@/data/links.ts?raw";
+import { buildResumeDataJson, downloadResumeDataJson } from "@/lib/resumeBuilderGenerator";
+import { buildLinksDataJson, downloadLinksDataJson } from "@/lib/linkBuilderGenerator";
 import { toast } from "sonner";
 
 type ActiveTab = "resume" | "links";
@@ -59,10 +57,7 @@ const Builder = () => {
     reset: resumeReset,
     canUndo: resumeCanUndo,
     canRedo: resumeCanRedo,
-  } = useHistoryState<ResumeBuilderContent>(() => {
-    const parsed = parseResumeContentFromSource(resumeCurrentSource);
-    return parsed ?? createResumeBuilderContent();
-  });
+  } = useHistoryState<ResumeBuilderContent>(() => createResumeBuilderContent());
 
   const [resumeActiveSection, setResumeActiveSection] = useState<SectionId>("resumePages");
   const [resumeIsStatusExpanded, setResumeIsStatusExpanded] = useState(false);
@@ -107,7 +102,7 @@ const Builder = () => {
   const handleResumeReset = () => {
     resumeReset(createResumeBuilderContent());
     setResumeActiveSection("resumePages");
-    toast.success("Builder reset to the current Resume.tsx defaults.");
+    toast.success("Builder reset to the current resume-data.json defaults.");
   };
 
   const resumeSectionButtons = sections.map((section) => {
@@ -141,10 +136,7 @@ const Builder = () => {
     reset: linksReset,
     canUndo: linksCanUndo,
     canRedo: linksCanRedo,
-  } = useHistoryState<LinkBuilderContent>(() => {
-    const parsed = parseLinkBuilderContentFromSource(linksCurrentSource);
-    return parsed ?? createLinkBuilderContent();
-  });
+  } = useHistoryState<LinkBuilderContent>(() => createLinkBuilderContent());
 
   const linksContentRef = useRef(linksContent);
 
@@ -176,18 +168,18 @@ const Builder = () => {
 
   const handleLinksReset = () => {
     linksReset(createLinkBuilderContent());
-    toast.success("Builder reset to the current links.ts defaults.");
+    toast.success("Builder reset to the current links-data.json defaults.");
   };
 
   // ── Shared: Generate dropdown ────────────────────────────────────────────
   const handleDownloadResume = () => {
-    downloadResumeTsx(resumeContent, resumeCurrentSource);
-    toast.success("Resume.tsx downloaded.");
+    downloadResumeDataJson(resumeContent);
+    toast.success("resume-data.json downloaded.");
   };
 
   const handleDownloadLinks = () => {
-    downloadLinksTs(linksContentRef.current);
-    toast.success("links.ts downloaded.");
+    downloadLinksDataJson(linksContentRef.current);
+    toast.success("links-data.json downloaded.");
   };
 
   // ── Shared: Combined publish ──────────────────────────────────────────────
@@ -209,8 +201,8 @@ const Builder = () => {
     const token = publishToken.trim();
     if (!token) { toast.error("Enter a GitHub token before publishing."); return; }
 
-    const resumeSource = buildResumeTsx(resumeContent, resumeCurrentSource);
-    const linksSource = buildLinksTs(linksContentRef.current);
+    const resumeSource = buildResumeDataJson(resumeContent);
+    const linksSource = buildLinksDataJson(linksContentRef.current);
 
     const [resumeOutcome, linksOutcome] = await Promise.allSettled([
       resumePublish(token, resumeSource),
@@ -223,8 +215,8 @@ const Builder = () => {
     const linksOk = linksOutcome.status === "fulfilled" && linksOutcome.value !== null;
 
     if (resumeOk && linksOk) toast.success("Both files published successfully.");
-    else if (resumeOk) toast.warning("Resume.tsx published, but links.ts failed.");
-    else if (linksOk) toast.warning("links.ts published, but Resume.tsx failed.");
+    else if (resumeOk) toast.warning("resume-data.json published, but links-data.json failed.");
+    else if (linksOk) toast.warning("links-data.json published, but resume-data.json failed.");
     else toast.error("Both publishes failed. Review details in the dialog.");
   };
 
@@ -242,10 +234,10 @@ const Builder = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[160px]">
         <DropdownMenuItem onClick={handleDownloadResume}>
-          Download Resume.tsx
+          Download resume-data.json
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleDownloadLinks}>
-          Download links.ts
+          Download links-data.json
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -443,7 +435,7 @@ const Builder = () => {
           <DialogHeader>
             <DialogTitle>Publish to GitHub</DialogTitle>
             <DialogDescription>
-              Publishes both <span className="font-medium text-foreground">Resume.tsx</span> and <span className="font-medium text-foreground">links.ts</span> to your fork simultaneously. The token is used in-memory only and cleared when this dialog closes.
+              Publishes both <span className="font-medium text-foreground">resume-data.json</span> and <span className="font-medium text-foreground">links-data.json</span> to your fork simultaneously. The token is used in-memory only and cleared when this dialog closes.
             </DialogDescription>
           </DialogHeader>
 
@@ -464,14 +456,14 @@ const Builder = () => {
             {/* Resume status */}
             {(resumePublishState !== "idle" || resumePublishError || resumePublishResult) && (
               <div className="rounded-2xl border border-border/70 bg-muted/30 p-4 space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Resume.tsx</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">resume-data.json</p>
                 {resumePublishStatusLabel && <p className="text-sm text-muted-foreground">{resumePublishStatusLabel}</p>}
                 {resumePublishError && (
                   <div className="rounded-xl border border-destructive/40 bg-destructive/5 p-3 text-sm">
                     <p className="font-medium text-foreground">{resumePublishError.message}</p>
                     {resumePublishError.details && <p className="mt-1 text-muted-foreground">{resumePublishError.details}</p>}
                     {resumePublishError.code === "network_or_cors" && (
-                      <p className="mt-2 text-muted-foreground">Use Generate → Download Resume.tsx to get the file manually.</p>
+                      <p className="mt-2 text-muted-foreground">Use Generate → Download resume-data.json to get the file manually.</p>
                     )}
                   </div>
                 )}
@@ -495,14 +487,14 @@ const Builder = () => {
             {/* Links status */}
             {(linksPublishState !== "idle" || linksPublishError || linksPublishResult) && (
               <div className="rounded-2xl border border-border/70 bg-muted/30 p-4 space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">links.ts</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">links-data.json</p>
                 {linksPublishStatusLabel && <p className="text-sm text-muted-foreground">{linksPublishStatusLabel}</p>}
                 {linksPublishError && (
                   <div className="rounded-xl border border-destructive/40 bg-destructive/5 p-3 text-sm">
                     <p className="font-medium text-foreground">{linksPublishError.message}</p>
                     {linksPublishError.details && <p className="mt-1 text-muted-foreground">{linksPublishError.details}</p>}
                     {linksPublishError.code === "network_or_cors" && (
-                      <p className="mt-2 text-muted-foreground">Use Generate → Download links.ts to get the file manually.</p>
+                      <p className="mt-2 text-muted-foreground">Use Generate → Download links-data.json to get the file manually.</p>
                     )}
                   </div>
                 )}
@@ -551,14 +543,14 @@ const Builder = () => {
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Resume tab</p>
               <ul className="space-y-1 pl-4 list-disc text-foreground/80">
                 <li>Edit resume sections, projects, and credentials.</li>
-                <li>Use <span className="font-medium text-foreground">Generate → Download Resume.tsx</span> for a manual download.</li>
+                <li>Use <span className="font-medium text-foreground">Generate → Download resume-data.json</span> for a manual download.</li>
               </ul>
             </div>
             <div className="space-y-1.5">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Links tab</p>
               <ul className="space-y-1 pl-4 list-disc text-foreground/80">
                 <li>Add, reorder, and edit all your link cards.</li>
-                <li>Use <span className="font-medium text-foreground">Generate → Download links.ts</span> for a manual download.</li>
+                <li>Use <span className="font-medium text-foreground">Generate → Download links-data.json</span> for a manual download.</li>
               </ul>
             </div>
             <div className="rounded-xl border border-border bg-muted/30 px-4 py-3 space-y-1">

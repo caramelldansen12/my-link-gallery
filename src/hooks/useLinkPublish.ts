@@ -15,7 +15,7 @@ const statusLabels: Record<PublishState, string> = {
   idle: "",
   validating: "Validating token and account access...",
   preparing: "Preparing a branch in your fork...",
-  committing: "Committing links.ts to the deployment branch...",
+  committing: "Committing links-data.json to the deployment branch...",
   creating_pr: "",
   success: "Publish completed.",
   error: "Publish failed.",

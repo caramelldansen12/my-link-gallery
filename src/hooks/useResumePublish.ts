@@ -15,7 +15,7 @@ const statusLabels: Record<PublishState, string> = {
   idle: "",
   validating: "Validating token and account access...",
   preparing: "Preparing target repository...",
-  committing: "Committing Resume.tsx to the deployment branch...",
+  committing: "Committing resume-data.json to the deployment branch...",
   creating_pr: "",
   success: "Publish completed.",
   error: "Publish failed.",
