@@ -3,7 +3,7 @@
     "resumePages": [
       {
         "id": "overview",
-        "title": "John Doe",
+        "title": "Jane Doe",
         "subtitle": "Design, deliver, and scale solutions that create real business impact."
       },
       {
@@ -279,20 +279,6 @@
         "period": "Sep 2022 - Jul 2026",
         "grade": "Grade: 3.41/4.0",
         "focus": "Software Engineering, Data Structures & Algorithms"
-      },
-      {
-        "institution": "",
-        "degree": "",
-        "period": "",
-        "grade": "",
-        "focus": ""
-      },
-      {
-        "institution": "",
-        "degree": "",
-        "period": "",
-        "grade": "",
-        "focus": ""
       }
     ],
     "honorsAndAwards": [
