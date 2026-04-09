@@ -1351,50 +1351,47 @@ export default function Resume() {
                         </div>
                       </div>
 
-                      <div className="space-y-6">
-                        <div>
-                          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                            Big Five Assessment
-                          </p>
-                          {isMobile ? (
-                            <button
-                              type="button"
-                              onClick={() => setShowBigFiveModal(true)}
-                              className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card/80"
-                            >
-                              <span>Show Big Five Assessment</span>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-60"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                            </button>
-                          ) : (
+                      {isMobile ? (
+                        <div className="flex flex-wrap gap-3">
+                          <button
+                            type="button"
+                            onClick={() => setShowBigFiveModal(true)}
+                            className="inline-flex items-center gap-2 rounded-2xl border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card/80"
+                          >
+                            <span>Big Five Assessment</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-60"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setShowDiscModal(true)}
+                            className="inline-flex items-center gap-2 rounded-2xl border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card/80"
+                          >
+                            <span>DISC</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-60"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="space-y-6">
+                          <div>
+                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                              Big Five Assessment
+                            </p>
                             <RadialIntensityGrid
                               items={bigFiveScores}
                               tone="hsl(var(--foreground))"
                             />
-                          )}
-                        </div>
-
-                        <div>
-                          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                            DISC
-                          </p>
-                          {isMobile ? (
-                            <button
-                              type="button"
-                              onClick={() => setShowDiscModal(true)}
-                              className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-card/80"
-                            >
-                              <span>Show DISC</span>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-60"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                            </button>
-                          ) : (
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                              DISC
+                            </p>
                             <RadialIntensityGrid
                               items={discScores}
                               tone="hsl(var(--primary))"
                             />
-                          )}
+                          </div>
                         </div>
-
-                      </div>
+                      )}
                     </div>
                   ) : page.id === "highlighted-credentials" ? (
                     <HighlightedCredentialsDeck isActive={activeSectionId === page.id} />
