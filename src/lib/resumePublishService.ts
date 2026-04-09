@@ -244,56 +244,33 @@ const resolveTargetRepository = async (token: string): Promise<ResolvedTarget> =
 };
 
 const commitResumeFile = async (fork: ForkRepository, token: string, branch: string, resumeSource: string) => {
-  const attemptCommit = async () => {
-    const contentPath = `/repos/${fork.owner}/${fork.name}/contents/${RESUME_PATH}?ref=${encodeURIComponent(branch)}`;
+  const contentPath = `/repos/${fork.owner}/${fork.name}/contents/${RESUME_PATH}?ref=${encodeURIComponent(branch)}`;
+  const existing = await apiRequest<{ sha: string }>(contentPath, token);
 
-    let existingSha: string | undefined;
-    try {
-      const existing = await apiRequest<{ sha: string }>(contentPath, token);
-      existingSha = existing.sha;
-    } catch {
-      existingSha = undefined;
-    }
-
+  try {
     const updatePath = `/repos/${fork.owner}/${fork.name}/contents/${RESUME_PATH}`;
-    const payload: Record<string, string> = {
-      message: existingSha ? "chore: update resume-data.json from builder" : "chore: add resume-data.json from builder",
-      content: toBase64(resumeSource),
-      branch,
-    };
-    if (existingSha) payload.sha = existingSha;
 
     const response = await apiRequest<{ content: { html_url: string } }>(updatePath, token, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        message: "chore: update resume-data.json from builder",
+        content: toBase64(resumeSource),
+        branch,
+        sha: existing.sha,
+      }),
     });
 
     return response.content.html_url;
-  };
-
-  try {
-    return await attemptCommit();
   } catch (error) {
-    const publishError = error as PublishError;
-    if (publishError.code === "unexpected" && (publishError.details ?? "").includes("but expected")) {
-      try {
-        return await attemptCommit();
-      } catch (retryError) {
-        createPublishError({
-          code: "commit_failed",
-          message: "Unable to commit resume-data.json in the target repository.",
-          details: (retryError as PublishError).details,
-        });
-      }
-    }
-    if (publishError.code === "unexpected") {
+    if ((error as PublishError).code === "unexpected") {
       createPublishError({
         code: "commit_failed",
         message: "Unable to commit resume-data.json in the target repository.",
-        details: publishError.details,
+        details: (error as PublishError).details,
       });
     }
+
     throw error;
   }
 };
