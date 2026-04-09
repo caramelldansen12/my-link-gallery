@@ -3,7 +3,7 @@
     "resumePages": [
       {
         "id": "overview",
-        "title": "Jordan Alex Mitchell",
+        "title": "John Doe",
         "subtitle": "Design, deliver, and scale solutions that create real business impact."
       },
       {
@@ -79,8 +79,8 @@
         "title": "Contact",
         "subtitle": "",
         "body": [
-          "Email: jordan.mitchell@protonmail.com",
-          "LinkedIn: https://www.linkedin.com/in/jordanmitchell/",
+          "Email: john.doe@protonmail.com",
+          "LinkedIn: https://www.linkedin.com/in/johndoe/",
           "Phone: +1 312-555-0174"
         ],
         "highlights": [
@@ -416,15 +416,15 @@
     "contactChannels": [
       {
         "label": "Email",
-        "value": "jordan.mitchell@protonmail.com",
-        "href": "mailto:jordan.mitchell@protonmail.com",
+        "value": "john.doe@protonmail.com",
+        "href": "mailto:john.doe@protonmail.com",
         "className": "border-red-400/80 text-red-500 dark:text-red-300",
         "hidden": false
       },
       {
         "label": "LinkedIn",
-        "value": "linkedin.com/in/jordanmitchell",
-        "href": "https://www.linkedin.com/in/jordanmitchell/",
+        "value": "linkedin.com/in/johndoe",
+        "href": "https://www.linkedin.com/in/johndoe/",
         "className": "border-blue-400/80 text-blue-600 dark:text-blue-300",
         "hidden": false
       },
@@ -445,7 +445,7 @@
       {
         "label": "Calendar",
         "value": "Book a meeting",
-        "href": "https://calendly.com/jordanmitchell",
+        "href": "https://calendly.com/johndoe",
         "className": "border-violet-400/80 text-violet-600 dark:text-violet-300",
         "hidden": false
       }
@@ -465,7 +465,7 @@
       {
         "title": "Spotify",
         "description": "Primary Spotify profile.",
-        "url": "https://open.spotify.com/user/jordanmitchell",
+        "url": "https://open.spotify.com/user/johndoe",
         "tags": [
           "Music",
           "Profile"
@@ -474,7 +474,7 @@
       {
         "title": "LinkedIn",
         "description": "Main LinkedIn profile.",
-        "url": "https://linkedin.com/in/jordanmitchell",
+        "url": "https://linkedin.com/in/johndoe",
         "tags": [
           "Profile"
         ]
@@ -482,7 +482,7 @@
       {
         "title": "Primary Email",
         "description": "Primary email contact.",
-        "url": "mailto:jordan.mitchell@protonmail.com",
+        "url": "mailto:john.doe@protonmail.com",
         "tags": [
           "Contact"
         ]
@@ -490,7 +490,7 @@
       {
         "title": "Work Email",
         "description": "Work email contact.",
-        "url": "mailto:j.mitchell@cloudbridgesolutions.io",
+        "url": "mailto:j.doe@cloudbridgesolutions.io",
         "tags": [
           "Contact"
         ]
@@ -498,7 +498,7 @@
       {
         "title": "Secondary Email",
         "description": "Secondary email contact.",
-        "url": "mailto:jordanalexmitchell@gmail.com",
+        "url": "mailto:johndoe@gmail.com",
         "tags": [
           "Contact"
         ]
@@ -506,7 +506,7 @@
       {
         "title": "DISCORD",
         "description": "Main Discord community server.",
-        "url": "https://discord.gg/jordanmitchell",
+        "url": "https://discord.gg/johndoe",
         "tags": [
           "Community"
         ]
@@ -514,7 +514,7 @@
       {
         "title": "Snowflake Directory",
         "description": "Snowflake public profile directory.",
-        "url": "https://directory.snowflake.com/profile/jordanmitchell",
+        "url": "https://directory.snowflake.com/profile/johndoe",
         "tags": [
           "Platform",
           "Profile"
@@ -523,7 +523,7 @@
       {
         "title": "My MBTI Personality Type",
         "description": "TestMyPersona MBTI result.",
-        "url": "https://www.testmypersona.com/tests/mbti/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/mbti/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -531,7 +531,7 @@
       {
         "title": "My Big Five Personality Results",
         "description": "TestMyPersona Big Five result.",
-        "url": "https://www.testmypersona.com/tests/bigfive/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/bigfive/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -539,7 +539,7 @@
       {
         "title": "My Enneagram Type",
         "description": "TestMyPersona Enneagram result.",
-        "url": "https://www.testmypersona.com/tests/enneagram/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/enneagram/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -547,7 +547,7 @@
       {
         "title": "My DISC Profile",
         "description": "TestMyPersona DISC result.",
-        "url": "https://www.testmypersona.com/tests/disc/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/disc/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -555,7 +555,7 @@
       {
         "title": "My Attachment Style",
         "description": "TestMyPersona attachment style result.",
-        "url": "https://www.testmypersona.com/tests/attachment-style/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/attachment-style/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -563,7 +563,7 @@
       {
         "title": "My Top CliftonStrengths",
         "description": "TestMyPersona CliftonStrengths result.",
-        "url": "https://www.testmypersona.com/tests/clifton-strengths/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/clifton-strengths/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -571,7 +571,7 @@
       {
         "title": "My Core Values Results",
         "description": "TestMyPersona core values result.",
-        "url": "https://www.testmypersona.com/tests/core-values/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/core-values/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -579,7 +579,7 @@
       {
         "title": "My Emotional Intelligence Results",
         "description": "TestMyPersona emotional intelligence result.",
-        "url": "https://www.testmypersona.com/tests/emotional-intelligence/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/emotional-intelligence/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -587,7 +587,7 @@
       {
         "title": "My Holland Code Results",
         "description": "TestMyPersona Holland code result.",
-        "url": "https://www.testmypersona.com/tests/holland-code/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/holland-code/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -595,7 +595,7 @@
       {
         "title": "My Jungian Archetypes Test Results",
         "description": "TestMyPersona Jungian archetypes result.",
-        "url": "https://www.testmypersona.com/tests/jungian-archetypes/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/jungian-archetypes/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -603,7 +603,7 @@
       {
         "title": "My Character Strengths Results",
         "description": "TestMyPersona character strengths result.",
-        "url": "https://www.testmypersona.com/tests/character-strengths/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/character-strengths/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -611,7 +611,7 @@
       {
         "title": "My Mental Age",
         "description": "TestMyPersona mental age result.",
-        "url": "https://www.testmypersona.com/tests/mental-age/results?r=jordanmitchell",
+        "url": "https://www.testmypersona.com/tests/mental-age/results?r=johndoe",
         "tags": [
           "Personality"
         ]
@@ -619,7 +619,7 @@
       {
         "title": "Upwork",
         "description": "Upwork freelancer profile.",
-        "url": "https://www.upwork.com/freelancers/jordanmitchell",
+        "url": "https://www.upwork.com/freelancers/johndoe",
         "tags": [
           "Career",
           "Profile"
@@ -628,7 +628,7 @@
       {
         "title": "Google Skills",
         "description": "Google Skills public profile.",
-        "url": "https://www.skills.google/public_profiles/jordanmitchell",
+        "url": "https://www.skills.google/public_profiles/johndoe",
         "tags": [
           "Learning",
           "Profile"
@@ -637,7 +637,7 @@
       {
         "title": "Google Developer Program",
         "description": "Google Developer profile.",
-        "url": "https://g.dev/jordanmitchell",
+        "url": "https://g.dev/johndoe",
         "tags": [
           "Learning",
           "Profile"
@@ -646,7 +646,7 @@
       {
         "title": "Pegasystems",
         "description": "Pega account profile.",
-        "url": "https://accounts.pega.com/profile/jordanmitchell",
+        "url": "https://accounts.pega.com/profile/johndoe",
         "tags": [
           "Platform",
           "Profile"
@@ -655,7 +655,7 @@
       {
         "title": "Outsystems",
         "description": "Outsystems profile page.",
-        "url": "https://www.outsystems.com/profile/jordanmitchell/overview",
+        "url": "https://www.outsystems.com/profile/johndoe/overview",
         "tags": [
           "Platform",
           "Profile"
@@ -664,7 +664,7 @@
       {
         "title": "The Linux Foundation",
         "description": "Linux Foundation open profile.",
-        "url": "https://openprofile.dev/profile/jordanmitchell",
+        "url": "https://openprofile.dev/profile/johndoe",
         "tags": [
           "Learning",
           "Profile"
@@ -673,7 +673,7 @@
       {
         "title": "Project Management Institute",
         "description": "PMI community profile.",
-        "url": "https://community.pmi.org/profile/jordanmitchell",
+        "url": "https://community.pmi.org/profile/johndoe",
         "tags": [
           "Profile",
           "Community"
@@ -682,7 +682,7 @@
       {
         "title": "OpenLearn - Open University UK",
         "description": "OpenLearn profile page.",
-        "url": "https://www.open.edu/openlearn/profiles/jordanmitchell",
+        "url": "https://www.open.edu/openlearn/profiles/johndoe",
         "tags": [
           "Learning"
         ]
@@ -690,7 +690,7 @@
       {
         "title": "Last.fm - old account",
         "description": "Legacy Last.fm account.",
-        "url": "https://last.fm/user/jordanmitchell-old",
+        "url": "https://last.fm/user/johndoe-old",
         "tags": [
           "Music"
         ]
@@ -698,7 +698,7 @@
       {
         "title": "Spotify - Playlists",
         "description": "Spotify playlists profile.",
-        "url": "https://open.spotify.com/user/jordanmitchell",
+        "url": "https://open.spotify.com/user/johndoe",
         "tags": [
           "Music"
         ]
@@ -706,7 +706,7 @@
       {
         "title": "LinkedIn - Latest Updates",
         "description": "LinkedIn profile with latest updates.",
-        "url": "https://linkedin.com/in/jordanmitchell",
+        "url": "https://linkedin.com/in/johndoe",
         "tags": [
           "Profile"
         ]
@@ -714,7 +714,7 @@
       {
         "title": "AWS Skill Builder",
         "description": "AWS Skill Builder profile.",
-        "url": "https://skillsprofile.skillbuilder.aws/user/jordanmitchell",
+        "url": "https://skillsprofile.skillbuilder.aws/user/johndoe",
         "tags": [
           "Learning"
         ]
@@ -722,7 +722,7 @@
       {
         "title": "Accredible",
         "description": "Credential wallet profile.",
-        "url": "https://www.credential.net/profile/jordanmitchell/wallet",
+        "url": "https://www.credential.net/profile/johndoe/wallet",
         "tags": [
           "Credentials"
         ]
@@ -730,7 +730,7 @@
       {
         "title": "G2 - Tech Stacks Review",
         "description": "G2 user profile and reviews.",
-        "url": "https://www.g2.com/users/jordanmitchell",
+        "url": "https://www.g2.com/users/johndoe",
         "tags": [
           "Reviews"
         ]
@@ -738,7 +738,7 @@
       {
         "title": "ServiceNow University",
         "description": "ServiceNow learning public profile.",
-        "url": "https://learning.servicenow.com/lxp/en/pages/nl-public-resume?id=nl_public&user=jordanmitchell",
+        "url": "https://learning.servicenow.com/lxp/en/pages/nl-public-resume?id=nl_public&user=johndoe",
         "tags": [
           "Learning",
           "Credentials"
@@ -747,7 +747,7 @@
       {
         "title": "Indeed Resume",
         "description": "Indeed resume profile.",
-        "url": "https://www.indeed.com/me/jordanmitchell",
+        "url": "https://www.indeed.com/me/johndoe",
         "tags": [
           "Career"
         ]
@@ -755,7 +755,7 @@
       {
         "title": "Credly",
         "description": "Credly badges and certifications profile.",
-        "url": "https://credly.com/users/jordanmitchell",
+        "url": "https://credly.com/users/johndoe",
         "tags": [
           "Credentials"
         ]
@@ -763,7 +763,7 @@
       {
         "title": "FutureLearn",
         "description": "FutureLearn profile page.",
-        "url": "https://www.futurelearn.com/profiles/jordanmitchell",
+        "url": "https://www.futurelearn.com/profiles/johndoe",
         "tags": [
           "Learning"
         ]
@@ -788,7 +788,7 @@
       {
         "title": "Atlassian Community",
         "description": "Atlassian community profile.",
-        "url": "https://community.atlassian.com/user/profile/jordanmitchell",
+        "url": "https://community.atlassian.com/user/profile/johndoe",
         "tags": [
           "Profile",
           "Community"
@@ -797,7 +797,7 @@
       {
         "title": "AWS re:Post",
         "description": "AWS re:Post community profile.",
-        "url": "https://repost.aws/users/jordanmitchell",
+        "url": "https://repost.aws/users/johndoe",
         "tags": [
           "Learning"
         ]
@@ -805,7 +805,7 @@
       {
         "title": "Creatio",
         "description": "Creatio community profile.",
-        "url": "https://community.creatio.com/user/jordanmitchell",
+        "url": "https://community.creatio.com/user/johndoe",
         "tags": [
           "Community",
           "Platform"
@@ -814,7 +814,7 @@
       {
         "title": "Salesforce Trailblazer",
         "description": "Salesforce Trailblazer profile.",
-        "url": "https://www.salesforce.com/trailblazer/jordanmitchell",
+        "url": "https://www.salesforce.com/trailblazer/johndoe",
         "tags": [
           "Learning"
         ]
@@ -822,7 +822,7 @@
       {
         "title": "Coursera",
         "description": "Coursera learning profile.",
-        "url": "https://www.coursera.org/user/jordanmitchell",
+        "url": "https://www.coursera.org/user/johndoe",
         "tags": [
           "Learning"
         ]
@@ -830,7 +830,7 @@
       {
         "title": "Last.fm - Music Listening History",
         "description": "Current Last.fm listening history profile.",
-        "url": "https://last.fm/user/jordanmitchell",
+        "url": "https://last.fm/user/johndoe",
         "tags": [
           "Music"
         ]
