@@ -245,20 +245,28 @@ const resolveTargetRepository = async (token: string): Promise<ResolvedTarget> =
 
 const commitResumeFile = async (fork: ForkRepository, token: string, branch: string, resumeSource: string) => {
   const contentPath = `/repos/${fork.owner}/${fork.name}/contents/${RESUME_PATH}?ref=${encodeURIComponent(branch)}`;
-  const existing = await apiRequest<{ sha: string }>(contentPath, token);
+
+  let existingSha: string | undefined;
+  try {
+    const existing = await apiRequest<{ sha: string }>(contentPath, token);
+    existingSha = existing.sha;
+  } catch {
+    existingSha = undefined;
+  }
 
   try {
     const updatePath = `/repos/${fork.owner}/${fork.name}/contents/${RESUME_PATH}`;
+    const payload: Record<string, string> = {
+      message: existingSha ? "chore: update resume-data.json from builder" : "chore: add resume-data.json from builder",
+      content: toBase64(resumeSource),
+      branch,
+    };
+    if (existingSha) payload.sha = existingSha;
 
     const response = await apiRequest<{ content: { html_url: string } }>(updatePath, token, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: "chore: update resume-data.json from builder",
-        content: toBase64(resumeSource),
-        branch,
-        sha: existing.sha,
-      }),
+      body: JSON.stringify(payload),
     });
 
     return response.content.html_url;

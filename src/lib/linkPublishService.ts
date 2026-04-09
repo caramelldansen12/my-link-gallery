@@ -245,20 +245,28 @@ const resolveTargetRepository = async (token: string): Promise<ResolvedTarget> =
 
 const commitLinksFile = async (repo: ForkRepository, token: string, branch: string, linksSource: string) => {
   const contentPath = `/repos/${repo.owner}/${repo.name}/contents/${LINKS_PATH}?ref=${encodeURIComponent(branch)}`;
-  const existing = await apiRequest<{ sha: string }>(contentPath, token);
+
+  let existingSha: string | undefined;
+  try {
+    const existing = await apiRequest<{ sha: string }>(contentPath, token);
+    existingSha = existing.sha;
+  } catch {
+    existingSha = undefined;
+  }
 
   try {
     const updatePath = `/repos/${repo.owner}/${repo.name}/contents/${LINKS_PATH}`;
+    const payload: Record<string, string> = {
+      message: existingSha ? "chore: update links-data.json from builder" : "chore: add links-data.json from builder",
+      content: toBase64(linksSource),
+      branch,
+    };
+    if (existingSha) payload.sha = existingSha;
 
     const response = await apiRequest<{ content: { html_url: string } }>(updatePath, token, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: "chore: update links-data.json from builder",
-        content: toBase64(linksSource),
-        branch,
-        sha: existing.sha,
-      }),
+      body: JSON.stringify(payload),
     });
 
     return response.content.html_url;
