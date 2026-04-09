@@ -14,7 +14,7 @@ const ResumePageNavigation = ({
   isAtEnd,
 }: ResumePageNavigationProps) => {
   return (
-    <div className="fixed left-4 top-1/2 z-40 flex -translate-y-1/2 flex-col gap-2 md:left-6">
+    <div className="hidden md:flex fixed left-4 top-1/2 z-40 -translate-y-1/2 flex-col gap-2 md:left-6">
       <button
         type="button"
         onClick={onPrevious}

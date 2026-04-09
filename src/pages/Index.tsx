@@ -85,7 +85,7 @@ const Index = () => {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-4 md:py-6">
+      <div className="container mx-auto px-4 pt-4 pb-24 md:py-6">
         <LinkSearchBar search={search} onSearchChange={setSearch} />
 
         <QuickTagsRow quickTags={quickTags} selectedTags={selectedTags} onToggleTag={toggleTag} />

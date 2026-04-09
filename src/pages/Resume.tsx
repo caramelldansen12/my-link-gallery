@@ -1043,7 +1043,7 @@ export default function Resume() {
             }}
             className={"snap-start snap-always min-h-full border-b border-border"}
           >
-            <div className="container mx-auto flex min-h-full items-center px-4 py-12">
+            <div className="container mx-auto flex min-h-full items-center px-4 pt-12 pb-24 md:py-12">
               <div className="grid w-full gap-8 lg:grid-cols-[1.15fr_1.15fr_0.7fr] lg:grid-rows-[auto_1fr]">
                 <div
                   className="min-w-0 lg:col-span-3"
@@ -1053,14 +1053,14 @@ export default function Resume() {
                     }
                   }}
                 >
-                  <h1 className="max-w-4xl pb-1 text-3xl font-bold leading-[1.05] sm:text-4xl md:text-6xl">
+                  <h1 className="max-w-4xl pb-1 text-2xl font-bold leading-tight sm:text-3xl md:text-6xl">
                     {page.title}
                   </h1>
                   <p className="mt-4 max-w-3xl text-sm text-muted-foreground sm:text-base md:text-lg">{page.subtitle}</p>
                 </div>
 
                 <div
-                    className={`min-w-0 min-h-[330px] ${showSidePanel ? "lg:col-span-2" : "lg:col-span-3"}`}
+                    className={`min-w-0 md:min-h-[330px] ${showSidePanel ? "lg:col-span-2" : "lg:col-span-3"}`}
                 >
                   {page.id === "overview" ? (
                     <div className="resume-overview-columns">
