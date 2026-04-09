@@ -3,7 +3,7 @@
     "resumePages": [
       {
         "id": "overview",
-        "title": "Jane Doe",
+        "title": "John Doe",
         "subtitle": "Design, deliver, and scale solutions that create real business impact."
       },
       {
@@ -395,7 +395,6 @@
       "Certified ARIS Modeler Associate",
       "Camunda Knowledge - Business Analyst",
       "Fortinet Certified Associate Cybersecurity",
-      "SAP Certified - Business Transformation Consultant",
       "HubSpot Revenue Operations Certification",
       "Tableau Desktop Specialist"
     ],
