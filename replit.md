@@ -20,10 +20,23 @@ A frontend-only React + Vite web application serving as a personal link hub (sim
 - `src/components/ui/` — Reusable shadcn/ui primitives
 - `src/components/index/` — Link gallery components (search, filters)
 - `src/hooks/` — Shared custom hooks
-- `src/data/` — Static TypeScript data files (links, resume content)
+- `src/data/` — Separated data files: `resume-data.json` (all resume content), `links-data.json` (all link content), TypeScript type/accessor files (`resumeBuilderContent.ts`, `linkBuilderContent.ts`, `links.ts`)
 - `src/lib/` — Utility functions and generators
 - `public/` — Static assets
 - `docs/` — Project documentation
+
+## Data Architecture
+
+Resume and links content is **fully separated** from logic code:
+
+- **`src/data/resume-data.json`** — Single source of truth for all resume content (pages, skills, experience, education, credentials, contact channels, overview details, keyword rows). `Resume.tsx` imports and reads this file directly.
+- **`src/data/links-data.json`** — Single source of truth for all link content (settings and link items). `links.ts` re-exports from this file.
+
+The builders generate and publish these JSON files:
+- Resume builder → generates `resume-data.json` via `buildResumeDataJson` / `downloadResumeDataJson`
+- Links builder → generates `links-data.json` via `buildLinksDataJson` / `downloadLinksDataJson`
+
+The psychometric section in `Resume.tsx` (Big Five, DISC, linguistic scores, etc.) is intentionally kept static (hardcoded) as it is not editable via the builder.
 
 ## Development
 

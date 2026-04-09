@@ -15,8 +15,7 @@ import { Input } from "@/components/ui/input";
 import { createLinkBuilderContent, type LinkBuilderContent } from "@/data/linkBuilderContent";
 import { useLinkPublish } from "@/hooks/useLinkPublish";
 import { useHistoryState } from "@/hooks/useHistoryState";
-import { buildLinksTs, downloadLinksTs, parseLinkBuilderContentFromSource } from "@/lib/linkBuilderGenerator";
-import linksCurrentSource from "@/data/links.ts?raw";
+import { buildLinksDataJson, downloadLinksDataJson } from "@/lib/linkBuilderGenerator";
 import { toast } from "sonner";
 
 const publishModeLabels: Record<"used_existing_fork" | "created_new_fork" | "owner_mode_upstream", string> = {
@@ -34,10 +33,7 @@ const LinkBuilder = () => {
     reset,
     canUndo,
     canRedo,
-  } = useHistoryState<LinkBuilderContent>(() => {
-    const parsed = parseLinkBuilderContentFromSource(linksCurrentSource);
-    return parsed ?? createLinkBuilderContent();
-  });
+  } = useHistoryState<LinkBuilderContent>(() => createLinkBuilderContent());
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(true);
   const [isGeneratedNotesOpen, setIsGeneratedNotesOpen] = useState(false);
   const [isPublishOpen, setIsPublishOpen] = useState(false);
@@ -70,14 +66,14 @@ const LinkBuilder = () => {
   };
 
   const handleGenerate = () => {
-    downloadLinksTs(contentRef.current);
+    downloadLinksDataJson(contentRef.current);
     setIsGeneratedNotesOpen(true);
-    toast.success("links.ts downloaded.");
+    toast.success("links-data.json downloaded.");
   };
 
   const handleReset = () => {
     reset(createLinkBuilderContent());
-    toast.success("Builder reset to the current links.ts defaults.");
+    toast.success("Builder reset to the current defaults.")
   };
 
   const handlePublish = async () => {
@@ -88,13 +84,13 @@ const LinkBuilder = () => {
       return;
     }
 
-    const generatedSource = buildLinksTs(contentRef.current);
+    const generatedSource = buildLinksDataJson(contentRef.current);
     const outcome = await publish(token, generatedSource);
 
     setPublishToken("");
 
     if (outcome) {
-      toast.success("Publish completed and PR is ready.");
+      toast.success("Publish completed and deployment started.")
     } else {
       toast.error("Publish failed. Review details in the dialog.");
     }
@@ -194,14 +190,14 @@ const LinkBuilder = () => {
       <Dialog open={isOnboardingOpen} onOpenChange={setIsOnboardingOpen}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
-            <DialogTitle>Build Your Own Link Page</DialogTitle>
+            <DialogTitle>Build Your Own Links Page</DialogTitle>
             <DialogDescription>Follow these steps to customize and publish your own links page.</DialogDescription>
           </DialogHeader>
 
           <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed text-foreground/90">
             <li>Edit your links content in this builder.</li>
-            <li>Use Generate to download links.ts for manual workflows.</li>
-            <li>Use Publish to send generated links.ts to GitHub directly.</li>
+            <li>Use Generate to download <strong>links-data.json</strong> and replace <code>src/data/links-data.json</code> in your project.</li>
+            <li>Use Publish to send the updated links-data.json to GitHub directly.</li>
             <li>Publish auto-detects your fork, creates one if needed, or uses upstream owner mode.</li>
             <li>Publish commits directly to the deployment branch and triggers CI/CD immediately.</li>
           </ol>
@@ -221,7 +217,7 @@ const LinkBuilder = () => {
       <Dialog open={isPublishOpen} onOpenChange={handlePublishDialogChange}>
         <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Publish links.ts to GitHub</DialogTitle>
+            <DialogTitle>Publish links-data.json to GitHub</DialogTitle>
             <DialogDescription>
               This flow uses your fork when available, creates one automatically when needed, and falls back to the
               existing repository when the token belongs to the upstream owner. It commits directly to the deployment
@@ -252,7 +248,7 @@ const LinkBuilder = () => {
                 {publishError.details ? <p className="mt-1 text-muted-foreground">{publishError.details}</p> : null}
                 {publishError.code === "network_or_cors" ? (
                   <p className="mt-2 text-muted-foreground">
-                    Fallback: use Generate to download links.ts, commit it to your fork manually, then open a pull request.
+                    Fallback: use Generate to download links-data.json, replace src/data/links-data.json in your fork manually, then open a pull request.
                   </p>
                 ) : null}
               </div>
@@ -309,9 +305,9 @@ const LinkBuilder = () => {
       <Dialog open={isGeneratedNotesOpen} onOpenChange={setIsGeneratedNotesOpen}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
-            <DialogTitle>Generated links.ts downloaded</DialogTitle>
+            <DialogTitle>Generated links-data.json downloaded</DialogTitle>
             <DialogDescription>
-              Replace your source links data file manually after reviewing the download.
+              Replace <strong>src/data/links-data.json</strong> in your project with this file to apply your changes.
             </DialogDescription>
           </DialogHeader>
 

@@ -24,9 +24,8 @@ import { BuilderPanel } from "@/features/resume-builder/BuilderPanel";
 import { sections, type SectionId } from "@/features/resume-builder/config";
 import { useHistoryState } from "@/hooks/useHistoryState";
 import { useResumePublish } from "@/hooks/useResumePublish";
-import { buildResumeTsx, downloadResumeTsx, parseResumeContentFromSource } from "@/lib/resumeBuilderGenerator";
+import { buildResumeDataJson, downloadResumeDataJson } from "@/lib/resumeBuilderGenerator";
 import { Input } from "@/components/ui/input";
-import resumeCurrentSource from "@/pages/Resume.tsx?raw";
 import { toast } from "sonner";
 
 const classNames = (...values: Array<string | false | undefined>) => values.filter(Boolean).join(" ");
@@ -46,10 +45,7 @@ const ResumeBuilder = () => {
     reset,
     canUndo,
     canRedo,
-  } = useHistoryState<ResumeBuilderContent>(() => {
-    const parsed = parseResumeContentFromSource(resumeCurrentSource);
-    return parsed ?? createResumeBuilderContent();
-  });
+  } = useHistoryState<ResumeBuilderContent>(() => createResumeBuilderContent());
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(true);
   const [activeSection, setActiveSection] = useState<SectionId>("resumePages");
   const [isStatusExpanded, setIsStatusExpanded] = useState(false);
@@ -105,13 +101,13 @@ const ResumeBuilder = () => {
   const handleReset = () => {
     reset(createResumeBuilderContent());
     setActiveSection("resumePages");
-    toast.success("Builder reset to the current Resume.tsx defaults.");
+    toast.success("Builder reset to the current defaults.")
   };
 
   const handleGenerate = () => {
-    downloadResumeTsx(content, resumeCurrentSource);
+    downloadResumeDataJson(content);
     setIsNotesOpen(true);
-    toast.success("Resume.tsx downloaded.");
+    toast.success("resume-data.json downloaded.");
   };
 
   const handlePublish = async () => {
@@ -122,7 +118,7 @@ const ResumeBuilder = () => {
       return;
     }
 
-    const generatedSource = buildResumeTsx(content, resumeCurrentSource);
+    const generatedSource = buildResumeDataJson(content);
     const outcome = await publish(token, generatedSource);
 
     setPublishToken("");
@@ -301,15 +297,15 @@ const ResumeBuilder = () => {
       <Dialog open={isNotesOpen} onOpenChange={setIsNotesOpen}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
-            <DialogTitle>Generated Resume.tsx downloaded</DialogTitle>
+            <DialogTitle>Generated resume-data.json downloaded</DialogTitle>
           </DialogHeader>
 
           <div className="space-y-3 text-sm leading-relaxed text-foreground/90">
             <p>
-              The Generate button downloads a full <span className="font-medium text-foreground">Resume.tsx</span> file.
+              The Generate button downloads a <span className="font-medium text-foreground">resume-data.json</span> file.
               It does not write to the workspace or commit anything.
             </p>
-            <p>Replace your source file manually after reviewing the download.</p>
+            <p>Replace <span className="font-medium text-foreground">src/data/resume-data.json</span> with this file to apply your changes.</p>
           </div>
 
           <DialogFooter>
@@ -327,10 +323,10 @@ const ResumeBuilder = () => {
       <Dialog open={isPublishOpen} onOpenChange={handlePublishDialogChange}>
         <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Publish Resume.tsx to GitHub</DialogTitle>
+            <DialogTitle>Publish resume-data.json to GitHub</DialogTitle>
             <DialogDescription>
               This flow uses your fork when available, creates one automatically when needed, and falls back to the
-              existing repository when the token belongs to the upstream owner. It commits directly to the deployment
+              existing repository when the token belongs to the upstream owner. It commits <span className="font-medium">resume-data.json</span> directly to the deployment
               branch so CI/CD starts immediately without a merge step.
               The token is used in-memory only and cleared when this dialog closes.
             </DialogDescription>
@@ -358,7 +354,7 @@ const ResumeBuilder = () => {
                 {publishError.details ? <p className="mt-1 text-muted-foreground">{publishError.details}</p> : null}
                 {publishError.code === "network_or_cors" ? (
                   <p className="mt-2 text-muted-foreground">
-                    Fallback: use Generate to download Resume.tsx, commit it to your fork manually, then open a pull request.
+                    Fallback: use Generate to download resume-data.json, replace src/data/resume-data.json in your fork manually, then open a pull request.
                   </p>
                 ) : null}
               </div>
@@ -421,8 +417,8 @@ const ResumeBuilder = () => {
 
           <ol className="space-y-2 pl-5 text-sm leading-relaxed text-foreground/90 list-decimal">
             <li>Edit your resume content in this builder.</li>
-            <li>Use Generate to download Resume.tsx for manual workflows.</li>
-            <li>Use Publish to send generated Resume.tsx to GitHub directly.</li>
+            <li>Use Generate to download <strong>resume-data.json</strong> and replace <code>src/data/resume-data.json</code> in your project.</li>
+            <li>Use Publish to send the updated resume-data.json to GitHub directly.</li>
             <li>Publish auto-detects your fork, creates one if needed, or uses upstream owner mode.</li>
             <li>Publish commits directly to the deployment branch and triggers CI/CD immediately.</li>
           </ol>
