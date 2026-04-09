@@ -130,7 +130,7 @@ const LinkItemsEditor = ({ links, onChange }: LinkItemsEditorProps) => {
               ) : null}
 
               <AccordionTrigger className="py-4 text-left no-underline hover:no-underline">
-                <div className="flex min-w-0 items-center gap-1.5 text-left">
+                <div className="flex min-w-0 overflow-hidden items-center gap-1.5 text-left">
                   <button
                     type="button"
                     draggable
