@@ -98,6 +98,38 @@ const apiRequest = async <T>(path: string, token: string, init?: RequestInit): P
 
 const wait = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
 
+type WorkflowFile = { path: string; sha: string; type: string };
+
+const deleteWorkflowsFromFork = async (fork: ForkRepository, token: string, branch: string): Promise<void> => {
+  let files: WorkflowFile[] = [];
+
+  try {
+    const result = await apiRequest<WorkflowFile[]>(
+      `/repos/${fork.owner}/${fork.name}/contents/.github/workflows?ref=${encodeURIComponent(branch)}`,
+      token
+    );
+    if (Array.isArray(result)) files = result;
+  } catch {
+    return;
+  }
+
+  await Promise.allSettled(
+    files
+      .filter((f) => f.type === "file")
+      .map((file) =>
+        apiRequest(`/repos/${fork.owner}/${fork.name}/contents/${file.path}`, token, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: "chore: remove default CI workflows (deploy using your own static hosting)",
+            sha: file.sha,
+            branch,
+          }),
+        }).catch(() => {})
+      )
+  );
+};
+
 type ResolvedTarget = {
   repository: ForkRepository;
   mode: PublishMode;
@@ -171,6 +203,7 @@ const createForkAndResolve = async (token: string, userLogin: string): Promise<R
     const resolved = await findExistingTargetRepository(token, userLogin);
 
     if (resolved) {
+      await deleteWorkflowsFromFork(resolved, token, resolved.defaultBranch);
       return {
         repository: resolved,
         mode: "created_new_fork",
