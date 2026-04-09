@@ -61,14 +61,8 @@ const resumePages = [
   },
   {
     id: "key-skills",
-    title: "Key Skills",
-    subtitle: "Capability levels across business, technical, and delivery functions.",
-    noCard: true,
-  },
-  {
-    id: "tools-equipment",
-    title: "Tools and Equipment",
-    subtitle: "Core platforms and tools grouped by proficiency level.",
+    title: "Key Skills & Tools",
+    subtitle: "Capability levels and core platforms grouped by proficiency.",
     noCard: true,
   },
   {
@@ -1155,9 +1149,16 @@ export default function Resume() {
                       </div>
                     </div>
                   ) : page.id === "key-skills" ? (
-                    <PagedGroupedDeck cards={keySkillsCards} isActive={activeSectionId === "key-skills"} />
-                  ) : page.id === "tools-equipment" ? (
-                    <PagedGroupedDeck cards={toolsAndEquipmentCards} isActive={activeSectionId === "tools-equipment"} />
+                    <div className="space-y-8">
+                      <div className="space-y-2">
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">Key Skills</p>
+                        <PagedGroupedDeck cards={keySkillsCards} isActive={activeSectionId === "key-skills"} />
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">Tools and Equipment</p>
+                        <PagedGroupedDeck cards={toolsAndEquipmentCards} isActive={activeSectionId === "key-skills"} />
+                      </div>
+                    </div>
                   ) : page.id === "contact" ? (
                     <div className="grid gap-8 md:grid-cols-2">
                       <div className="space-y-3">
