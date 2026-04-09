@@ -1,0 +1,1 @@
+import{t as e}from"./data-BXfxzSUK.js";var t=e.links.settings,n=e.links.links;export{t as n,n as t};
